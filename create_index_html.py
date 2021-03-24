@@ -59,28 +59,29 @@ font_awesome_head="""
 </style>
 """
 
-def social_fab(name,extra):
-    return f"""<span><a href="#" class="fab fa-{name}"></a>{extra}</span>"""
+def social_fab(name,href):
+    return f"""<span><a href="{href}" class="fab fa-{name}"></a></span>"""
 
-def social_fas(name,extra):
-    return f"""<span><a href="#" class="fas fa-{name}"></a>{extra}</span>"""
+def social_fas(name,href):
+    return f"""<span><a href="{href}" class="fas fa-{name}"></a></span>"""
 
 def social_university():
-    return social_fas("university","")
+    return social_fas("university","https://scholar.google.com/citations?user=WYsimU8AAAAJ&hl=en")
 
 #def social_text(s):
 #    return f"""<span><a href="#" class="fab"><span style='font-size:15px'>{s}</span></a></span>"""
 
 def social_bar():
     return f"""
-    {social_fab("facebook","")}
-    {social_fab("github","")}
-    {social_fab("mastodon","")}
+    {social_fab("github","https://github.com/tomjridge")}
+    {social_fab("mastodon","https://realscience.social/web/accounts/6589")}
     {social_university()}
-    {social_fas("book","")}
-    {social_fab("youtube","")}
-    {social_fab("blogger","")}
+    {social_fab("youtube","https://www.youtube.com/channel/UCDnseBjY0_sUzPvgFt38hug")}
+    {social_fab("blogger","https://tom-ridge.blogspot.com/")}
 """
+
+#    {social_fas("book","")}
+
 
 # end social -----------------------------------------------------------
 
