@@ -19,12 +19,12 @@ system.
     Joined the University of Leicester, Department of Computer
     Science, initially as Lecturer then promoted to Senior Lecturer.
 
-  * **2005 September, Research Associate, Cambridge**  
+  * **2005 - 2009, Research Associate, Cambridge**  
     Joined the University of Cambridge as a research associate in the
     Computer Lab, supervised by Peter Sewell. Research mostly on
     Netsem (TCP/IP formalization in HOL4) and weak memory models.
 
-  * **2001 September, PhD in Computer Science**  
+  * **2001 - 2005, PhD in Computer Science**  
     Obtained a PhD at the Laboratory for the Foundations of Computer
     Science (LFCS), Edinburgh University. I was supervised by Paul
     Jackson, and studied theorem proving (Isabelle/HOL and HOL Light).
