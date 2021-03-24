@@ -13,7 +13,7 @@ worked on verified parsing. Currently he is working on a verified file
 system.
 
 
-## Timeline (eduction and employment)
+## Timeline (education and employment)
 
   * **2009 - 2021, Leicester**  
     Joined the University of Leicester, Department of Computer
