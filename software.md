@@ -3,7 +3,7 @@
   * **[GitHub repositories](https://github.com/tomjridge)**  
     Most of my software is stored on GitHub.
 
-  * **[Travis]((https://travis-ci.org/tomjridge)**  
+  * **[Travis](https://travis-ci.org/tomjridge)**  
     For build statuses.
 
   * **[Netsem](https://github.com/PeterSewell/netsem/)**  
