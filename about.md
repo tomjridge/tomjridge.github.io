@@ -15,7 +15,7 @@ system.
 
 ## Timeline (eduction and employment)
 
-  * **2009 September, Leicester**  
+  * **2009 - 2021, Leicester**  
     Joined the University of Leicester, Department of Computer
     Science, initially as Lecturer then promoted to Senior Lecturer.
 
