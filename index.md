@@ -18,7 +18,6 @@ tr61 (at) le.ac.uk
 
 ## Introduction
 
-Welcome to the home page of Tom Ridge. I am currently working as a
-programmer. Previously I was an academic researcher in computer
+Welcome to the home page of Tom Ridge. I am shortly leaving academia, so please update any contact details (email addresses etc) that you have for me. Previously I was an academic researcher in computer
 science (Cambridge), and senior lecturer (Leicester). 
 
