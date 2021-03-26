@@ -8,7 +8,6 @@
 <address>
 Dr Tom Ridge <br/>
 Senior Lecturer <br/>
-<!--F4, Department of Informatics (formerly Computer Science)<br/>-->
 University of Leicester <br/>
 Leicester, LE1 7RH <br/>
 tr61 (at) le.ac.uk 
@@ -18,6 +17,8 @@ tr61 (at) le.ac.uk
 
 ## Introduction
 
-Welcome to the home page of Tom Ridge. I am shortly leaving academia, so please update any contact details (email addresses etc) that you have for me. Previously I was an academic researcher in computer
-science (Cambridge), and senior lecturer (Leicester). 
+Welcome to the home page of Tom Ridge. I am employed by the University
+of Leicester up to July 2021. After that I am leaving academia, so
+please update any contact details (email addresses etc) that you have
+for me.
 

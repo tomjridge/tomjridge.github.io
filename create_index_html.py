@@ -27,7 +27,7 @@ h6, .h6 {
   color: #333;
 }
 
-h1 {
+#content h1 {
     font-size: 38px;
     text-align:center;
 }
@@ -174,19 +174,11 @@ header_css="""
 """
 
 header=f"""
-<div>
-  <div class='grid-container' >
-    <div class='grid-child'>
-    </div>
-
-    <div class='grid-child' style='text-align:right'>
-      <h1 style='text-align:right'>
-        Tom Ridge</h1>       
-      <p style='margin-top:0px;margin-bottom:20px'>
-        Programmer, recovering academic</p>
-      {social_bar()}
-    </div>
-  </div>
+<div style='text-align:right'>
+  <h1>Tom Ridge</h1>       
+  <p style='margin-top:0px;margin-bottom:20px'>
+    Programmer, recovering academic</p>
+  {social_bar()}
 </div>
 <br/>
 {navbar}
