@@ -34,19 +34,19 @@ Bibtex/citation information:
     John Whitington and Tom Ridge.  
     OCaml'17 post proceedings.  
     EPTCS, 2019.
-    Available [here](./resources/doc/whitington17ocaml_workshop_post_proceedings-ocamli.pdf)
+    Available [here](./www_resources/doc/whitington17ocaml_workshop_post_proceedings-ocamli.pdf)
 
 
   * **Visualizing the Evaluation of Functional Programs for Debugging**.  
     John Whitington and Tom Ridge.  
     SLATE'17  
-    Available [here](./resources/doc/whitington17slate_visualizing_evaluation_functional_for_debugging-visfunc.pdf)
+    Available [here](./www_resources/doc/whitington17slate_visualizing_evaluation_functional_for_debugging-visfunc.pdf)
 
 
   * **A B-tree library for OCaml**.  
     Tom Ridge.  
     OCaml'17 workshop talk.  
-    Available [here](./resources/doc/ocaml_2017.pdf)
+    Available [here](./www_resources/doc/ocaml_2017.pdf)
 
 
   * **SibylFS: formal specification and oracle-based testing for POSIX and real-world file systems**  
@@ -64,9 +64,9 @@ Bibtex/citation information:
   * **Simple, efficient, sound and complete combinator parsing for all context-free grammars, using an oracle.**  
     Tom Ridge.  
     SLE 2014.  
-    <a href='resources/doc/ridge14sle.pdf'>ridge14sle.pdf</a> 
-    <a href="resources/doc/ridge14sle_extended.pdf">(extended version)</a>. 
-    Old slides are <a href='resources/2013-11-08_cambridge_parsing_slides.standalone.html'>here</a> (best viewable in firefox, due to latexmathml).
+    <a href='www_resources/doc/ridge14sle.pdf'>ridge14sle.pdf</a> 
+    <a href="www_resources/doc/ridge14sle_extended.pdf">(extended version)</a>. 
+    Old slides are <a href='www_resources/2013-11-08_cambridge_parsing_slides.standalone.html'>here</a> (best viewable in firefox, due to latexmathml).
 
 
 ## Older papers
@@ -86,66 +86,66 @@ Bibtex/citation information:
   * **The 1st Verified Software Competition: Experience report.**  
     Tom Ridge et al.  
     FM 2011.  
-    <b>Winner of the best paper prize</b> <a href="resources/doc/vscomp2010.pdf">paper</a>
+    <b>Winner of the best paper prize</b> <a href="www_resources/doc/vscomp2010.pdf">paper</a>
 
 
   * **Ott: Effective tool support for the working semanticist.**  
     Peter Sewell, Francesco Zappa Nardelli, Scott Owens, Gilles Peskine, Thomas Ridge, Susmit Sarkar, and Rok Strnisa.  
     Journal of Functional Programming, 20(1):70--122, January 2010.  
-    <a href="resources/doc/ridge10ott-jfp.pdf">ridge10ott-jfp.pdf</a>
+    <a href="www_resources/doc/ridge10ott-jfp.pdf">ridge10ott-jfp.pdf</a>
 
 
   * **Simple, functional, sound and complete parsing for all context-free grammars (unpublished draft).**  
     Tom Ridge.  
-    <a href="resources/doc/ridge10parsing.pdf">ridge10parsing.pdf</a>
+    <a href="www_resources/doc/ridge10parsing.pdf">ridge10parsing.pdf</a>
 
 
   * **A rely-guarantee proof system for x86-TSO.**  
     Tom Ridge.  
     VSTTE 2010.  
-    <a href="resources/doc/ridge10vstte.pdf">ridge10vstte.pdf</a>
+    <a href="www_resources/doc/ridge10vstte.pdf">ridge10vstte.pdf</a>
 
 
   * **TCP, UDP, and Sockets: Volume 3: The Service-level Specification.**  
     Tom Ridge, Michael Norrish, and Peter Sewell.  
     Technical Report UCAM-CL-TR-742, University of Cambridge, Computer Laboratory, February 2009.  
-    <a href="resources/doc/UCAM-CL-TR-742.pdf">UCAM-CL-TR-742.pdf</a>
+    <a href="www_resources/doc/UCAM-CL-TR-742.pdf">UCAM-CL-TR-742.pdf</a>
 
 
   * **Verifying distributed systems: the operational approach.**  
     Tom Ridge.  
     POPL 2009.  
-    <a href="resources/doc/ridge09popl.pdf">ridge09popl.pdf</a>
+    <a href="www_resources/doc/ridge09popl.pdf">ridge09popl.pdf</a>
 
 
   * **The semantics of x86-CC multiprocessor machine code.**  
     Susmit Sarkar, Peter Sewell, Francesco Zappa Nardelli, Scott Owens, Tom Ridge, Thomas Braibant, Magnus O. Myreen, and Jade Alglave.  
     POPL 2009.  
-    <a href="resources/doc/popl09.pdf">popl09.pdf</a>
+    <a href="www_resources/doc/popl09.pdf">popl09.pdf</a>
 
 
   * **A rigorous approach to networking: TCP, from implementation to protocol to service.**  
     Tom Ridge, Michael Norrish, and Peter Sewell.  
     FM 2008.  
-    <a href="resources/doc/ridge08stream-spec.pdf">ridge08stream-spec.pdf</a>
+    <a href="www_resources/doc/ridge08stream-spec.pdf">ridge08stream-spec.pdf</a>
 
 
   * **Ott: effective tool support for the working semanticist.**  
     Peter Sewell, Francesco Zappa Nardelli, Scott Owens, Gilles Peskine, Tom Ridge, Susmit Sarkar, and Rok Strnisa.  
     IFCP 2007.  
-    <a href="resources/doc/ott.pdf">ott.pdf</a>
+    <a href="www_resources/doc/ott.pdf">ott.pdf</a>
 
 
   * **Operational reasoning for concurrent Caml programs and weak memory models.**  
     Tom Ridge.  
     TPHOLs 2007.  
-    <a href="resources/doc/ridge07tphols.pdf">ridge07tphols.pdf</a>
+    <a href="www_resources/doc/ridge07tphols.pdf">ridge07tphols.pdf</a>
 
 
   * **Rigorous protocol design in practice: An optical packet-switch MAC in HOL.**  
     Adam Biltcliffe, Michael Dales, Sam Jansen, Tom Ridge, and Peter Sewell.  
     ICNP 2006.  
-    <a href="resources/doc/ridge06icnp.pdf">ridge06icnp.pdf</a>
+    <a href="www_resources/doc/ridge06icnp.pdf">ridge06icnp.pdf</a>
 
 
   * **Craig's Interpolation Theorem formalised and mechanised in Isabelle/HOL.**  
@@ -157,13 +157,13 @@ Bibtex/citation information:
   *  **To arrive where we started: experience of mechanizing binding.**  
     Tom Ridge.  
     Workshop on Mechanizing Metatheory 2007.  
-    <a href="resources/doc/ridge07wmm.pdf">ridge07wmm.pdf</a>
+    <a href="www_resources/doc/ridge07wmm.pdf">ridge07wmm.pdf</a>
 
 
   * **A mechanically verified, sound and complete theorem prover for FOL.**  
     Tom Ridge and James Margetson.  
     TPHOLs 2005.  
-    <a href="resources/doc/prover.pdf">prover.pdf</a>
+    <a href="www_resources/doc/prover.pdf">prover.pdf</a>
 
 
   * A long time ago I also made a few contributions to the <a href='http://afp.sourceforge.net/'>Archive of Formal Proofs</a>,

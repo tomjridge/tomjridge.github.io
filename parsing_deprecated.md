@@ -30,8 +30,8 @@ on the github wiki for P3 at <https://github.com/tomjridge/p3/wiki/P3>.
 The best documentation for P3 internals is the extended version of the
 following paper: Tom Ridge.  Simple, efficient, sound and complete
 combinator parsing for all context-free grammars, using an oracle. In
-Proceedings of SLE 2014. [ridge14sle.pdf](resources/doc/ridge14sle.pdf)
-[extended version](resources/doc/ridge14sle_extended.pdf).
+Proceedings of SLE 2014. [ridge14sle.pdf](www_resources/doc/ridge14sle.pdf)
+[extended version](www_resources/doc/ridge14sle_extended.pdf).
 
 
 - E3 is available from github at
