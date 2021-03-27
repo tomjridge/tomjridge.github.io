@@ -35,8 +35,9 @@ system.
 
   * **1998 - 1999, Diploma in Computer Science, Cambridge**  
     I took the Diploma in Computer Science (like a Master's degree),
-    Trinity College, Cambridge. Graduated with Distinction, 2nd in
-    year. I have a senior scholarship from Trinity College listed
+    Trinity College, Cambridge.  
+    <span class='trophy'></span>Graduated with Distinction, 2nd in year.  
+    <span class='trophy'></span>I have a senior scholarship from Trinity College listed
     [here](http://www.admin.cam.ac.uk/reporter/1999-2000/weekly/5787/22.html)
     which I only found out about many years after it was awarded.
 
