@@ -2,7 +2,7 @@
 
 With others, I am working on formally specifying, implementing and verifying filesystems.
 
-  * **[ImpFS](https://github.com/tomjridge/mini-btree), 2021 - now**  
+  * **[mini-btree](https://github.com/tomjridge/mini-btree), 2021 - now**  
     A new minimal B-tree implementation.
 
   * **[ImpFS](https://github.com/tomjridge/imp_fs), 2019 - now**  
