@@ -214,7 +214,7 @@ marked_script="""
     var oreq = new XMLHttpRequest();
     oreq.onload = function(e) {
         document.getElementById('content').innerHTML =
-          marked(oreq.response);
+          marked.marked(oreq.response);
     }
     oreq.open("GET",page);
     oreq.send();
