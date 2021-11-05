@@ -2,10 +2,14 @@
 
 ## Bio (for conferences)
 
-Tom Ridge is a Senior Lecturer at the University of Leicester. His
-background is in formal methods and theorem proving. His research has
-mainly focused on applications of formal methods to real-world
-systems. 
+Tom Ridge is a programmer currently working for OCamlLabs/Tarides on
+various OCaml and blockchain projects. He has a special interest in
+filesystems and storage layers.
+
+Prior to this he was a Senior Lecturer at the University of Leicester
+from 2009 to 2021. His background is in formal methods and theorem
+proving. His research has mainly focused on applications of formal
+methods to real-world systems.
 
 He worked at Cambridge on the NetSem project giving a formal semantics
 to TCP/IP, and briefly on relaxed memory models. Recently he has
@@ -14,6 +18,12 @@ system.
 
 
 ## Timeline (education and employment)
+
+  * **2021 - current**  
+    Working for OCamlLabs/Tarides on [Irmin](https://irmin.org) and
+    related projects (blockchain, storage), for clients such as
+    [Tezos](https://tezos.com). This involves some interaction with
+    [nomadic labs](https://nomadic-labs.com).
 
   * **2009 - 2021, Leicester**  
     Joined the University of Leicester, Department of Computer
