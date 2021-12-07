@@ -15,6 +15,9 @@ all: index.html
 index.html: FORCE
 	$(ppath) python3 create_index_html.py > index.html
 
+run_server: FORCE
+	python3 -m http.server
+
 # parsing.md: parsing.py
 # 	$(ppath) python3 $< > $@
 # 

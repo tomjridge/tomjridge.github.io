@@ -1,4 +1,4 @@
-import markdown
+# import markdown
 
 from shared import *
 
@@ -195,30 +195,61 @@ title="Tom Ridge's homepage"
 # 
 # markdown_as_html=markdown.markdown(md)
 
-marked_script="""
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-    // https://www.sitepoint.com/get-url-parameters-with-javascript/
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+# marked_script="""
+#     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+#     <script>
+#     // https://www.sitepoint.com/get-url-parameters-with-javascript/
+#     const queryString = window.location.search;
+#     const urlParams = new URLSearchParams(queryString);
+# 
+#     // check if we need to redirect to old site
+#     var old = urlParams.get('old');
+#     oldsite="http://tomjridge.github.io/oldsite/"
+#     if (old!==null) { window.location.replace(oldsite+old); }
+# 
+#     var page = urlParams.get('page');
+#     if (page==null) { page="index.md"; }
+#     console.log("page is "+page)
+#     
+#     var oreq = new XMLHttpRequest();
+#     oreq.onload = function(e) {
+#         document.getElementById('content').innerHTML =
+#           marked.marked(oreq.response);
+#     }
+#     oreq.open("GET",page);
+#     oreq.send();
+#     </script>
+# """
 
-    // check if we need to redirect to old site
-    var old = urlParams.get('old');
-    oldsite="http://tomjridge.github.io/oldsite/"
-    if (old!==null) { window.location.replace(oldsite+old); }
+markdownit_script = """
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js" integrity="sha512-cTQeM/op796Fp1ZUxfech8gSMLT/HvrXMkRGdGZGQnbwuq/obG0UtcL04eByVa99qJik7WlnlQOr5/Fw5B36aw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    var page = urlParams.get('page');
-    if (page==null) { page="index.md"; }
-    console.log("page is "+page)
-    
-    var oreq = new XMLHttpRequest();
-    oreq.onload = function(e) {
-        document.getElementById('content').innerHTML =
-          marked.marked(oreq.response);
-    }
-    oreq.open("GET",page);
-    oreq.send();
-    </script>
+<script>
+// https://www.sitepoint.com/get-url-parameters-with-javascript/
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+// check if we need to redirect to old site
+var old = urlParams.get('old');
+oldsite="http://tomjridge.github.io/oldsite/"
+if (old!==null) { window.location.replace(oldsite+old); }
+
+var page = urlParams.get('page');
+if (page==null) { page="index.md"; }
+console.log("page is "+page)
+
+var md = window.markdownit();
+// we need to set options on md
+md.set({ html:true, typographer:true });
+
+var oreq = new XMLHttpRequest();
+oreq.onload = function(e) {
+    document.getElementById('content').innerHTML =
+      md.render(oreq.response);
+}
+oreq.open("GET",page);
+oreq.send();
+</script>
 """
 
 meta_no_cache="""
@@ -263,7 +294,7 @@ template= f"""
         <!-- gets replaced with content via marked_script -->
       </div>
 
-      {marked_script}
+      {markdownit_script}
 
       <!-- bottom nav -->
       <div style='margin-top:10px'> {navbar} </div>
