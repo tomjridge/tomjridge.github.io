@@ -2,9 +2,12 @@
 
 ## Bio (for conferences)
 
-Tom Ridge is a programmer currently working for OCamlLabs/Tarides on
-various OCaml and blockchain projects. He has a special interest in
-filesystems and storage layers.
+Tom Ridge is a programmer currently working for altodata on on various projects
+for the rail industry, using AWS technologies mostly (Lambda, CloudFormation,
+RDS (PostgreSQL), SNS, SQS etc.) and Python.
+
+Before that he worked for OCamlLabs/Tarides on various OCaml and blockchain
+projects. He has a special interest in filesystems and storage layers.
 
 Prior to this he was a Senior Lecturer at the University of Leicester
 from 2009 to 2021. His background is in formal methods and theorem
