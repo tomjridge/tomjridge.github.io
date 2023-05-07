@@ -76,35 +76,43 @@
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6  max-w-prose">
 
         <article class="prose">
-            <div class="flex flex-row justify-center items-center">
-    <div class="mr-4">
-        <img class="rounded-lg shadow-lg" src='./torso.jpg'></img>
-    </div>
-    <div>
-        <address>
-            Dr Tom Ridge<br/>
-            Leicester, UK<br/>
-        </address>
-    </div>
-</div>
-
-<h2 class="mb-4 mt-4 text-4xl tracking-tight font-bold">Introduction</h2>
-
-<p class="mb-8">Welcome to the home page of Tom Ridge. I am currently working for altodata on
-    various projects for the rail industry, using AWS technologies mostly (Lambda,
-    CloudFormation, RDS (PostgreSQL), SNS, SQS etc.) and Python.</p>
-
-<p class="mb-8">I was a Senior Lecturer at the University of Leicester up to July 2021. From
-    August 2021 till March 2023 I worked for OCamlLabs/Tarides on various projects
-    (some involving Tezos and blockchain technologies).</p>
-
-<p class="mb-8">Some social media links:
-    <ul>
-        <li><a href="https://github.com/tomjridge">GitHub</a></li>
-        <li><a href="https://www.youtube.com/channel/UCDnseBjY0_sUzPvgFt38hug">youtube</a></li>
-        <li><a href="https://tom-ridge.blogspot.com/">blogger</a></li>
-    </ul>
-</p>
+            <h1>Parsing</h1>
+<p>I have been interested in various aspects of parsing since 2009. My
+research is particularly focused on parsing general context-free
+grammars, using combinator parsers. I have published several papers,
+formalized various proofs about parsers in the HOL4 theorem prover,
+and produced quite a few OCaml implementations to try out various
+ideas.</p>
+<ul>
+<li>
+<p><strong><a href="https://github.com/tomjridge/tjr_simple_earley">Earley parser</a>, 2016 - now</strong><br />
+    My current favourite Earley parser implementation (in OCaml). A
+Python version is also available from github.</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/tomjridge/p1">P1</a>, 2015 (now inactive)</strong><br />
+  A combinator parsing library for <strong>all</strong> context-free grammars (CFGs). The implementation is based on the verified parsing work. </p>
+</li>
+<li>
+<p><strong><a href="https://github.com/tomjridge/p0">P0</a>, 2015- now</strong><br />
+  A very simple combinator library, a sort-of minimal basis for combinator parsing.</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/tomjridge/example_grammars/">Example grammars</a>, 2015 - now</strong><br />
+    Used for testing parsers. See also the <a href="/?old=2014-12-04_parsing_examples.html">blog post</a></p>
+</li>
+<li>
+<p><strong>Verified parsing, 2011</strong><br />
+    This work produced a verified, sound and complete approach to
+    combinator parsing. This introduced the idea of "good parse
+    trees". The problem with this approach is that it is too inefficient
+    with left-recursive grammars. See also the <a href="/?old=2011-12-01_verified_parsing.html">blog post</a>.</p>
+</li>
+<li>
+<p><strong>Older parsing work</strong> which I have now abandoned can be found
+    <a href="./parsing_deprecated.md.FIXME">here</a></p>
+</li>
+</ul>
         </article>
 
     </div>

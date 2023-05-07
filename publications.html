@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="./output.css" rel="stylesheet"> <!-- FIXME need to get this path correct -->
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<!--<script src="../node_modules/flowbite/dist/flowbite.min.js"></script> -->
+<body>
+<!-- end head -->
+<!-- header nav menu -->
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+        <span class="mb-4 self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+            Tom Ridge</span>
+
+        <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                      clip-rule="evenodd"></path>
+            </svg>
+        </button>
+
+        <!-- navbar -->
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="./index.html"
+                       class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        Home</a>
+                </li>
+                <li>
+                    <a href="./about.html"
+                       class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        About</a>
+                </li>
+                <li>
+                    <a href="https://tom-ridge.blogspot.com/"
+                       class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        Blog</a>
+                </li>
+                <li>
+                    <a href="./filesystems.html"
+                       class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        Filesystems</a>
+                </li>
+                <li>
+                    <a href="./parsing.html"
+                       class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        Parsing</a>
+                </li>
+                <li>
+                    <a href="./publications.html"
+                       class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        Publications</a>
+                </li>
+                <li>
+                    <a href="./software.html"
+                       class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        Software</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<section class="bg-blue-100 dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6  max-w-prose">
+
+        <article class="prose">
+            <h1>Publications</h1>
+<p>Bibtex/citation information: 
+<a href="http://www.informatik.uni-trier.de/~ley/db/indices/a-tree/r/Ridge:Tom.html">me@DBLP</a> and 
+<a href="http://scholar.google.com/citations?user=WYsimU8AAAAJ">me@Google Scholar</a></p>
+<h2>Recent papers</h2>
+<ul>
+<li>
+<p><strong>The ImpFS filesystem</strong><br />
+    Tom Ridge.<br />
+    ICFP 2020, OCaml'20 workshop.<br />
+<a href="https://icfp20.sigplan.org/details/ocaml-2020-papers/8/The-ImpFS-filesystem">ifcp20 page</a> /
+    <a href="https://www.youtube.com/watch?v=AQ3BLdi4mhI&amp;list=PLxKUsnr0vDOT-k1O1ePCg8pxqMwlQ6V7c&amp;index=2&amp;t=15s">conference talk</a> /
+    <a href="https://www.youtube.com/watch?v=q6dCu2tlaiw&amp;list=PLxKUsnr0vDOT-k1O1ePCg8pxqMwlQ6V7c&amp;index=4">current state video (2020 Aug)</a></p>
+</li>
+<li>
+<p><strong>A Key-Value store for OCaml</strong>.<br />
+    Tom Ridge.<br />
+    ICFP 2019, ML'19 workshop.<br />
+<a href="https://icfp19.sigplan.org/details/mlfamilyworkshop-2019-papers/10/A-Key-Value-store-for-OCaml">icfp19 page</a> / 
+    <a href="www_resources/doc/ridge19key_value_store.pdf">pdf</a> / 
+    <a href="/?old=2019-08-21_ml_workshop_kv_store_for_ocaml.html">blog</a></p>
+</li>
+<li>
+<p><strong>Engineering with Logic: Rigorous Test-Oracle Specification and Validation for TCP/IP and the Sockets API.</strong><br />
+    Steve Bishop, Matthew Fairbairn, Hannes Mehnert, Michael Norrish, Tom Ridge, Peter Sewell, Michael Smith, and Keith Wansbrough.<br />
+    J. ACM 66, 1, Article 1 (December 2018), 77 pages.<br />
+<a href="https://doi.org/10.1145/3243650">DOI</a> /
+    <a href="https://dl.acm.org/doi/10.1145/3243650">pdf@ACM</a> /
+    <a href="https://www.repository.cam.ac.uk/handle/1810/287587">pdf@Cambridge Open Access</a></p>
+</li>
+<li>
+<p><strong>Direct Interpretation of Functional Programs for Debugging</strong>.<br />
+    John Whitington and Tom Ridge.<br />
+    OCaml'17 post proceedings.<br />
+    EPTCS, 2019.<br />
+<a href="./www_resources/doc/whitington17ocaml_workshop_post_proceedings-ocamli.pdf">pdf</a></p>
+</li>
+<li>
+<p><strong>Visualizing the Evaluation of Functional Programs for Debugging</strong>.<br />
+    John Whitington and Tom Ridge.<br />
+    SLATE'17<br />
+<a href="./www_resources/doc/whitington17slate_visualizing_evaluation_functional_for_debugging-visfunc.pdf">pdf</a></p>
+</li>
+<li>
+<p><strong>A B-tree library for OCaml</strong>.<br />
+    Tom Ridge.<br />
+    OCaml'17 workshop talk.<br />
+<a href="./www_resources/doc/ocaml_2017.pdf">pdf</a></p>
+</li>
+<li>
+<p><strong>SibylFS: formal specification and oracle-based testing for POSIX and real-world file systems</strong><br />
+    Tom Ridge, David Sheets, Thomas Tuerk, Andrea Giugliano, Anil Madhavapeddy and Peter Sewell.<br />
+    SOSP'15.<br />
+<a href="http://sigops.org/sosp/sosp15">sosp15</a> / 
+    <a href="http://sigops.org/sosp/sosp15/current/2015-Monterey/printable/102-ridge.pdf">pdf@sosp15</a></p>
+</li>
+<li>
+<p><strong>Lem: reusable engineering of real-world semantics.</strong><br />
+    Dominic P. Mulligan, Scott Owens, Kathryn E. Gray, Tom Ridge, and Peter Sewell.<br />
+    ICFP 2014.<br />
+<a href="http://www.cl.cam.ac.uk/~pes20/lem/built-doc/lem-icfp-2014.pdf">pdf@cam</a> / 
+    <a href="https://github.com/rems-project/lem">lem@github</a></p>
+</li>
+<li>
+<p><strong>Simple, efficient, sound and complete combinator parsing for all context-free grammars, using an oracle.</strong><br />
+    Tom Ridge.<br />
+    SLE 2014.<br />
+<a href="www_resources/doc/ridge14sle.pdf">pdf</a> / 
+    <a href="www_resources/doc/ridge14sle_extended.pdf">extended version</a> /
+    <a href="www_resources/2013-11-08_cambridge_parsing_slides.standalone.html">old slides</a></p>
+</li>
+</ul>
+<h2>Older papers</h2>
+<ul>
+<li>
+<p><strong>The 1st Verified Software Competition: Extended Experience Report.</strong><br />
+    Tom Ridge et al.<br />
+    Extended version of FM 2011 paper.<br />
+<a href="http://eprints.maynoothuniversity.ie/3934/1/RM_vscomp2010.pdf">pdf</a></p>
+</li>
+<li>
+<p><strong>Simple, functional, sound and complete parsing for all context-free grammars.</strong><br />
+    Tom Ridge.<br />
+    CPP 2011.<br />
+    <a href="/?old=2011-12-01_verified_parsing.html">paper and supporting material</a></p>
+</li>
+<li>
+<p><strong>The 1st Verified Software Competition: Experience report.</strong><br />
+    Tom Ridge et al.<br />
+    FM 2011.<br />
+<a href="www_resources/doc/vscomp2010.pdf">pdf</a><br />
+    <span class='trophy'/> <a href="http://www.fmeurope.org/conferences/fm2011/bestpaperaward.html">Winner of the best paper prize for FM'11</a></p>
+</li>
+<li>
+<p><strong>Ott: Effective tool support for the working semanticist.</strong><br />
+    Peter Sewell, Francesco Zappa Nardelli, Scott Owens, Gilles Peskine, Thomas Ridge, Susmit Sarkar, and Rok Strnisa.<br />
+    Journal of Functional Programming, 20(1):70--122, January 2010.<br />
+    <a href="www_resources/doc/ridge10ott-jfp.pdf">ridge10ott-jfp.pdf</a></p>
+</li>
+<li>
+<p><strong>Simple, functional, sound and complete parsing for all context-free grammars (unpublished draft).</strong><br />
+    Tom Ridge.<br />
+    <a href="www_resources/doc/ridge10parsing.pdf">ridge10parsing.pdf</a></p>
+</li>
+<li>
+<p><strong>A rely-guarantee proof system for x86-TSO.</strong><br />
+    Tom Ridge.<br />
+    VSTTE 2010.<br />
+    <a href="www_resources/doc/ridge10vstte.pdf">ridge10vstte.pdf</a></p>
+</li>
+<li>
+<p><strong>TCP, UDP, and Sockets: Volume 3: The Service-level Specification.</strong><br />
+    Tom Ridge, Michael Norrish, and Peter Sewell.<br />
+    Technical Report UCAM-CL-TR-742, University of Cambridge, Computer Laboratory, February 2009.<br />
+    <a href="www_resources/doc/UCAM-CL-TR-742.pdf">UCAM-CL-TR-742.pdf</a></p>
+</li>
+<li>
+<p><strong>Verifying distributed systems: the operational approach.</strong><br />
+    Tom Ridge.<br />
+    POPL 2009.<br />
+    <a href="www_resources/doc/ridge09popl.pdf">ridge09popl.pdf</a></p>
+</li>
+<li>
+<p><strong>The semantics of x86-CC multiprocessor machine code.</strong><br />
+    Susmit Sarkar, Peter Sewell, Francesco Zappa Nardelli, Scott Owens, Tom Ridge, Thomas Braibant, Magnus O. Myreen, and Jade Alglave.<br />
+    POPL 2009.<br />
+    <a href="www_resources/doc/popl09.pdf">popl09.pdf</a></p>
+</li>
+<li>
+<p><strong>A rigorous approach to networking: TCP, from implementation to protocol to service.</strong><br />
+    Tom Ridge, Michael Norrish, and Peter Sewell.<br />
+    FM 2008.<br />
+    <a href="www_resources/doc/ridge08stream-spec.pdf">ridge08stream-spec.pdf</a></p>
+</li>
+<li>
+<p><strong>Ott: effective tool support for the working semanticist.</strong><br />
+    Peter Sewell, Francesco Zappa Nardelli, Scott Owens, Gilles Peskine, Tom Ridge, Susmit Sarkar, and Rok Strnisa.<br />
+    IFCP 2007.<br />
+    <a href="www_resources/doc/ott.pdf">ott.pdf</a><br />
+    <span class='trophy'/> <a href="https://www.sigplan.org/Awards/ICFP/">ICFP 10 year most influential paper award in 2017</a></p>
+</li>
+<li>
+<p><strong>Operational reasoning for concurrent Caml programs and weak memory models.</strong><br />
+    Tom Ridge.<br />
+    TPHOLs 2007.<br />
+    <a href="www_resources/doc/ridge07tphols.pdf">ridge07tphols.pdf</a></p>
+</li>
+<li>
+<p><strong>Rigorous protocol design in practice: An optical packet-switch MAC in HOL.</strong><br />
+    Adam Biltcliffe, Michael Dales, Sam Jansen, Tom Ridge, and Peter Sewell.<br />
+    ICNP 2006.<br />
+    <a href="www_resources/doc/ridge06icnp.pdf">ridge06icnp.pdf</a></p>
+</li>
+<li>
+<p><strong>Craig's Interpolation Theorem formalised and mechanised in Isabelle/HOL.</strong><br />
+    Tom Ridge<br />
+    Unpublished draft, but cited by others so included here.
+    <a href="http://arxiv.org/abs/cs/0607058">http://arxiv.org/abs/cs/0607058</a></p>
+</li>
+<li>
+<p><strong>To arrive where we started: experience of mechanizing binding.</strong><br />
+    Tom Ridge.<br />
+    Workshop on Mechanizing Metatheory 2007.<br />
+    <a href="www_resources/doc/ridge07wmm.pdf">ridge07wmm.pdf</a></p>
+</li>
+<li>
+<p><strong>A mechanically verified, sound and complete theorem prover for FOL.</strong><br />
+    Tom Ridge and James Margetson.<br />
+    TPHOLs 2005.<br />
+    <a href="www_resources/doc/prover.pdf">prover.pdf</a></p>
+</li>
+<li>
+<p>A long time ago I also made a few contributions to the <a href='http://afp.sourceforge.net/'>Archive of Formal Proofs</a>,
+    including a version of Ramsey's theorem (infinitary version). Just
+    follow the link and grep for Ridge.</p>
+</li>
+</ul>
+        </article>
+
+    </div>
+</section>
+<!-- foot -->
+</body>
+</html>
