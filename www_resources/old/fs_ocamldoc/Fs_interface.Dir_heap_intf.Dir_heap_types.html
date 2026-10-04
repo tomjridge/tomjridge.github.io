@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="next" href="Fs_interface.Dir_heap_intf.Dir_heap_ops.html">
+<link rel="Up" href="Fs_interface.Dir_heap_intf.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_interface.Dir_heap_intf.Dir_heap_types</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Fs_interface.Dir_heap_intf.html" title="Fs_interface.Dir_heap_intf">Up</a>
+&nbsp;<a class="post" href="Fs_interface.Dir_heap_intf.Dir_heap_ops.html" title="Fs_interface.Dir_heap_intf.Dir_heap_ops">Next</a>
+</div>
+<h1>Module <a href="type_Fs_interface.Dir_heap_intf.Dir_heap_types.html">Fs_interface.Dir_heap_intf.Dir_heap_types</a></h1>
+
+<pre><span class="keyword">module</span> Dir_heap_types: <code class="code">sig</code> <a href="Fs_interface.Dir_heap_intf.Dir_heap_types.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><code><span id="TYPEdh_dir_ref"><span class="keyword">type</span> <code class="type"></code>dh_dir_ref</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir_ref.Dir_ref"><span class="constructor">Dir_ref</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_interface.Fs_spec_intf.Fs_types.html#TYPEinode">Fs_interface.Fs_spec_intf.Fs_types.inode</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEdh_file_ref"><span class="keyword">type</span> <code class="type"></code>dh_file_ref</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file_ref.File_ref"><span class="constructor">File_ref</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_interface.Fs_spec_intf.Fs_types.html#TYPEinode">Fs_interface.Fs_spec_intf.Fs_types.inode</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="TYPEdir_heap_state"><span class="keyword">type</span> <code class="type"></code>dir_heap_state</span> </pre>
+
+
+<pre><span id="TYPEdh_os_state"><span class="keyword">type</span> <code class="type"></code>dh_os_state</span> = <code class="type">(<a href="Fs_interface.Dir_heap_intf.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a>,<br>        <a href="Fs_interface.Dir_heap_intf.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a>,<br>        <a href="Fs_interface.Dir_heap_intf.Dir_heap_types.html#TYPEdir_heap_state">dir_heap_state</a>)<br>       <a href="Fs_interface.Fs_spec_intf.Fs_types.html#TYPEty_os_state">Fs_interface.Fs_spec_intf.Fs_types.ty_os_state</a></code> </pre>
+
+
+<pre><span id="TYPEdh_os_state_or_special"><span class="keyword">type</span> <code class="type"></code>dh_os_state_or_special</span> = <code class="type">(<a href="Fs_interface.Dir_heap_intf.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a>,<br>        <a href="Fs_interface.Dir_heap_intf.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a>,<br>        <a href="Fs_interface.Dir_heap_intf.Dir_heap_types.html#TYPEdir_heap_state">dir_heap_state</a>)<br>       <a href="Fs_interface.Fs_spec_intf.Fs_types.html#TYPEos_state_or_special">Fs_interface.Fs_spec_intf.Fs_types.os_state_or_special</a></code> </pre>
+
+</body></html>

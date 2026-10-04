@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="next" href="File_utils.Pqueue.Prelude.A.html">
+<link rel="Up" href="File_utils.Pqueue.Prelude.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>File_utils.Pqueue.Prelude.State_error</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="File_utils.Pqueue.Prelude.html" title="File_utils.Pqueue.Prelude">Up</a>
+&nbsp;<a class="post" href="File_utils.Pqueue.Prelude.A.html" title="File_utils.Pqueue.Prelude.A">Next</a>
+</div>
+<h1>Module <a href="type_File_utils.Pqueue.Prelude.State_error.html">File_utils.Pqueue.Prelude.State_error</a></h1>
+
+<pre><span class="keyword">module</span> State_error: <code class="code">sig</code> <a href="File_utils.Pqueue.Prelude.State_error.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><code><span id="TYPEty_state_error"><span class="keyword">type</span> <code class="type">('s, 'a)</code> ty_state_error</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_state_error.SE1"><span class="constructor">SE1</span></span> <span class="keyword">of</span> <code class="type">('s -> (exn * 's, 'a * 's) <a href="File_utils.Pqueue.Prelude.html#TYPEsum">File_utils.Pqueue.Prelude.sum</a>)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALdest_SE1"><span class="keyword">val</span> dest_SE1</span> : <code class="type">('a, 'b) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a> -><br>       'a -> (exn * 'a, 'b * 'a) <a href="File_utils.Pqueue.Prelude.html#TYPEsum">File_utils.Pqueue.Prelude.sum</a></code></pre>
+<pre><span id="VALreturn"><span class="keyword">val</span> return</span> : <code class="type">'a -> ('b, 'a) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a></code></pre>
+<pre><span id="VALbind"><span class="keyword">val</span> bind</span> : <code class="type">('a, 'b) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a> -><br>       ('b -> ('a, 'c) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a>) -><br>       ('a, 'c) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a></code></pre>
+<pre><span id="VAL(>>=)"><span class="keyword">val</span> (&gt;&gt;=)</span> : <code class="type">('a, 'b) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a> -><br>       ('b -> ('a, 'c) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a>) -><br>       ('a, 'c) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a></code></pre>
+<pre><span id="VALput"><span class="keyword">val</span> put</span> : <code class="type">'a -> ('a, unit) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a></code></pre>
+<pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">('a, 'a) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a></code></pre>
+<pre><span id="VALwrap"><span class="keyword">val</span> wrap</span> : <code class="type">(unit -> 'a) -> ('b, 'a) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a></code></pre>
+<pre><span id="VALrun_SE1"><span class="keyword">val</span> run_SE1</span> : <code class="type">'a -><br>       ('a, 'b) <a href="File_utils.Pqueue.Prelude.State_error.html#TYPEty_state_error">ty_state_error</a> -><br>       (exn * 'a, 'b * 'a) <a href="File_utils.Pqueue.Prelude.html#TYPEsum">File_utils.Pqueue.Prelude.sum</a></code></pre>
+<pre><span id="VAL(|>)"><span class="keyword">val</span> (|&gt;)</span> : <code class="type">'a -> ('a -> 'b) -> 'b</code></pre></body></html>

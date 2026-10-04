@@ -1,0 +1,2479 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="next" href="Fs_spec.Fs_arch.html">
+<link rel="Up" href="Fs_spec.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_spec.Fs_types</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Fs_spec.html" title="Fs_spec">Up</a>
+&nbsp;<a class="post" href="Fs_spec.Fs_arch.html" title="Fs_spec.Fs_arch">Next</a>
+</div>
+<h1>Module <a href="type_Fs_spec.Fs_types.html">Fs_spec.Fs_types</a></h1>
+
+<pre><span class="keyword">module</span> Fs_types: <code class="code">sig</code> <a href="Fs_spec.Fs_types.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><span id="TYPEbytes"><span class="keyword">type</span> <code class="type"></code>bytes</span> = <code class="type">Fs_init.MyDynArray2.t</code> </pre>
+
+
+<pre><span id="TYPEfile_contents"><span class="keyword">type</span> <code class="type"></code>file_contents</span> = <code class="type"><a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a></code> </pre>
+
+
+<pre><span id="TYPEname"><span class="keyword">type</span> <code class="type"></code>name</span> = <code class="type">string</code> </pre>
+
+
+<pre><span id="TYPEsize_t"><span class="keyword">type</span> <code class="type"></code>size_t</span> = <code class="type">int</code> </pre>
+
+
+<pre><span id="TYPEoff_t"><span class="keyword">type</span> <code class="type"></code>off_t</span> = <code class="type">int</code> </pre>
+
+
+<pre><code><span id="TYPEfloat"><span class="keyword">type</span> <code class="type"></code>float</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfloat.Float"><span class="constructor">Float</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEcstring"><span class="keyword">type</span> <code class="type"></code>cstring</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcstring.CS_Null"><span class="constructor">CS_Null</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcstring.CS_Some"><span class="constructor">CS_Some</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_cstring"><span class="keyword">val</span> string_of_cstring</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> -> string</code></pre>
+<pre><span id="VALbytes_of_cstring"><span class="keyword">val</span> bytes_of_cstring</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> -><br>       int *<br>       (char, Bigarray.int8_unsigned_elt, Bigarray.c_layout) Fs_init.MyDynArray2.A.t</code></pre>
+<pre><span id="VALcstring_of_bytes"><span class="keyword">val</span> cstring_of_bytes</span> : <code class="type">int * (char, 'a, 'b) Fs_init.MyDynArray2.A.t -> <a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a></code></pre>
+<pre><code><span id="TYPEty_fd"><span class="keyword">type</span> <code class="type"></code>ty_fd</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fd.FD"><span class="constructor">FD</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALty_fd_compare"><span class="keyword">val</span> ty_fd_compare</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> -> <a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Fs_spec_Fs_types_ty_fd_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Fs_spec_Fs_types_ty_fd_dict</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALdest_FD"><span class="keyword">val</span> dest_FD</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> -> int</code></pre>
+<pre><code><span id="TYPEty_dh"><span class="keyword">type</span> <code class="type"></code>ty_dh</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_dh.DH"><span class="constructor">DH</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALty_dh_compare"><span class="keyword">val</span> ty_dh_compare</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_dh">ty_dh</a> -> <a href="Fs_spec.Fs_types.html#TYPEty_dh">ty_dh</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Fs_spec_Fs_types_ty_dh_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Fs_spec_Fs_types_ty_dh_dict</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_dh">ty_dh</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALdest_DH"><span class="keyword">val</span> dest_DH</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_dh">ty_dh</a> -> int</code></pre>
+<pre><code><span id="TYPEinode"><span class="keyword">type</span> <code class="type"></code>inode</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTinode.Inode"><span class="constructor">Inode</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinode_compare"><span class="keyword">val</span> inode_compare</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEinode">inode</a> -> <a href="Fs_spec.Fs_types.html#TYPEinode">inode</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Fs_spec_Fs_types_inode_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Fs_spec_Fs_types_inode_dict</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEinode">inode</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALdest_Inode"><span class="keyword">val</span> dest_Inode</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEinode">inode</a> -> int</code></pre>
+<pre><code><span id="TYPEerror"><span class="keyword">type</span> <code class="type"></code>error</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.E2BIG"><span class="constructor">E2BIG</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EACCES"><span class="constructor">EACCES</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EAGAIN"><span class="constructor">EAGAIN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EBADF"><span class="constructor">EBADF</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EBUSY"><span class="constructor">EBUSY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECHILD"><span class="constructor">ECHILD</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EDEADLK"><span class="constructor">EDEADLK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EDOM"><span class="constructor">EDOM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EEXIST"><span class="constructor">EEXIST</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EFAULT"><span class="constructor">EFAULT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EFBIG"><span class="constructor">EFBIG</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EINTR"><span class="constructor">EINTR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EINVAL"><span class="constructor">EINVAL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EIO"><span class="constructor">EIO</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EISDIR"><span class="constructor">EISDIR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EMFILE"><span class="constructor">EMFILE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EMLINK"><span class="constructor">EMLINK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENAMETOOLONG"><span class="constructor">ENAMETOOLONG</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENFILE"><span class="constructor">ENFILE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENODEV"><span class="constructor">ENODEV</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOENT"><span class="constructor">ENOENT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOEXEC"><span class="constructor">ENOEXEC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOLCK"><span class="constructor">ENOLCK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOMEM"><span class="constructor">ENOMEM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOSPC"><span class="constructor">ENOSPC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOSYS"><span class="constructor">ENOSYS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOTDIR"><span class="constructor">ENOTDIR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOTEMPTY"><span class="constructor">ENOTEMPTY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOTTY"><span class="constructor">ENOTTY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENXIO"><span class="constructor">ENXIO</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EPERM"><span class="constructor">EPERM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EPIPE"><span class="constructor">EPIPE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ERANGE"><span class="constructor">ERANGE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EROFS"><span class="constructor">EROFS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ESPIPE"><span class="constructor">ESPIPE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ESRCH"><span class="constructor">ESRCH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EXDEV"><span class="constructor">EXDEV</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EWOULDBLOCK"><span class="constructor">EWOULDBLOCK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EINPROGRESS"><span class="constructor">EINPROGRESS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EALREADY"><span class="constructor">EALREADY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOTSOCK"><span class="constructor">ENOTSOCK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EDESTADDRREQ"><span class="constructor">EDESTADDRREQ</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EMSGSIZE"><span class="constructor">EMSGSIZE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EPROTOTYPE"><span class="constructor">EPROTOTYPE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOPROTOOPT"><span class="constructor">ENOPROTOOPT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EPROTONOSUPPORT"><span class="constructor">EPROTONOSUPPORT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ESOCKTNOSUPPORT"><span class="constructor">ESOCKTNOSUPPORT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EOPNOTSUPP"><span class="constructor">EOPNOTSUPP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EPFNOSUPPORT"><span class="constructor">EPFNOSUPPORT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EAFNOSUPPORT"><span class="constructor">EAFNOSUPPORT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EADDRINUSE"><span class="constructor">EADDRINUSE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EADDRNOTAVAIL"><span class="constructor">EADDRNOTAVAIL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENETDOWN"><span class="constructor">ENETDOWN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENETUNREACH"><span class="constructor">ENETUNREACH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENETRESET"><span class="constructor">ENETRESET</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECONNABORTED"><span class="constructor">ECONNABORTED</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECONNRESET"><span class="constructor">ECONNRESET</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOBUFS"><span class="constructor">ENOBUFS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EISCONN"><span class="constructor">EISCONN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOTCONN"><span class="constructor">ENOTCONN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ESHUTDOWN"><span class="constructor">ESHUTDOWN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ETOOMANYREFS"><span class="constructor">ETOOMANYREFS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ETIMEDOUT"><span class="constructor">ETIMEDOUT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECONNREFUSED"><span class="constructor">ECONNREFUSED</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EHOSTDOWN"><span class="constructor">EHOSTDOWN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EHOSTUNREACH"><span class="constructor">EHOSTUNREACH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ELOOP"><span class="constructor">ELOOP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EOVERFLOW"><span class="constructor">EOVERFLOW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EUNKNOWNERR"><span class="constructor">EUNKNOWNERR</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_error_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_error_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><code><span id="TYPEerror_or_value"><span class="keyword">type</span> <code class="type">'a</code> error_or_value</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror_or_value.Error"><span class="constructor">Error</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEerror">error</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror_or_value.Value"><span class="constructor">Value</span></span> <span class="keyword">of</span> <code class="type">'a</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALerror_or_valueEqual"><span class="keyword">val</span> error_or_valueEqual</span> : <code class="type">'a Lem_basic_classes.eq_class -><br>       'a <a href="Fs_spec.Fs_types.html#TYPEerror_or_value">error_or_value</a> -><br>       'a <a href="Fs_spec.Fs_types.html#TYPEerror_or_value">error_or_value</a> -> bool</code></pre>
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_error_or_value_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_error_or_value_dict</span> : <code class="type">'a Lem_basic_classes.eq_class -><br>       'a <a href="Fs_spec.Fs_types.html#TYPEerror_or_value">error_or_value</a> Lem_basic_classes.eq_class</code></pre>
+<pre><span id="VALis_Error"><span class="keyword">val</span> is_Error</span> : <code class="type">'a <a href="Fs_spec.Fs_types.html#TYPEerror_or_value">error_or_value</a> -> bool</code></pre>
+<pre><span id="VALis_Value"><span class="keyword">val</span> is_Value</span> : <code class="type">'a <a href="Fs_spec.Fs_types.html#TYPEerror_or_value">error_or_value</a> -> bool</code></pre>
+<pre><span id="TYPEint_open_flags"><span class="keyword">type</span> <code class="type"></code>int_open_flags</span> = <code class="type">Int32.t</code> </pre>
+
+
+<pre><code><span id="TYPEopen_flag"><span class="keyword">type</span> <code class="type"></code>open_flag</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_EXEC"><span class="constructor">O_EXEC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_RDONLY"><span class="constructor">O_RDONLY</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Open for reading</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_RDWR"><span class="constructor">O_RDWR</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Open for reading and writing</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_SEARCH"><span class="constructor">O_SEARCH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_WRONLY"><span class="constructor">O_WRONLY</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Open for writing</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_APPEND"><span class="constructor">O_APPEND</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Open for append</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_CLOEXEC"><span class="constructor">O_CLOEXEC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_CREAT"><span class="constructor">O_CREAT</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Create if nonexistent</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_DIRECTORY"><span class="constructor">O_DIRECTORY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_DSYNC"><span class="constructor">O_DSYNC</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Writes complete as Synchronised I/O data
+                                      integrity completion</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_EXCL"><span class="constructor">O_EXCL</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Fail if existing</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_NOCTTY"><span class="constructor">O_NOCTTY</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Don't make this dev a controlling tty</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_NOFOLLOW"><span class="constructor">O_NOFOLLOW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_NONBLOCK"><span class="constructor">O_NONBLOCK</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Open in non-blocking mode</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_RSYNC"><span class="constructor">O_RSYNC</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Reads complete as writes (depending on
+                                      O_SYNC/O_DSYNC)</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_SYNC"><span class="constructor">O_SYNC</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Writes complete as Synchronised I/O file
+                                      integrity completion</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_TRUNC"><span class="constructor">O_TRUNC</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Truncate to 0 length if existing</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTopen_flag.O_TTY_INIT"><span class="constructor">O_TTY_INIT</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_open_flag_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_open_flag_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><span id="VALopen_flags"><span class="keyword">val</span> open_flags</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEopen_flag">open_flag</a> <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALaccess_mode_flags"><span class="keyword">val</span> access_mode_flags</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEopen_flag">open_flag</a> <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALopen_flag_set_access_mode_ok"><span class="keyword">val</span> open_flag_set_access_mode_ok</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEopen_flag">open_flag</a> <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> bool</code></pre>
+<pre><code><span id="TYPEfile_perm"><span class="keyword">type</span> <code class="type"></code>file_perm</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfile_perm.File_perm"><span class="constructor">File_perm</span></span> <span class="keyword">of</span> <code class="type">Int32.t</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALdest_file_perm"><span class="keyword">val</span> dest_file_perm</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a> -> Int32.t</code></pre>
+<pre><span id="TYPEint_seek_command"><span class="keyword">type</span> <code class="type"></code>int_seek_command</span> = <code class="type">int</code> </pre>
+
+
+<pre><code><span id="TYPEseek_command"><span class="keyword">type</span> <code class="type"></code>seek_command</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTseek_command.SEEK_SET"><span class="constructor">SEEK_SET</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >indicates positions relative to the beginning of the file</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTseek_command.SEEK_CUR"><span class="constructor">SEEK_CUR</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >indicates positions relative to the current position</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTseek_command.SEEK_END"><span class="constructor">SEEK_END</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >indicates positions relative to the end of the file</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTseek_command.SEEK_DATA"><span class="constructor">SEEK_DATA</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >indicates positions relative to the current position that contain data</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTseek_command.SEEK_HOLE"><span class="constructor">SEEK_HOLE</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >indicates positions relative to the current positions that do not contain data</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_seek_command_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_seek_command_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><code><span id="TYPEfile_kind"><span class="keyword">type</span> <code class="type"></code>file_kind</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfile_kind.S_IFBLK"><span class="constructor">S_IFBLK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfile_kind.S_IFCHR"><span class="constructor">S_IFCHR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfile_kind.S_IFIFO"><span class="constructor">S_IFIFO</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfile_kind.S_IFREG"><span class="constructor">S_IFREG</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfile_kind.S_IFDIR"><span class="constructor">S_IFDIR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfile_kind.S_IFLNK"><span class="constructor">S_IFLNK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfile_kind.S_IFSOCK"><span class="constructor">S_IFSOCK</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_file_kind_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_file_kind_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><code><span id="TYPEuid"><span class="keyword">type</span> <code class="type"></code>uid</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTuid.User_id"><span class="constructor">User_id</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALuid_compare"><span class="keyword">val</span> uid_compare</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> -> <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Fs_spec_Fs_types_uid_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Fs_spec_Fs_types_uid_dict</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_uid_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_uid_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><span id="VALroot_uid"><span class="keyword">val</span> root_uid</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">uid</a></code></pre>
+<pre><code><span id="TYPEgid"><span class="keyword">type</span> <code class="type"></code>gid</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTgid.Group_id"><span class="constructor">Group_id</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALgid_compare"><span class="keyword">val</span> gid_compare</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">gid</a> -> <a href="Fs_spec.Fs_types.html#TYPEgid">gid</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Fs_spec_Fs_types_gid_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Fs_spec_Fs_types_gid_dict</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">gid</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALroot_gid"><span class="keyword">val</span> root_gid</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">gid</a></code></pre>
+<pre><code><span id="TYPEty_stats"><span class="keyword">type</span> <code class="type"></code>ty_stats</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_dev">st_dev</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Device number</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_ino">st_ino</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEinode">inode</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Inode number</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_kind">st_kind</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_kind">file_kind</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Kind of the file</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_perm">st_perm</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Access rights</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_nlink">st_nlink</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Number of links</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_uid">st_uid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">uid</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >User id of the owner</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_gid">st_gid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">gid</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Group ID of the file's group</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_rdev">st_rdev</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Device minor number</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_size">st_size</span>&nbsp;: <code class="type">Int64.t</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Size in bytes</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_atime">st_atime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last access time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_mtime">st_mtime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last modification time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_stats.st_ctime">st_ctime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last status change time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+}
+
+
+
+<pre><span id="VALdefault_st_dev"><span class="keyword">val</span> default_st_dev</span> : <code class="type">int</code></pre>
+<pre><span id="VALdefault_st_rdev"><span class="keyword">val</span> default_st_rdev</span> : <code class="type">int</code></pre>
+<pre><span id="VALdefault_st_perm"><span class="keyword">val</span> default_st_perm</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a></code></pre>
+<pre><span id="VALdefault_st_nlink"><span class="keyword">val</span> default_st_nlink</span> : <code class="type">int</code></pre>
+<pre><span id="VALdefault_st_uid"><span class="keyword">val</span> default_st_uid</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">uid</a></code></pre>
+<pre><span id="VALdefault_st_gid"><span class="keyword">val</span> default_st_gid</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">gid</a></code></pre>
+<pre><span id="VALdefault_st_atime"><span class="keyword">val</span> default_st_atime</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">float</a></code></pre>
+<pre><span id="VALdefault_st_mtime"><span class="keyword">val</span> default_st_mtime</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">float</a></code></pre>
+<pre><span id="VALdefault_st_ctime"><span class="keyword">val</span> default_st_ctime</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">float</a></code></pre>
+<pre><code><span id="TYPEret_value"><span class="keyword">type</span> <code class="type"></code>ret_value</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTret_value.RV_none"><span class="constructor">RV_none</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTret_value.RV_num"><span class="constructor">RV_num</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTret_value.RV_bytes"><span class="constructor">RV_bytes</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTret_value.RV_names"><span class="constructor">RV_names</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEname">name</a> list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTret_value.RV_stats"><span class="constructor">RV_stats</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_stats">ty_stats</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTret_value.RV_file_perm"><span class="constructor">RV_file_perm</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_ret_value_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_ret_value_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><span id="VALdest_RV_bytes"><span class="keyword">val</span> dest_RV_bytes</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEret_value">ret_value</a> -> <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a></code></pre>
+<pre><span id="VALdummy_return_value"><span class="keyword">val</span> dummy_return_value</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEret_value">ret_value</a></code></pre>
+<pre><code><span id="TYPEentry"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref)</code> entry</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTentry.Dir_ref_entry"><span class="constructor">Dir_ref_entry</span></span> <span class="keyword">of</span> <code class="type">'dir_ref</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTentry.File_ref_entry"><span class="constructor">File_ref_entry</span></span> <span class="keyword">of</span> <code class="type">'file_ref</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALis_dir_ref_entry"><span class="keyword">val</span> is_dir_ref_entry</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEentry">entry</a> -> bool</code></pre>
+<pre><span id="VALis_file_ref_entry"><span class="keyword">val</span> is_file_ref_entry</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEentry">entry</a> -> bool</code></pre>
+<pre><span id="VALdest_dir_ref_entry"><span class="keyword">val</span> dest_dir_ref_entry</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEentry">entry</a> -> 'a</code></pre>
+<pre><span id="VALdest_file_ref_entry"><span class="keyword">val</span> dest_file_ref_entry</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEentry">entry</a> -> 'b</code></pre>
+<pre><code><span id="TYPEty_name_list"><span class="keyword">type</span> <code class="type"></code>ty_name_list</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_name_list.Name_list"><span class="constructor">Name_list</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEname">name</a> * <a href="Fs_spec.Fs_types.html#TYPEname">name</a> list)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALty_name_list_to_list"><span class="keyword">val</span> ty_name_list_to_list</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_name_list">ty_name_list</a> -> <a href="Fs_spec.Fs_types.html#TYPEname">name</a> list</code></pre>
+<pre><span id="VALmake_ty_name_list"><span class="keyword">val</span> make_ty_name_list</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEname">name</a> list -> <a href="Fs_spec.Fs_types.html#TYPEty_name_list">ty_name_list</a></code></pre>
+<pre><span id="VALnl_starts_with_slash"><span class="keyword">val</span> nl_starts_with_slash</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_name_list">ty_name_list</a> -> bool</code></pre>
+<pre><span id="VALnl_only_slash"><span class="keyword">val</span> nl_only_slash</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_name_list">ty_name_list</a> -> bool</code></pre>
+<pre><span id="VALname_list_ends_with_slash"><span class="keyword">val</span> name_list_ends_with_slash</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEname">name</a> list -> bool</code></pre>
+<pre><span id="VALis_absolute_path_aux"><span class="keyword">val</span> is_absolute_path_aux</span> : <code class="type">int -> string list -> bool</code></pre>
+<pre><span id="VALis_absolute_path"><span class="keyword">val</span> is_absolute_path</span> : <code class="type">string list -> bool</code></pre>
+<pre><span id="VALis_root_path"><span class="keyword">val</span> is_root_path</span> : <code class="type">string list -> bool</code></pre>
+<pre><span id="VALis_simple_path"><span class="keyword">val</span> is_simple_path</span> : <code class="type">string list -> bool</code></pre>
+<pre><span id="VALis_simple_absolute_path"><span class="keyword">val</span> is_simple_absolute_path</span> : <code class="type">string list -> bool</code></pre>
+<pre><code><span id="TYPEty_realpath_rec"><span class="keyword">type</span> <code class="type">'dir_ref</code> ty_realpath_rec</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_realpath_rec.rp_cwd">rp_cwd</span>&nbsp;: <code class="type">'dir_ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_realpath_rec.rp_nl">rp_nl</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_name_list">ty_name_list</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_realpath_rec.rp_ns">rp_ns</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEname">name</a> list</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEty_realpath"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref)</code> ty_realpath</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_realpath.RP_ok"><span class="constructor">RP_ok</span></span> <span class="keyword">of</span> <code class="type">'dir_ref <a href="Fs_spec.Fs_types.html#TYPEty_realpath_rec">ty_realpath_rec</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_realpath.RP_err"><span class="constructor">RP_err</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEerror">error</a> * <a href="Fs_spec.Fs_types.html#TYPEty_name_list">ty_name_list</a>)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALwf_ty_realpath_rec"><span class="keyword">val</span> wf_ty_realpath_rec</span> : <code class="type">'a <a href="Fs_spec.Fs_types.html#TYPEty_realpath_rec">ty_realpath_rec</a> -> bool</code></pre>
+<pre><span id="VALwf_ty_realpath"><span class="keyword">val</span> wf_ty_realpath</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEty_realpath">ty_realpath</a> -> bool</code></pre>
+<pre><span id="VALrealpath_proper_subdir"><span class="keyword">val</span> realpath_proper_subdir</span> : <code class="type">'a <a href="Fs_spec.Fs_types.html#TYPEty_realpath_rec">ty_realpath_rec</a> -><br>       'b <a href="Fs_spec.Fs_types.html#TYPEty_realpath_rec">ty_realpath_rec</a> -> bool</code></pre>
+<pre><code><span id="TYPEres_name"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref)</code> res_name</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTres_name.RN_dir"><span class="constructor">RN_dir</span></span> <span class="keyword">of</span> <code class="type">('dir_ref * 'dir_ref <a href="Fs_spec.Fs_types.html#TYPEty_realpath_rec">ty_realpath_rec</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTres_name.RN_file"><span class="constructor">RN_file</span></span> <span class="keyword">of</span> <code class="type">('dir_ref * <a href="Fs_spec.Fs_types.html#TYPEname">name</a> * 'file_ref *<br>      'dir_ref <a href="Fs_spec.Fs_types.html#TYPEty_realpath_rec">ty_realpath_rec</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTres_name.RN_none"><span class="constructor">RN_none</span></span> <span class="keyword">of</span> <code class="type">('dir_ref * <a href="Fs_spec.Fs_types.html#TYPEname">name</a> * 'dir_ref <a href="Fs_spec.Fs_types.html#TYPEty_realpath_rec">ty_realpath_rec</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTres_name.RN_error"><span class="constructor">RN_error</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEerror">error</a> * <a href="Fs_spec.Fs_types.html#TYPEty_name_list">ty_name_list</a> option *<br>      ('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> option)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALis_RN_dir"><span class="keyword">val</span> is_RN_dir</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> -> bool</code></pre>
+<pre><span id="VALis_RN_file"><span class="keyword">val</span> is_RN_file</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> -> bool</code></pre>
+<pre><span id="VALis_RN_none"><span class="keyword">val</span> is_RN_none</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> -> bool</code></pre>
+<pre><span id="VALis_RN_error"><span class="keyword">val</span> is_RN_error</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> -> bool</code></pre>
+<pre><span id="VALwf_res_name"><span class="keyword">val</span> wf_res_name</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> -> bool</code></pre>
+<pre><span id="VALname_list_of_res_name"><span class="keyword">val</span> name_list_of_res_name</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> -> <a href="Fs_spec.Fs_types.html#TYPEty_name_list">ty_name_list</a> option</code></pre>
+<pre><span id="VALrn_ends_with_slash"><span class="keyword">val</span> rn_ends_with_slash</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> -> bool</code></pre>
+<pre><code><span id="TYPEsysconf_value"><span class="keyword">type</span> <code class="type"></code>sysconf_value</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsysconf_value.SC_SYMLOOP_MAX"><span class="constructor">SC_SYMLOOP_MAX</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_SetType_Fs_spec_Fs_types_sysconf_value_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Fs_spec_Fs_types_sysconf_value_dict</span> : <code class="type">'a Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALsysconf_default"><span class="keyword">val</span> sysconf_default</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEsysconf_value">sysconf_value</a> -> int</code></pre>
+<pre><code><span id="TYPEty_fs_ext_command"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref)</code> ty_fs_ext_command</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_ext_command.FS_PREAD"><span class="constructor">FS_PREAD</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_ext_command.FS_PWRITE"><span class="constructor">FS_PWRITE</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> * <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a> * <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_ext_command.FS_OPEN_CLOSE"><span class="constructor">FS_OPEN_CLOSE</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEint_open_flags">int_open_flags</a> * <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a> option)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEty_fs_command"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref)</code> ty_fs_command</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_LINK"><span class="constructor">FS_LINK</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> *<br>      ('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_MKDIR"><span class="constructor">FS_MKDIR</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> * <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_READLINK"><span class="constructor">FS_READLINK</span></span> <span class="keyword">of</span> <code class="type">('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_RENAME"><span class="constructor">FS_RENAME</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> *<br>      ('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_RMDIR"><span class="constructor">FS_RMDIR</span></span> <span class="keyword">of</span> <code class="type">('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_STAT"><span class="constructor">FS_STAT</span></span> <span class="keyword">of</span> <code class="type">('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_LSTAT"><span class="constructor">FS_LSTAT</span></span> <span class="keyword">of</span> <code class="type">('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_SYMLINK"><span class="constructor">FS_SYMLINK</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a> * ('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_TRUNCATE"><span class="constructor">FS_TRUNCATE</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> * <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_UNLINK"><span class="constructor">FS_UNLINK</span></span> <span class="keyword">of</span> <code class="type">('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_CHMOD"><span class="constructor">FS_CHMOD</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> * <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_CHOWN"><span class="constructor">FS_CHOWN</span></span> <span class="keyword">of</span> <code class="type">(('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> * <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEgid">gid</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fs_command.FS_EXTENDED_CMD"><span class="constructor">FS_EXTENDED_CMD</span></span> <span class="keyword">of</span> <code class="type">('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEty_fs_ext_command">ty_fs_ext_command</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALres_names_of_ty_fs_command"><span class="keyword">val</span> res_names_of_ty_fs_command</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEty_fs_command">ty_fs_command</a> -><br>       ('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">res_name</a> list</code></pre>
+<pre><code><span id="TYPEty_os_ext_command"><span class="keyword">type</span> <code class="type"></code>ty_os_ext_command</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_ext_command.OS_OPEN_CLOSE"><span class="constructor">OS_OPEN_CLOSE</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEint_open_flags">int_open_flags</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a> option)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_ext_command.OS_ADD_USER_TO_GROUP"><span class="constructor">OS_ADD_USER_TO_GROUP</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> * <a href="Fs_spec.Fs_types.html#TYPEgid">gid</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_ext_command.OS_DET_PREAD"><span class="constructor">OS_DET_PREAD</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a> * <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_ext_command.OS_DET_READ"><span class="constructor">OS_DET_READ</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_ext_command.OS_DET_PWRITE"><span class="constructor">OS_DET_PWRITE</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_ext_command.OS_DET_WRITE"><span class="constructor">OS_DET_WRITE</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a>)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALpaths_of_ty_os_ext_command"><span class="keyword">val</span> paths_of_ty_os_ext_command</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_os_ext_command">ty_os_ext_command</a> -> <a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> list</code></pre>
+<pre><code><span id="TYPEty_os_command"><span class="keyword">type</span> <code class="type"></code>ty_os_command</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_CLOSE"><span class="constructor">OS_CLOSE</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_LINK"><span class="constructor">OS_LINK</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_MKDIR"><span class="constructor">OS_MKDIR</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_OPEN"><span class="constructor">OS_OPEN</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEint_open_flags">int_open_flags</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a> option)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_PREAD"><span class="constructor">OS_PREAD</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a> * <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_READ"><span class="constructor">OS_READ</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_READDIR"><span class="constructor">OS_READDIR</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_dh">ty_dh</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_OPENDIR"><span class="constructor">OS_OPENDIR</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_REWINDDIR"><span class="constructor">OS_REWINDDIR</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_dh">ty_dh</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_CLOSEDIR"><span class="constructor">OS_CLOSEDIR</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_dh">ty_dh</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_READLINK"><span class="constructor">OS_READLINK</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_RENAME"><span class="constructor">OS_RENAME</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_RMDIR"><span class="constructor">OS_RMDIR</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_STAT"><span class="constructor">OS_STAT</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_LSTAT"><span class="constructor">OS_LSTAT</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_SYMLINK"><span class="constructor">OS_SYMLINK</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_TRUNCATE"><span class="constructor">OS_TRUNCATE</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_UNLINK"><span class="constructor">OS_UNLINK</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_PWRITE"><span class="constructor">OS_PWRITE</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_WRITE"><span class="constructor">OS_WRITE</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a> * <a href="Fs_spec.Fs_types.html#TYPEsize_t">size_t</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_UMASK"><span class="constructor">OS_UMASK</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_CHMOD"><span class="constructor">OS_CHMOD</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_CHOWN"><span class="constructor">OS_CHOWN</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> * <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> * <a href="Fs_spec.Fs_types.html#TYPEgid">gid</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_CHDIR"><span class="constructor">OS_CHDIR</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_LSEEK"><span class="constructor">OS_LSEEK</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a> * <a href="Fs_spec.Fs_types.html#TYPEoff_t">off_t</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEint_seek_command">int_seek_command</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_command.OS_EXTENDED_CMD"><span class="constructor">OS_EXTENDED_CMD</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_os_ext_command">ty_os_ext_command</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALpaths_of_ty_os_command"><span class="keyword">val</span> paths_of_ty_os_command</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_os_command">ty_os_command</a> -> <a href="Fs_spec.Fs_types.html#TYPEcstring">cstring</a> list</code></pre>
+<pre><code><span id="TYPEty_arch"><span class="keyword">type</span> <code class="type"></code>ty_arch</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_arch.ARCH_LINUX"><span class="constructor">ARCH_LINUX</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_arch.ARCH_POSIX"><span class="constructor">ARCH_POSIX</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_arch.ARCH_MAC_OS_X"><span class="constructor">ARCH_MAC_OS_X</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_ty_arch_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_ty_arch_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><code><span id="TYPEarchitecture"><span class="keyword">type</span> <code class="type"></code>architecture</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_abs_path_slash_slash">arch_abs_path_slash_slash</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_linux_non_posix">arch_linux_non_posix</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_link_directories">arch_link_directories</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_open_flags_of_int">arch_open_flags_of_int</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEint_open_flags">int_open_flags</a> -><br>       <a href="Fs_spec.Fs_types.html#TYPEopen_flag">open_flag</a> <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_int_of_open_flags">arch_int_of_open_flags</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEopen_flag">open_flag</a> <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -><br>       <a href="Fs_spec.Fs_types.html#TYPEint_open_flags">int_open_flags</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_seek_command_of_int">arch_seek_command_of_int</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEint_seek_command">int_seek_command</a> -> <a href="Fs_spec.Fs_types.html#TYPEseek_command">seek_command</a> option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_int_of_seek_command">arch_int_of_seek_command</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEseek_command">seek_command</a> -> <a href="Fs_spec.Fs_types.html#TYPEint_seek_command">int_seek_command</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_allows_dir_read">arch_allows_dir_read</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_group_from_parent_dir">arch_group_from_parent_dir</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarchitecture.arch_allows_removing_from_protected_dir_if_writeable">arch_allows_removing_from_protected_dir_if_writeable</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEperm_ops"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref, 'jimpl)</code> perm_ops</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTperm_ops.pops_set_perm_file">pops_set_perm_file</span>&nbsp;: <code class="type">'jimpl -> <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a> -> 'file_ref -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTperm_ops.pops_set_perm_dir">pops_set_perm_dir</span>&nbsp;: <code class="type">'jimpl -> <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a> -> 'dir_ref -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTperm_ops.pops_chown_file">pops_chown_file</span>&nbsp;: <code class="type">'jimpl -> <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> * <a href="Fs_spec.Fs_types.html#TYPEgid">gid</a> -> 'file_ref -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTperm_ops.pops_chown_dir">pops_chown_dir</span>&nbsp;: <code class="type">'jimpl -> <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> * <a href="Fs_spec.Fs_types.html#TYPEgid">gid</a> -> 'dir_ref -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTperm_ops.pops_uid_is_superuser">pops_uid_is_superuser</span>&nbsp;: <code class="type">'jimpl -> <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> -> bool</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="VALperm_ops_noops"><span class="keyword">val</span> perm_ops_noops</span> : <code class="type">unit -> ('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEperm_ops">perm_ops</a></code></pre>
+<pre><code><span id="TYPEcheck_permissions"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref, 'jimpl)</code> check_permissions</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_get_umask">cp_get_umask</span>&nbsp;: <code class="type">'jimpl -> <a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_get_euid">cp_get_euid</span>&nbsp;: <code class="type">unit -> <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_get_egid">cp_get_egid</span>&nbsp;: <code class="type">unit -> <a href="Fs_spec.Fs_types.html#TYPEgid">gid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_dir_search_permission">cp_has_dir_search_permission</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_dir_read_permission">cp_has_dir_read_permission</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_dir_write_permission">cp_has_dir_write_permission</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_dir_chmod_permission">cp_has_dir_chmod_permission</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_dir_chown_permission">cp_has_dir_chown_permission</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_file_execute_permission">cp_has_file_execute_permission</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_file_read_permission">cp_has_file_read_permission</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_file_write_permission">cp_has_file_write_permission</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_file_chmod_permission">cp_has_file_chmod_permission</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_file_chown_permission">cp_has_file_chown_permission</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_dir_link_create_privilege">cp_has_dir_link_create_privilege</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_dir_restricted_delete_privilege">cp_has_dir_restricted_delete_privilege</span>&nbsp;: <code class="type">bool -> 'jimpl -> 'dir_ref -> 'dir_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcheck_permissions.cp_has_file_restricted_delete_privilege">cp_has_file_restricted_delete_privilege</span>&nbsp;: <code class="type">bool -> 'jimpl -> 'dir_ref -> 'file_ref -> bool</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEty_od_handle"><span class="keyword">type</span> <code class="type">'dir_ref</code> ty_od_handle</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_od_handle.OD_handle"><span class="constructor">OD_handle</span></span> <span class="keyword">of</span> <code class="type">(int * 'dir_ref)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEty_od_entry"><span class="keyword">type</span> <code class="type"></code>ty_od_entry</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_od_entry.OD_removed"><span class="constructor">OD_removed</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEname">name</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_od_entry.OD_added"><span class="constructor">OD_added</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEname">name</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEfs_ops"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref, 'jimpl)</code> fs_ops</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_get_init_state">fops_get_init_state</span>&nbsp;: <code class="type">unit -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_get_parent">fops_get_parent</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> ('dir_ref * <a href="Fs_spec.Fs_types.html#TYPEname">name</a>) option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_get_root">fops_get_root</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_dest_dir_ref">fops_dest_dir_ref</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEinode">inode</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_dest_file_ref">fops_dest_file_ref</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> <a href="Fs_spec.Fs_types.html#TYPEinode">inode</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_file_ref_eq">fops_file_ref_eq</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> 'file_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_dir_ref_eq">fops_dir_ref_eq</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> 'dir_ref -> bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_link_file">fops_link_file</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> 'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_unlink">fops_unlink</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_mkdir">fops_mkdir</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> 'jimpl * 'dir_ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_mvfile">fops_mvfile</span>&nbsp;: <code class="type">'jimpl -><br>       'dir_ref -><br>       <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> 'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_mvdir">fops_mvdir</span>&nbsp;: <code class="type">'jimpl -><br>       'dir_ref -><br>       <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> 'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_read">fops_read</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> 'jimpl * <a href="Fs_spec.Fs_types.html#TYPEret_value">ret_value</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_readdir">fops_readdir</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> 'jimpl * <a href="Fs_spec.Fs_types.html#TYPEname">name</a> list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_resolve">fops_resolve</span>&nbsp;: <code class="type">'jimpl -><br>       'dir_ref -><br>       <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> ('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEentry">entry</a> option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_lookup_sysconf">fops_lookup_sysconf</span>&nbsp;: <code class="type">'jimpl -> <a href="Fs_spec.Fs_types.html#TYPEsysconf_value">sysconf_value</a> -> int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_write">fops_write</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a> -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_mkfile">fops_mkfile</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> 'jimpl * 'file_ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_readlink">fops_readlink</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_symlink">fops_symlink</span>&nbsp;: <code class="type">'jimpl -><br>       'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEname">name</a> -> <a href="Fs_spec.Fs_types.html#TYPEbytes">bytes</a> -> 'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_stat_file">fops_stat_file</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> <a href="Fs_spec.Fs_types.html#TYPEty_stats">ty_stats</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_stat_dir">fops_stat_dir</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> <a href="Fs_spec.Fs_types.html#TYPEty_stats">ty_stats</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_lstat">fops_lstat</span>&nbsp;: <code class="type">'jimpl -> 'file_ref -> <a href="Fs_spec.Fs_types.html#TYPEty_stats">ty_stats</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_observe_dir_register">fops_observe_dir_register</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref -> 'jimpl * 'dir_ref <a href="Fs_spec.Fs_types.html#TYPEty_od_handle">ty_od_handle</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_observe_dir">fops_observe_dir</span>&nbsp;: <code class="type">'jimpl -><br>       'dir_ref <a href="Fs_spec.Fs_types.html#TYPEty_od_handle">ty_od_handle</a> -><br>       'jimpl * <a href="Fs_spec.Fs_types.html#TYPEty_od_entry">ty_od_entry</a> list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfs_ops.fops_observe_dir_unregister">fops_observe_dir_unregister</span>&nbsp;: <code class="type">'jimpl -> 'dir_ref <a href="Fs_spec.Fs_types.html#TYPEty_od_handle">ty_od_handle</a> -> 'jimpl</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEenvironment"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref, 'jimpl)</code> environment</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTenvironment.env_ops">env_ops</span>&nbsp;: <code class="type">('dir_ref, 'file_ref, 'jimpl) <a href="Fs_spec.Fs_types.html#TYPEfs_ops">fs_ops</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTenvironment.env_arch">env_arch</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_arch">ty_arch</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTenvironment.env_prms">env_prms</span>&nbsp;: <code class="type">('dir_ref, 'file_ref, 'jimpl) <a href="Fs_spec.Fs_types.html#TYPEcheck_permissions">check_permissions</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTenvironment.env_perm_ops">env_perm_ops</span>&nbsp;: <code class="type">('dir_ref, 'file_ref, 'jimpl) <a href="Fs_spec.Fs_types.html#TYPEperm_ops">perm_ops</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEty_pid"><span class="keyword">type</span> <code class="type"></code>ty_pid</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_pid.Pid"><span class="constructor">Pid</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALty_pid_compare"><span class="keyword">val</span> ty_pid_compare</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a> -> <a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Fs_spec_Fs_types_ty_pid_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Fs_spec_Fs_types_ty_pid_dict</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_spec_Fs_types_ty_pid_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_spec_Fs_types_ty_pid_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><span id="VALdest_PID"><span class="keyword">val</span> dest_PID</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a> -> int</code></pre>
+<pre><code><span id="TYPEos_label"><span class="keyword">type</span> <code class="type"></code>os_label</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTos_label.OS_CALL"><span class="constructor">OS_CALL</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a> * <a href="Fs_spec.Fs_types.html#TYPEty_os_command">ty_os_command</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTos_label.OS_RETURN"><span class="constructor">OS_RETURN</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a> *<br>      <a href="Fs_spec.Fs_types.html#TYPEret_value">ret_value</a> <a href="Fs_spec.Fs_types.html#TYPEerror_or_value">error_or_value</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTos_label.OS_CREATE"><span class="constructor">OS_CREATE</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a> * <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> * <a href="Fs_spec.Fs_types.html#TYPEgid">gid</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTos_label.OS_DESTROY"><span class="constructor">OS_DESTROY</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTos_label.OS_TAU"><span class="constructor">OS_TAU</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEty_fid"><span class="keyword">type</span> <code class="type"></code>ty_fid</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_fid.FID"><span class="constructor">FID</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALty_fid_compare"><span class="keyword">val</span> ty_fid_compare</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_fid">ty_fid</a> -> <a href="Fs_spec.Fs_types.html#TYPEty_fid">ty_fid</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Fs_spec_Fs_types_ty_fid_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Fs_spec_Fs_types_ty_fid_dict</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_fid">ty_fid</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALdest_FID"><span class="keyword">val</span> dest_FID</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_fid">ty_fid</a> -> int</code></pre>
+<pre><code><span id="TYPEdh_state"><span class="keyword">type</span> <code class="type">'dir_ref</code> dh_state</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_state.dhs_dir_ref">dhs_dir_ref</span>&nbsp;: <code class="type">'dir_ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_state.dhs_observe_handle">dhs_observe_handle</span>&nbsp;: <code class="type">'dir_ref <a href="Fs_spec.Fs_types.html#TYPEty_od_handle">ty_od_handle</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_state.dhs_must_report">dhs_must_report</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEname">name</a> list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_state.dhs_may_report">dhs_may_report</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEname">name</a> list</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEfd_state"><span class="keyword">type</span> <code class="type"></code>fd_state</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfd_state.fds_fid">fds_fid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_fid">ty_fid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfd_state.fds_FD_CLOEXEC">fds_FD_CLOEXEC</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEfid_open_closed_state"><span class="keyword">type</span> <code class="type"></code>fid_open_closed_state</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfid_open_closed_state.FID_OPEN"><span class="constructor">FID_OPEN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfid_open_closed_state.FID_CLOSED"><span class="constructor">FID_CLOSED</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEfid_state"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref)</code> fid_state</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfid_state.fids_offset">fids_offset</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfid_state.fids_entry">fids_entry</span>&nbsp;: <code class="type">('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEentry">entry</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfid_state.fids_oflags">fids_oflags</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEopen_flag">open_flag</a> <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfid_state.fids_open_or_closed">fids_open_or_closed</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfid_open_closed_state">fid_open_closed_state</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEty_pps_pid_run_state"><span class="keyword">type</span> <code class="type"></code>ty_pps_pid_run_state</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_pps_pid_run_state.RUNNING"><span class="constructor">RUNNING</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_pps_pid_run_state.BLOCKED_CALL"><span class="constructor">BLOCKED_CALL</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_os_command">ty_os_command</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_pps_pid_run_state.PENDING_RETURN"><span class="constructor">PENDING_RETURN</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEret_value">ret_value</a> <a href="Fs_spec.Fs_types.html#TYPEerror_or_value">error_or_value</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEper_process_state"><span class="keyword">type</span> <code class="type">'dir_ref</code> per_process_state</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_cwd">pps_cwd</span>&nbsp;: <code class="type">'dir_ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_fd_table">pps_fd_table</span>&nbsp;: <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fd">ty_fd</a>, <a href="Fs_spec.Fs_types.html#TYPEfd_state">fd_state</a>) Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_dh_table">pps_dh_table</span>&nbsp;: <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_dh">ty_dh</a>, 'dir_ref <a href="Fs_spec.Fs_types.html#TYPEdh_state">dh_state</a>) Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_pid_run_state">pps_pid_run_state</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_pps_pid_run_state">ty_pps_pid_run_state</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_file_creation_mask">pps_file_creation_mask</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">file_perm</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_effective_uid">pps_effective_uid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">uid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_real_uid">pps_real_uid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">uid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_saved_uid">pps_saved_uid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">uid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_effective_gid">pps_effective_gid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">gid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_real_gid">pps_real_gid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">gid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTper_process_state.pps_saved_gid">pps_saved_gid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">gid</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEty_os_state"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref, 'jimpl)</code> ty_os_state</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_state.oss_pid_table">oss_pid_table</span>&nbsp;: <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_pid">ty_pid</a>, 'dir_ref <a href="Fs_spec.Fs_types.html#TYPEper_process_state">per_process_state</a>)<br>       Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_state.oss_fid_table">oss_fid_table</span>&nbsp;: <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEty_fid">ty_fid</a>, ('dir_ref, 'file_ref) <a href="Fs_spec.Fs_types.html#TYPEfid_state">fid_state</a>)<br>       Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_state.oss_group_table">oss_group_table</span>&nbsp;: <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEgid">gid</a>, <a href="Fs_spec.Fs_types.html#TYPEuid">uid</a> <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a>)<br>       Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_state.oss_fs_state">oss_fs_state</span>&nbsp;: <code class="type">'jimpl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_os_state.oss_env">oss_env</span>&nbsp;: <code class="type">('dir_ref, 'file_ref, 'jimpl) <a href="Fs_spec.Fs_types.html#TYPEenvironment">environment</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="VALos_state_to_fs_state"><span class="keyword">val</span> os_state_to_fs_state</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEty_os_state">ty_os_state</a> -> 'c</code></pre>
+<pre><span id="VALos_state_to_env"><span class="keyword">val</span> os_state_to_env</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEty_os_state">ty_os_state</a> -><br>       ('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEenvironment">environment</a></code></pre>
+<pre><code><span id="TYPEmonad_special_state"><span class="keyword">type</span> <code class="type"></code>monad_special_state</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTmonad_special_state.Impossible"><span class="constructor">Impossible</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTmonad_special_state.Implementation_defined"><span class="constructor">Implementation_defined</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTmonad_special_state.Unspecified"><span class="constructor">Unspecified</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTmonad_special_state.Undefined"><span class="constructor">Undefined</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTmonad_special_state.FIXME"><span class="constructor">FIXME</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEmonad_state"><span class="keyword">type</span> <code class="type">('impl, 'ja)</code> monad_state</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTmonad_state.Normal_state"><span class="constructor">Normal_state</span></span> <span class="keyword">of</span> <code class="type">('impl * 'ja)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTmonad_state.Error_state"><span class="constructor">Error_state</span></span> <span class="keyword">of</span> <code class="type">('impl * <a href="Fs_spec.Fs_types.html#TYPEerror">error</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTmonad_state.Special_state"><span class="constructor">Special_state</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEmonad_special_state">monad_special_state</a> * string)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALis_Normal_state"><span class="keyword">val</span> is_Normal_state</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -> bool</code></pre>
+<pre><span id="VALis_Error_state"><span class="keyword">val</span> is_Error_state</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -> bool</code></pre>
+<pre><span id="VALis_Error_state_err"><span class="keyword">val</span> is_Error_state_err</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEerror">error</a> -> ('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -> bool</code></pre>
+<pre><span id="VALis_Special_state"><span class="keyword">val</span> is_Special_state</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -> bool</code></pre>
+<pre><span id="VALis_Impossible_state"><span class="keyword">val</span> is_Impossible_state</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -> bool</code></pre>
+<pre><span id="VALdest_Normal_state"><span class="keyword">val</span> dest_Normal_state</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -> 'a * 'b</code></pre>
+<pre><span id="VALdest_Error_state"><span class="keyword">val</span> dest_Error_state</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -> 'a * <a href="Fs_spec.Fs_types.html#TYPEerror">error</a></code></pre>
+<pre><span id="VALdest_Special_state"><span class="keyword">val</span> dest_Special_state</span> : <code class="type">('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -><br>       <a href="Fs_spec.Fs_types.html#TYPEmonad_special_state">monad_special_state</a> * string</code></pre>
+<pre><span id="VALmonad_state_shallow_eq"><span class="keyword">val</span> monad_state_shallow_eq</span> : <code class="type">'a Lem_basic_classes.eq_class -><br>       ('b, 'a) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -><br>       ('b, 'a) <a href="Fs_spec.Fs_types.html#TYPEmonad_state">monad_state</a> -> bool</code></pre>
+<pre><code><span id="TYPEos_state_or_special"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref, 'impl)</code> os_state_or_special</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTos_state_or_special.OS_normal"><span class="constructor">OS_normal</span></span> <span class="keyword">of</span> <code class="type">('dir_ref, 'file_ref, 'impl) <a href="Fs_spec.Fs_types.html#TYPEty_os_state">ty_os_state</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTos_state_or_special.OS_special"><span class="constructor">OS_special</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEmonad_special_state">monad_special_state</a> * string)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALis_OS_normal"><span class="keyword">val</span> is_OS_normal</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEos_state_or_special">os_state_or_special</a> -> bool</code></pre>
+<pre><span id="VALis_OS_special"><span class="keyword">val</span> is_OS_special</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEos_state_or_special">os_state_or_special</a> -> bool</code></pre>
+<pre><span id="VALdest_OS_normal"><span class="keyword">val</span> dest_OS_normal</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEos_state_or_special">os_state_or_special</a> -><br>       ('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEty_os_state">ty_os_state</a></code></pre>
+<pre><span id="VALdest_OS_special"><span class="keyword">val</span> dest_OS_special</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEos_state_or_special">os_state_or_special</a> -><br>       <a href="Fs_spec.Fs_types.html#TYPEmonad_special_state">monad_special_state</a> * string</code></pre></body></html>

@@ -1,0 +1,141 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Dir_heap.Dir_heap_types</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_dir_ref&nbsp;=&nbsp;<span class="constructor">Dir_ref</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;instance_Basic_classes_Eq_Dir_heap_Dir_heap_types_dh_dir_ref_dict&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Lem_basic_classes</span>.eq_class<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_dir_ref_compare&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;instance_Basic_classes_SetType_Dir_heap_Dir_heap_types_dh_dir_ref_dict&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref&nbsp;<span class="constructor">Lem_basic_classes</span>.setType_class<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dest_Dir_ref&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_file_ref&nbsp;=&nbsp;<span class="constructor">File_ref</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;instance_Basic_classes_Eq_Dir_heap_Dir_heap_types_dh_file_ref_dict&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Lem_basic_classes</span>.eq_class<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_file_ref_compare&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;instance_Basic_classes_SetType_Dir_heap_Dir_heap_types_dh_file_ref_dict&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref&nbsp;<span class="constructor">Lem_basic_classes</span>.setType_class<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dest_File_ref&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_entry&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.entry<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_dir&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_entries&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name,&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_entry)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_prelude</span>.fmap;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_parent&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name)&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_observers&nbsp;:&nbsp;(int,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_od_entry&nbsp;list)&nbsp;<span class="constructor">Fs_prelude</span>.fmap;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_perm&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_uid&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_gid&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_size&nbsp;:&nbsp;<span class="constructor">Int64</span>.t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_atime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_mtime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhd_ctime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_mdir&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_entries&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name&nbsp;*&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_entry)&nbsp;list;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_parent&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name)&nbsp;option;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_observers&nbsp;:&nbsp;unit;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_perm&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_uid&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_gid&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_size&nbsp;:&nbsp;<span class="constructor">Int64</span>.t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_atime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_mtime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhmd_ctime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_mdir_of_dir&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_mdir<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_dir_of_mdir&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_mdir&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_default_dir&nbsp;:&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_file&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhf_contents&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_contents;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhf_kind&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_kind;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhf_perm&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhf_uid&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhf_gid&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhf_atime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhf_mtime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhf_ctime&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.float;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_default_file&nbsp;:&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dir_heap_state_fs&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhs_dirs&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref,&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_prelude</span>.fmap;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhs_files&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref,&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_prelude</span>.fmap;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhs_free_inodes&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode&nbsp;list&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_initial_state_fs&nbsp;:&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state_fs<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;marshal_value_of_dhs&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state_fs&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref&nbsp;*&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_mdir)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref&nbsp;*&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;*&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode&nbsp;list&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode)<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dhs_of_marshal_value&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref&nbsp;*&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_mdir)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref&nbsp;*&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;*&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode&nbsp;list&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.inode)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state_fs<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dir_heap_state_config&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhs_sysconfig&nbsp;:&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.sysconf_value,&nbsp;int)&nbsp;<span class="constructor">Fs_prelude</span>.fmap;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_initial_state_config&nbsp;:&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state_config<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dir_heap_state&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhs_state_fs&nbsp;:&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state_fs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dhs_state_config&nbsp;:&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state_config;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dh_initial_state&nbsp;:&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_environment&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_os_state&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;dh_os_state_or_special&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_dir_ref,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dh_file_ref,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Dir_heap</span>.<span class="constructor">Dir_heap_types</span>.dir_heap_state)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special<br>
+<span class="keyword">end</span></code></body></html>

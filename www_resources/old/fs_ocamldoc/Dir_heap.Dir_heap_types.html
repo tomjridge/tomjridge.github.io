@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="next" href="Dir_heap.Dir_heap_basic_ops.html">
+<link rel="Up" href="Dir_heap.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Dir_heap.Dir_heap_types</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Dir_heap.html" title="Dir_heap">Up</a>
+&nbsp;<a class="post" href="Dir_heap.Dir_heap_basic_ops.html" title="Dir_heap.Dir_heap_basic_ops">Next</a>
+</div>
+<h1>Module <a href="type_Dir_heap.Dir_heap_types.html">Dir_heap.Dir_heap_types</a></h1>
+
+<pre><span class="keyword">module</span> Dir_heap_types: <code class="code">sig</code> <a href="Dir_heap.Dir_heap_types.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><code><span id="TYPEdh_dir_ref"><span class="keyword">type</span> <code class="type"></code>dh_dir_ref</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir_ref.Dir_ref"><span class="constructor">Dir_ref</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_Eq_Dir_heap_Dir_heap_types_dh_dir_ref_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Dir_heap_Dir_heap_types_dh_dir_ref_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><span id="VALdh_dir_ref_compare"><span class="keyword">val</span> dh_dir_ref_compare</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a> -><br>       <a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Dir_heap_Dir_heap_types_dh_dir_ref_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Dir_heap_Dir_heap_types_dh_dir_ref_dict</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALdest_Dir_ref"><span class="keyword">val</span> dest_Dir_ref</span> : <code class="type">'a -> <a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a> -> <a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a></code></pre>
+<pre><code><span id="TYPEdh_file_ref"><span class="keyword">type</span> <code class="type"></code>dh_file_ref</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file_ref.File_ref"><span class="constructor">File_ref</span></span> <span class="keyword">of</span> <code class="type"><a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALinstance_Basic_classes_Eq_Dir_heap_Dir_heap_types_dh_file_ref_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Dir_heap_Dir_heap_types_dh_file_ref_dict</span> : <code class="type">'a Lem_basic_classes.eq_class</code></pre>
+<pre><span id="VALdh_file_ref_compare"><span class="keyword">val</span> dh_file_ref_compare</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a> -><br>       <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a> -> int</code></pre>
+<pre><span id="VALinstance_Basic_classes_SetType_Dir_heap_Dir_heap_types_dh_file_ref_dict"><span class="keyword">val</span> instance_Basic_classes_SetType_Dir_heap_Dir_heap_types_dh_file_ref_dict</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a> Lem_basic_classes.setType_class</code></pre>
+<pre><span id="VALdest_File_ref"><span class="keyword">val</span> dest_File_ref</span> : <code class="type">'a -> <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a> -> <a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a></code></pre>
+<pre><span id="TYPEdh_entry"><span class="keyword">type</span> <code class="type"></code>dh_entry</span> = <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a>, <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a>)<br>       <a href="Fs_spec.Fs_types.html#TYPEentry">Fs_spec.Fs_types.entry</a></code> </pre>
+
+
+<pre><code><span id="TYPEdh_dir"><span class="keyword">type</span> <code class="type"></code>dh_dir</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_entries">dhd_entries</span>&nbsp;: <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a>, <a href="Dir_heap.Dir_heap_types.html#TYPEdh_entry">dh_entry</a>) Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_parent">dhd_parent</span>&nbsp;: <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a> * <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a>) option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_observers">dhd_observers</span>&nbsp;: <code class="type">(int, <a href="Fs_spec.Fs_types.html#TYPEty_od_entry">Fs_spec.Fs_types.ty_od_entry</a> list) Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_perm">dhd_perm</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">Fs_spec.Fs_types.file_perm</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Access rights</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_uid">dhd_uid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">Fs_spec.Fs_types.uid</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >User id of the owner</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_gid">dhd_gid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">Fs_spec.Fs_types.gid</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Group ID of the dh_file's group</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_size">dhd_size</span>&nbsp;: <code class="type">Int64.t</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Size in bytes</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_atime">dhd_atime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last access time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_mtime">dhd_mtime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last modification time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_dir.dhd_ctime">dhd_ctime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last status change time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEdh_mdir"><span class="keyword">type</span> <code class="type"></code>dh_mdir</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_entries">dhmd_entries</span>&nbsp;: <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a> * <a href="Dir_heap.Dir_heap_types.html#TYPEdh_entry">dh_entry</a>) list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_parent">dhmd_parent</span>&nbsp;: <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a> * <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a>) option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_observers">dhmd_observers</span>&nbsp;: <code class="type">unit</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_perm">dhmd_perm</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">Fs_spec.Fs_types.file_perm</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Access rights</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_uid">dhmd_uid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">Fs_spec.Fs_types.uid</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >User id of the owner</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_gid">dhmd_gid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">Fs_spec.Fs_types.gid</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Group ID of the dh_file's group</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_size">dhmd_size</span>&nbsp;: <code class="type">Int64.t</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Size in bytes</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_atime">dhmd_atime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last access time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_mtime">dhmd_mtime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last modification time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_mdir.dhmd_ctime">dhmd_ctime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last status change time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+}
+
+
+
+<pre><span id="VALdh_mdir_of_dir"><span class="keyword">val</span> dh_mdir_of_dir</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir">dh_dir</a> -> <a href="Dir_heap.Dir_heap_types.html#TYPEdh_mdir">dh_mdir</a></code></pre>
+<pre><span id="VALdh_dir_of_mdir"><span class="keyword">val</span> dh_dir_of_mdir</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdh_mdir">dh_mdir</a> -> <a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir">dh_dir</a></code></pre>
+<pre><span id="VALdh_default_dir"><span class="keyword">val</span> dh_default_dir</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir">dh_dir</a></code></pre>
+<pre><code><span id="TYPEdh_file"><span class="keyword">type</span> <code class="type"></code>dh_file</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file.dhf_contents">dhf_contents</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_contents">Fs_spec.Fs_types.file_contents</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file.dhf_kind">dhf_kind</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_kind">Fs_spec.Fs_types.file_kind</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Kind of the dh_file</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file.dhf_perm">dhf_perm</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfile_perm">Fs_spec.Fs_types.file_perm</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Access rights</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file.dhf_uid">dhf_uid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEuid">Fs_spec.Fs_types.uid</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >User id of the owner</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file.dhf_gid">dhf_gid</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEgid">Fs_spec.Fs_types.gid</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Group ID of the dh_file's group</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file.dhf_atime">dhf_atime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last access time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file.dhf_mtime">dhf_mtime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last modification time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdh_file.dhf_ctime">dhf_ctime</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEfloat">Fs_spec.Fs_types.float</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Last status change time</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+}
+
+
+
+<pre><span id="VALdh_default_file"><span class="keyword">val</span> dh_default_file</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdh_file">dh_file</a></code></pre>
+<pre><code><span id="TYPEdir_heap_state_fs"><span class="keyword">type</span> <code class="type"></code>dir_heap_state_fs</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdir_heap_state_fs.dhs_dirs">dhs_dirs</span>&nbsp;: <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a>, <a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir">dh_dir</a>)<br>       Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdir_heap_state_fs.dhs_files">dhs_files</span>&nbsp;: <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a>, <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file">dh_file</a>)<br>       Fs_prelude.fmap</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdir_heap_state_fs.dhs_free_inodes">dhs_free_inodes</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a> list * <a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="VALdh_initial_state_fs"><span class="keyword">val</span> dh_initial_state_fs</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state_fs">dir_heap_state_fs</a></code></pre>
+<pre><span id="VALmarshal_value_of_dhs"><span class="keyword">val</span> marshal_value_of_dhs</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state_fs">dir_heap_state_fs</a> -><br>       (<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a> * <a href="Dir_heap.Dir_heap_types.html#TYPEdh_mdir">dh_mdir</a>) list *<br>       (<a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a> * <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file">dh_file</a>) list *<br>       (<a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a> list * <a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a>)</code></pre>
+<pre><span id="VALdhs_of_marshal_value"><span class="keyword">val</span> dhs_of_marshal_value</span> : <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a> * <a href="Dir_heap.Dir_heap_types.html#TYPEdh_mdir">dh_mdir</a>) list *<br>       (<a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a> * <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file">dh_file</a>) list *<br>       (<a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a> list * <a href="Fs_spec.Fs_types.html#TYPEinode">Fs_spec.Fs_types.inode</a>) -><br>       <a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state_fs">dir_heap_state_fs</a></code></pre>
+<pre><code><span id="TYPEdir_heap_state_config"><span class="keyword">type</span> <code class="type"></code>dir_heap_state_config</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdir_heap_state_config.dhs_sysconfig">dhs_sysconfig</span>&nbsp;: <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEsysconf_value">Fs_spec.Fs_types.sysconf_value</a>, int) Fs_prelude.fmap</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="VALdh_initial_state_config"><span class="keyword">val</span> dh_initial_state_config</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state_config">dir_heap_state_config</a></code></pre>
+<pre><code><span id="TYPEdir_heap_state"><span class="keyword">type</span> <code class="type"></code>dir_heap_state</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdir_heap_state.dhs_state_fs">dhs_state_fs</span>&nbsp;: <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state_fs">dir_heap_state_fs</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdir_heap_state.dhs_state_config">dhs_state_config</span>&nbsp;: <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state_config">dir_heap_state_config</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="VALdh_initial_state"><span class="keyword">val</span> dh_initial_state</span> : <code class="type"><a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state">dir_heap_state</a></code></pre>
+<pre><span id="TYPEdh_environment"><span class="keyword">type</span> <code class="type"></code>dh_environment</span> = <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a>, <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a>,<br>        <a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state">dir_heap_state</a>)<br>       <a href="Fs_spec.Fs_types.html#TYPEenvironment">Fs_spec.Fs_types.environment</a></code> </pre>
+
+
+<pre><span id="TYPEdh_os_state"><span class="keyword">type</span> <code class="type"></code>dh_os_state</span> = <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a>, <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a>,<br>        <a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state">dir_heap_state</a>)<br>       <a href="Fs_spec.Fs_types.html#TYPEty_os_state">Fs_spec.Fs_types.ty_os_state</a></code> </pre>
+
+
+<pre><span id="TYPEdh_os_state_or_special"><span class="keyword">type</span> <code class="type"></code>dh_os_state_or_special</span> = <code class="type">(<a href="Dir_heap.Dir_heap_types.html#TYPEdh_dir_ref">dh_dir_ref</a>, <a href="Dir_heap.Dir_heap_types.html#TYPEdh_file_ref">dh_file_ref</a>,<br>        <a href="Dir_heap.Dir_heap_types.html#TYPEdir_heap_state">dir_heap_state</a>)<br>       <a href="Fs_spec.Fs_types.html#TYPEos_state_or_special">Fs_spec.Fs_types.os_state_or_special</a></code> </pre>
+
+</body></html>

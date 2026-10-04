@@ -1,0 +1,167 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_spec.Os_operations</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;lookup_per_process_state&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.per_process_state<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;lookup_fid_of_fd&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fd&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fid&nbsp;*&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.fid_state)&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_run_state&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pps_pid_run_state<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_run_state&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pps_pid_run_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_pending_return&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.error_or_value&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;update_pending_return_and_fs_state&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.error_or_value&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;smallest_free_nat&nbsp;:&nbsp;(int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_smallest_free_fd&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fd<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_free_fid&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fid<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;create_fd&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.entry&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.open_flag&nbsp;<span class="constructor">Lem_support</span>.finset&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fd&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fid<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_smallest_free_dh&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_dh<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;rewind_dhs&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.fs_ops&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.dh_state&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.dh_state&nbsp;*&nbsp;<span class="keywordsign">'</span>c<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;create_dh&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.fs_ops&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_dh<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_close&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fd&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_open&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.res_name&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.int_open_flags&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;option&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_read&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fd&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;option&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_write&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fd&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>d&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(char,&nbsp;<span class="constructor">Bigarray</span>.int8_unsigned_elt,&nbsp;<span class="constructor">Bigarray</span>.c_layout)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_init</span>.<span class="constructor">MyDynArray2</span>.<span class="constructor">A</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;option&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>e,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>e,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_lseek&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_fd&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.off_t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.int_seek_command&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_add_user_to_group&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_umask&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_chdir&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.res_name&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>e,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>e,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_opendir&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.res_name&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>e,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>e,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_readdir&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_dh&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_closedir&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_dh&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_rewinddir&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_dh&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_determinise&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_pid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.os_state_or_special&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;os_determinise_less_read_write&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+<span class="keyword">end</span></code></body></html>

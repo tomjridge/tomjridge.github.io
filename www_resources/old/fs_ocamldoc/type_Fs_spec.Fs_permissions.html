@@ -1,0 +1,121 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_spec.Fs_permissions</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IRWXU&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IRUSR&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IWUSR&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IXUSR&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IRWXG&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IRGRP&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IWGRP&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IXGRP&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IRWXO&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IROTH&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IWOTH&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_IXOTH&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_ISUID&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_ISGID&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;s_ISVTX&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;combine_file_perms&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;contains_implementation_specific_file_perms&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;set_file_perms&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unset_file_perms&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;check_file_perms&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;permission_type&nbsp;=&nbsp;<span class="constructor">Perm_read</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Perm_write</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Perm_execute_search</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;permission_type_to_user_perm&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_permissions</span>.permission_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;permission_type_to_group_perm&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_permissions</span>.permission_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;permission_type_to_other_perm&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_permissions</span>.permission_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_check_permission&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_permissions</span>.permission_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_stats&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;full_permissions&nbsp;:&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.check_permissions<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;anyone_has_file_execute_permission&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.fs_ops&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;superuser_permissions&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.fs_ops&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>d,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.check_permissions<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_has_dir_permission&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_permissions</span>.permission_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_has_file_permission&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_permissions</span>.permission_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_has_restricted_delete_privilege&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_stats&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_stats&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_has_dir_restricted_delete_privilege&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_has_file_restricted_delete_privilege&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_owns_file&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_owns_dir&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;uid_permissions&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.file_perm&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.check_permissions<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_uids_in_gid&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_uid_in_gid&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_uid_to_gid&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.uid&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.gid&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_state<br>
+<span class="keyword">end</span></code></body></html>

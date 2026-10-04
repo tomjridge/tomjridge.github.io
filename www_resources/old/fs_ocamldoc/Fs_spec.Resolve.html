@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Fs_spec.Fs_permissions.html">
+<link rel="next" href="Fs_spec.The_monad.html">
+<link rel="Up" href="Fs_spec.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_spec.Resolve</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Fs_spec.Fs_permissions.html" title="Fs_spec.Fs_permissions">Previous</a>
+&nbsp;<a class="up" href="Fs_spec.html" title="Fs_spec">Up</a>
+&nbsp;<a class="post" href="Fs_spec.The_monad.html" title="Fs_spec.The_monad">Next</a>
+</div>
+<h1>Module <a href="type_Fs_spec.Resolve.html">Fs_spec.Resolve</a></h1>
+
+<pre><span class="keyword">module</span> Resolve: <code class="code">sig</code> <a href="Fs_spec.Resolve.html">..</a> <code class="code">end</code></pre><div class="info module top">
+## Resolve names
+<p>
+
+Update: we first process the string to give a list of entries; /a/b/c -&gt; <code class="code">"";"a";"b";"c"</code>; /a/b/c/ -&gt; <code class="code">"";"a";"b";"c";""</code>; a/b/c -&gt; <code class="code">"a";"b";"c"</code>; note that [] is not in the range of this function; the empty string "" maps to <code class="code">""</code>. We keep this first list because we may need to examine it at some points. 
+<p>
+
+FIXME we need to distinguish between a null string and an empty string
+<p>
+
+what about a relative path that is empty? in this case, it appears that this is returned as an error ENOENT (so the CWD is not appended in this case)
+<p>
+
+interestingly if you delete /tmp/d1 and a process is still in d1, the PWD for that process is /tmp/d1; and in /proc/pid/cwd it says "/tmp/d1 (deleted)"
+<p>
+
+*<br>
+</div>
+<hr width="100%">
+
+<pre><span id="VALis_root_dir"><span class="keyword">val</span> is_root_dir</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEfs_ops">Fs_spec.Fs_types.fs_ops</a> -> 'c -> 'a -> bool</code></pre>
+<pre><span id="VALreal_path_dir_ref"><span class="keyword">val</span> real_path_dir_ref</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEfs_ops">Fs_spec.Fs_types.fs_ops</a> -><br>       'c -> 'a -> <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a> list</code></pre>
+<pre><code><span id="TYPEty_resolve_relative_result"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref)</code> ty_resolve_relative_result</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_resolve_relative_result.RR_dir"><span class="constructor">RR_dir</span></span> <span class="keyword">of</span> <code class="type">'dir_ref</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_resolve_relative_result.RR_file"><span class="constructor">RR_file</span></span> <span class="keyword">of</span> <code class="type">('dir_ref * <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a> * 'file_ref)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_resolve_relative_result.RR_none"><span class="constructor">RR_none</span></span> <span class="keyword">of</span> <code class="type">('dir_ref * <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTty_resolve_relative_result.RR_error"><span class="constructor">RR_error</span></span> <span class="keyword">of</span> <code class="type">(<a href="Fs_spec.Fs_types.html#TYPEerror">Fs_spec.Fs_types.error</a> *<br>      ('dir_ref, 'file_ref) <a href="Fs_spec.Resolve.html#TYPEty_resolve_relative_result">ty_resolve_relative_result</a> option)</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALty_resolve_relative_result2res_name"><span class="keyword">val</span> ty_resolve_relative_result2res_name</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEfs_ops">Fs_spec.Fs_types.fs_ops</a> -><br>       'c -><br>       'a -><br>       <a href="Fs_spec.Fs_types.html#TYPEty_name_list">Fs_spec.Fs_types.ty_name_list</a> -><br>       ('a, 'd) <a href="Fs_spec.Resolve.html#TYPEty_resolve_relative_result">ty_resolve_relative_result</a> -><br>       ('a, 'd) <a href="Fs_spec.Fs_types.html#TYPEres_name">Fs_spec.Fs_types.res_name</a></code></pre>
+<pre><span id="VALsplit_path_string"><span class="keyword">val</span> split_path_string</span> : <code class="type">string -> <a href="Fs_spec.Fs_types.html#TYPEty_name_list">Fs_spec.Fs_types.ty_name_list</a></code></pre>
+<pre><span id="VALfollow_last_symlink"><span class="keyword">val</span> follow_last_symlink</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEenvironment">Fs_spec.Fs_types.environment</a> -><br>       <a href="Fs_spec.Fs_types.html#TYPEty_os_command">Fs_spec.Fs_types.ty_os_command</a> -> bool</code></pre>
+<pre><span id="VALis_OS_READLINK"><span class="keyword">val</span> is_OS_READLINK</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_os_command">Fs_spec.Fs_types.ty_os_command</a> -> bool</code></pre>
+<pre><code><span id="TYPErr_params"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref, 'impl)</code> rr_params</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrr_params.rr_env">rr_env</span>&nbsp;: <code class="type">('dir_ref, 'file_ref, 'impl) <a href="Fs_spec.Fs_types.html#TYPEenvironment">Fs_spec.Fs_types.environment</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrr_params.rr_s0">rr_s0</span>&nbsp;: <code class="type">'impl</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrr_params.rr_cmd">rr_cmd</span>&nbsp;: <code class="type"><a href="Fs_spec.Fs_types.html#TYPEty_os_command">Fs_spec.Fs_types.ty_os_command</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPErr_input"><span class="keyword">type</span> <code class="type">'dir_ref</code> rr_input</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrr_input.rr_symlinks_so_far">rr_symlinks_so_far</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrr_input.rr_so_far">rr_so_far</span>&nbsp;: <code class="type">'dir_ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrr_input.rr_ns">rr_ns</span>&nbsp;: <code class="type">string list</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPErr_output"><span class="keyword">type</span> <code class="type">('dir_ref, 'file_ref)</code> rr_output</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrr_output.RR_inter"><span class="constructor">RR_inter</span></span> <span class="keyword">of</span> <code class="type">'dir_ref <a href="Fs_spec.Resolve.html#TYPErr_input">rr_input</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrr_output.RR_final"><span class="constructor">RR_final</span></span> <span class="keyword">of</span> <code class="type">('dir_ref, 'file_ref) <a href="Fs_spec.Resolve.html#TYPEty_resolve_relative_result">ty_resolve_relative_result</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALrr_dot_dot"><span class="keyword">val</span> rr_dot_dot</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Resolve.html#TYPErr_params">rr_params</a> -><br>       int -> 'a -> string list -> ('a, 'd) <a href="Fs_spec.Resolve.html#TYPErr_output">rr_output</a></code></pre>
+<pre><span id="VALrr_symlink"><span class="keyword">val</span> rr_symlink</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Resolve.html#TYPErr_params">rr_params</a> -><br>       int -><br>       'a -><br>       <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a> list -><br>       <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a> -> 'b -> ('a, 'b) <a href="Fs_spec.Resolve.html#TYPErr_output">rr_output</a></code></pre>
+<pre><span id="VALalt_rr"><span class="keyword">val</span> alt_rr</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Resolve.html#TYPErr_params">rr_params</a> -><br>       int -><br>       'a -><br>       <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a> list -><br>       ('a, 'b) <a href="Fs_spec.Resolve.html#TYPEty_resolve_relative_result">ty_resolve_relative_result</a></code></pre>
+<pre><span id="VALresolve_relative"><span class="keyword">val</span> resolve_relative</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEenvironment">Fs_spec.Fs_types.environment</a> -><br>       'c -><br>       <a href="Fs_spec.Fs_types.html#TYPEty_os_command">Fs_spec.Fs_types.ty_os_command</a> -><br>       int -><br>       'a -><br>       <a href="Fs_spec.Fs_types.html#TYPEname">Fs_spec.Fs_types.name</a> list -><br>       ('a, 'b) <a href="Fs_spec.Resolve.html#TYPEty_resolve_relative_result">ty_resolve_relative_result</a></code></pre>
+<pre><span id="VALpath_starts_with_exactly_two_slashes"><span class="keyword">val</span> path_starts_with_exactly_two_slashes</span> : <code class="type"><a href="Fs_spec.Fs_types.html#TYPEcstring">Fs_spec.Fs_types.cstring</a> -> bool</code></pre>
+<pre><span id="VALprocess_path"><span class="keyword">val</span> process_path</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEenvironment">Fs_spec.Fs_types.environment</a> -><br>       'c -><br>       'a -><br>       <a href="Fs_spec.Fs_types.html#TYPEty_os_command">Fs_spec.Fs_types.ty_os_command</a> -><br>       <a href="Fs_spec.Fs_types.html#TYPEcstring">Fs_spec.Fs_types.cstring</a> -> ('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">Fs_spec.Fs_types.res_name</a></code></pre>
+<pre><span id="VALprocess_path_from_root"><span class="keyword">val</span> process_path_from_root</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEenvironment">Fs_spec.Fs_types.environment</a> -><br>       'c -><br>       <a href="Fs_spec.Fs_types.html#TYPEty_os_command">Fs_spec.Fs_types.ty_os_command</a> -><br>       <a href="Fs_spec.Fs_types.html#TYPEcstring">Fs_spec.Fs_types.cstring</a> -> ('a, 'b) <a href="Fs_spec.Fs_types.html#TYPEres_name">Fs_spec.Fs_types.res_name</a></code></pre></body></html>

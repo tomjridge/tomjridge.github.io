@@ -1,0 +1,50 @@
+body
+{
+  font-family: Helvetica, sans-serif; /* 'Amatic SC', cursive;*/ /* 'Open Sans', sans-serif;*/
+}
+
+
+code {
+    font-family: 'Inconsolata';
+    font-size: 100%;
+    font-weight:bold;
+    white-space: pre;
+}
+
+pre {
+    border-left-width:thin;
+    background-color:white;
+}
+
+h1 {
+    font-family: sans-serif, 'Open Sans', 'Gloria Hallelujah', cursive;
+    font-size: 180%;
+    color:#000080;
+}
+
+myh1 {
+    font-family: sans-serif, 'Open Sans', 'Gloria Hallelujah', cursive;
+    font-size: 180%;
+    font-weight:bold;
+    color:#000080;
+    line-height:1.2em;
+}
+
+myh1.center {
+    padding:0px;
+    margin:0px;
+}
+
+div.vspace {
+    height:30%;
+}
+
+div.slide {
+    padding:20px;
+    /* width:1024px; */
+    /* border:solid 1px; */
+}
+
+div.myh1-space {
+    height:1em;
+}

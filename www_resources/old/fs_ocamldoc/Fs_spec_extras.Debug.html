@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="Fs_spec_extras.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_spec_extras.Debug</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Fs_spec_extras.html" title="Fs_spec_extras">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Fs_spec_extras.Debug.html">Fs_spec_extras.Debug</a></h1>
+
+<pre><span class="keyword">module</span> Debug: <code class="code">sig</code> <a href="Fs_spec_extras.Debug.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><span id="VALstart_timer"><span class="keyword">val</span> start_timer</span> : <code class="type">string -> float</code></pre><div class="info ">
+<code class="code">start_timer s</code> starts timing some operation described with
+      string <code class="code">s</code>. It prints a message and returns an object that should be
+      passed to stop_timer, when the timing show stop.<br>
+</div>
+
+<pre><span id="VALstop_timer"><span class="keyword">val</span> stop_timer</span> : <code class="type">float -> string -> float</code></pre><div class="info ">
+<code class="code">stop_timer t s</code> stops timing of some operation described with
+      string <code class="code">s</code>. <code class="code">t</code> is the result of a previous call to <code class="code">start_timer s</code>.      
+      It prints the passed time in seconds and returns it as well.<br>
+</div>
+
+<pre><span id="VALcheck_time"><span class="keyword">val</span> check_time</span> : <code class="type">string -> ('a -> 'b) -> 'a -> 'b</code></pre><div class="info ">
+<code class="code">check_time s f x</code> is a wrapper around <code class="code">start_timer</code> and <code class="code">stop_timer</code>. It
+      measures how long the execution of <code class="code">f x</code> takes and returns the result pf
+      <code class="code">f x</code>. The string <code class="code">s</code> is a description of the timed function used
+      for printing messages.<br>
+</div>
+
+<pre><span id="VALstring_of_dir"><span class="keyword">val</span> string_of_dir</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEfs_ops">Fs_spec.Fs_types.fs_ops</a> -> 'c -> string -> 'a -> string</code></pre>
+<pre><span id="VALstring_of_state"><span class="keyword">val</span> string_of_state</span> : <code class="type">('a, 'b, 'c) <a href="Fs_spec.Fs_types.html#TYPEfs_ops">Fs_spec.Fs_types.fs_ops</a> -> 'c -> string</code></pre></body></html>

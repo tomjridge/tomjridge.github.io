@@ -1,0 +1,118 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_spec.The_monad</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;(<span class="keywordsign">'</span>impl,&nbsp;<span class="keywordsign">'</span>ja)&nbsp;fsmonad&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fsmonad</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>impl&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>impl,&nbsp;<span class="keywordsign">'</span>ja)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_state&nbsp;<span class="constructor">Lem_support</span>.finset)<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;dest_fsmonad&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_state&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_return&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>a)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;run_fsmonad&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_state&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_bind_process_single_state&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>a)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_state&nbsp;<span class="constructor">Lem_support</span>.finset<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_bind&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;&gt;&gt;=&nbsp;)&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad)&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_normal&nbsp;:&nbsp;(<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;*&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_raise&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.error&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_special&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_special_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_get_state&nbsp;:&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>a)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_put_state&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_put_state_return&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_do_nothing&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_normals&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a&nbsp;*&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;*&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_returns&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>a)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_choose_nat&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Nat_num</span>.nat)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;error_or_special&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">EOS_error</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.error<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">EOS_special</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_special_state&nbsp;*&nbsp;string)<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;error_or_special_to_state&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.error_or_special&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_state<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_raises_specials&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.error_or_special&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_raises&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.error&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_specials&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_special_state&nbsp;*&nbsp;string)&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_cond_raises_specials&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.error_or_special&nbsp;*&nbsp;bool)&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_cond_raises&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.error&nbsp;*&nbsp;bool)&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_cond_raise&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.error&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_cond_specials&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;((<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_special_state&nbsp;*&nbsp;string)&nbsp;*&nbsp;bool)&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_cond_special&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.monad_special_state&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_empty&nbsp;:&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_choice&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_parallel_composition&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b&nbsp;*&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_parallel_composition_drop&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fsm_preserve_state&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;&lt;|||&gt;&nbsp;)&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b&nbsp;*&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;|||&nbsp;)&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ret_value)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">The_monad</span>.fsmonad<br>
+<span class="keyword">end</span></code></body></html>

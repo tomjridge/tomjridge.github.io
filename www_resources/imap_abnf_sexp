@@ -1,0 +1,2426 @@
+(RULELIST
+ ((RE_RULE
+   (RULE
+    ((RULENAME address) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME addr-name))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME addr-adl))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME addr-mailbox))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME addr-host))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME addr-adl) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "; non-NIL\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME addr-host) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "; Otherwise, holds [RFC-2822] domain name\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME addr-mailbox) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "; after removing [RFC-2822] quoting\n")))
+  (RE_RULE
+   (RULE
+    ((RULENAME addr-name) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "; mailbox after removing [RFC-2822] quoting\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME append) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME flag-list))))))))))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME date-time))))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME literal)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME astring) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP ((REPEAT) (EL_RULENAME (RULENAME ASTRING-CHAR))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME string)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME ASTRING-CHAR) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME ATOM-CHAR))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME resp-specials)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME atom) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP ((REPEAT) (EL_RULENAME (RULENAME ATOM-CHAR)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME ATOM-CHAR) DAS_EQUAL
+     (ELEMENTS (ALTERNATION ((CONCATENATION ((REP (() EL_PROSE_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME atom-specials) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME SP))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME CTL))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME list-wildcards))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME quoted-specials))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME resp-specials)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME authenticate) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME auth-type))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME CRLF))))
+                  (REP (() (EL_RULENAME (RULENAME base64)))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME auth-type) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME atom)))))))))
+     "; Defined by [SASL]\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME base64) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP ((REPEAT) (EL_RULENAME (RULENAME base64-char))))))))))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME base64-terminal)))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME base64-char) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME ALPHA))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME DIGIT))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "; Case-sensitive\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME base64-terminal) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP ((REPEAT) (EL_RULENAME (RULENAME base64-char))))
+                  (REP (() EL_CHAR_VAL))))))))))))
+        (CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP ((REPEAT) (EL_RULENAME (RULENAME base64-char))))
+                  (REP (() EL_CHAR_VAL)))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME body-type-1part))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME body-type-mpart))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-extension) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME number))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME body-extension))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME body-extension))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "; revisions of this specification.\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-ext-1part) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME body-fld-md5))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME body-fld-dsp))))
+                  (REP
+                   (()
+                    (EL_OPTION
+                     (OPTION
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME SP))))
+                          (REP (() (EL_RULENAME (RULENAME body-fld-lang))))
+                          (REP
+                           (()
+                            (EL_OPTION
+                             (OPTION
+                              (ALTERNATION
+                               ((CONCATENATION
+                                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                                  (REP
+                                   (() (EL_RULENAME (RULENAME body-fld-loc))))
+                                  (REP
+                                   ((REPEAT)
+                                    (EL_GROUP
+                                     (GROUP
+                                      (ALTERNATION
+                                       ((CONCATENATION
+                                         ((REP
+                                           (() (EL_RULENAME (RULENAME SP))))
+                                          (REP
+                                           (()
+                                            (EL_RULENAME
+                                             (RULENAME body-extension)))))))))))))))))))))))))))))))))))))))))
+     "; \"BODY\" fetch\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-ext-mpart) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME body-fld-param))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME body-fld-dsp))))
+                  (REP
+                   (()
+                    (EL_OPTION
+                     (OPTION
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME SP))))
+                          (REP (() (EL_RULENAME (RULENAME body-fld-lang))))
+                          (REP
+                           (()
+                            (EL_OPTION
+                             (OPTION
+                              (ALTERNATION
+                               ((CONCATENATION
+                                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                                  (REP
+                                   (() (EL_RULENAME (RULENAME body-fld-loc))))
+                                  (REP
+                                   ((REPEAT)
+                                    (EL_GROUP
+                                     (GROUP
+                                      (ALTERNATION
+                                       ((CONCATENATION
+                                         ((REP
+                                           (() (EL_RULENAME (RULENAME SP))))
+                                          (REP
+                                           (()
+                                            (EL_RULENAME
+                                             (RULENAME body-extension)))))))))))))))))))))))))))))))))))))))))
+     "; \"BODY\" fetch\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fields) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME body-fld-param))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fld-id))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fld-desc))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fld-enc))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fld-octets)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-desc) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-dsp) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME string))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fld-param))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-enc) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME DQUOTE))))
+                  (REP
+                   (()
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                        (CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+                  (REP (() (EL_RULENAME (RULENAME DQUOTE))))))))))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME string)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-id) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-lang) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME string))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME string))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-loc) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-lines) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME number)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-md5) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-octets) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME number)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-fld-param) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME string))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME string))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME string))))
+                  (REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME string))))))))))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-type-1part) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME body-type-basic))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME body-type-msg))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME body-type-text))))))))))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME body-ext-1part)))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-type-basic) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME media-basic))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fields)))))))))
+     "; MESSAGE subtype MUST NOT be \"RFC822\"\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-type-mpart) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP ((REPEAT) (EL_RULENAME (RULENAME body))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME media-subtype))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME body-ext-mpart)))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-type-msg) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME media-message))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fields))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME envelope))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fld-lines)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME body-type-text) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME media-text))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fields))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body-fld-lines)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME capability) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME auth-type))))))))))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME atom)))))))))
+     "; standards-track\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME capability-data) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME capability))))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP)))) (REP (() EL_CHAR_VAL))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME capability)))))))))))))))))
+     "; list \"IMAP4\" as the first capability.\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME CHAR8) DAS_EQUAL
+     (ELEMENTS (ALTERNATION ((CONCATENATION ((REP (() EL_NUM_VAL))))))) "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME command) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME tag))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME command-any))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME command-auth))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME command-nonauth))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME command-select))))))))))))
+          (REP (() (EL_RULENAME (RULENAME CRLF)))))))))
+     "; Modal based on state\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME command-any) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME x-command)))))))))
+     "; Valid in all states\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME command-auth) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME append))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME create))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME delete))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME examine))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME list))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME lsub))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME rename))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME select))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME status))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME subscribe))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME unsubscribe)))))))))
+     "; Valid only in Authenticated or Selected state\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME command-nonauth) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME login))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME authenticate))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "; Valid only when in Not Authenticated state\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME command-select) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME copy))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME fetch))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME store))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME uid))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME search)))))))))
+     "; Valid only when in Selected state\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME continue-req) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME resp-text))))))
+                (CONCATENATION ((REP (() (EL_RULENAME (RULENAME base64))))))))))))
+          (REP (() (EL_RULENAME (RULENAME CRLF)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME copy) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME sequence-set))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME create) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "; Use of INBOX gives a NO error\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME date) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME date-text))))))
+        (CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME DQUOTE))))
+          (REP (() (EL_RULENAME (RULENAME date-text))))
+          (REP (() (EL_RULENAME (RULENAME DQUOTE)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME date-day) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT)))))))))
+     "; Day of month\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME date-day-fixed) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME DIGIT))))))))))))))
+        (CONCATENATION ((REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT)))))))))
+     "; Fixed-format version of date-day\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME date-month) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME date-text) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME date-day)))) (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME date-month))))
+          (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME date-year)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME date-year) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME date-time) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME DQUOTE))))
+          (REP (() (EL_RULENAME (RULENAME date-day-fixed))))
+          (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME date-month))))
+          (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME date-year))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME time))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME zone))))
+          (REP (() (EL_RULENAME (RULENAME DQUOTE)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME delete) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "; Use of INBOX gives a NO error\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME digit-nz) DAS_EQUAL
+     (ELEMENTS (ALTERNATION ((CONCATENATION ((REP (() EL_NUM_VAL)))))))
+     "; 1-9\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME envelope) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME env-date))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-subject))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-from))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-sender))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-reply-to))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-to))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-cc))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-bcc))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-in-reply-to))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME env-message-id))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-bcc) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME address))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-cc) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME address))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-date) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-from) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME address))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-in-reply-to) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-message-id) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-reply-to) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME address))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-sender) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME address))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-subject) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nstring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME env-to) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME address))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME examine) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME fetch) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME sequence-set))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME fetch-att))))))
+                (CONCATENATION
+                 ((REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME fetch-att))))
+                  (REP
+                   ((REPEAT)
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME SP))))
+                          (REP (() (EL_RULENAME (RULENAME fetch-att))))))))))))
+                  (REP (() EL_CHAR_VAL)))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME fetch-att) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))))))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION ((CONCATENATION ((REP (() EL_CHAR_VAL))))))))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME section))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME number))))
+                  (REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME nz-number))))
+                  (REP (() EL_CHAR_VAL))))))))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME section))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME number))))
+                  (REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME nz-number))))
+                  (REP (() EL_CHAR_VAL)))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME flag) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME flag-keyword))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME flag-extension)))))))))
+     "; Does not include \"\\Recent\"\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME flag-extension) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME atom)))))))))
+     "; revisions of this specification.\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME flag-fetch) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME flag))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME flag-keyword) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME atom)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME flag-list) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME flag))))
+                  (REP
+                   ((REPEAT)
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME SP))))
+                          (REP (() (EL_RULENAME (RULENAME flag))))))))))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME flag-perm) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME flag))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME greeting) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME resp-cond-auth))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME resp-cond-bye))))))))))))
+          (REP (() (EL_RULENAME (RULENAME CRLF)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME header-fld-name) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME astring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME header-list) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME header-fld-name))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME header-fld-name))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME list) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME list-mailbox)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME list-mailbox) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP ((REPEAT) (EL_RULENAME (RULENAME list-char))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME string)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME list-char) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME ATOM-CHAR))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME list-wildcards))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME resp-specials)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME list-wildcards) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME literal) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME number))))
+          (REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME CRLF))))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME CHAR8)))))))))
+     "; Number represents the number of CHAR8s\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME login) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME userid))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME password)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME lsub) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME list-mailbox)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME mailbox) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME astring)))))))))
+     "; semantic details of mailbox names.\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME mailbox-data) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME flag-list))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox-list))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox-list))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME nz-number))))))))))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox))))
+          (REP (() (EL_RULENAME (RULENAME SP)))) (REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME status-att-list))))))))))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME number))))
+          (REP (() (EL_RULENAME (RULENAME SP)))) (REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME number))))
+          (REP (() (EL_RULENAME (RULENAME SP)))) (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME mailbox-list) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME mbx-list-flags))))))))))))
+          (REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME DQUOTE))))
+                  (REP (() (EL_RULENAME (RULENAME QUOTED-CHAR))))
+                  (REP (() (EL_RULENAME (RULENAME DQUOTE))))))
+                (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil))))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME mbx-list-flags) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME mbx-list-oflag))))
+                  (REP (() (EL_RULENAME (RULENAME SP))))))))))))
+          (REP (() (EL_RULENAME (RULENAME mbx-list-sflag))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME mbx-list-oflag))))))))))))))
+        (CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME mbx-list-oflag))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME mbx-list-oflag)))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME mbx-list-oflag) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME flag-extension)))))))))
+     "; Other flags; multiple possible per LIST response\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME mbx-list-sflag) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "; Selectability flags; only one per LIST response\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME media-basic) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP
+                   (()
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME DQUOTE))))
+                          (REP
+                           (()
+                            (EL_GROUP
+                             (GROUP
+                              (ALTERNATION
+                               ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                                (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                                (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                                (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                                (CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+                          (REP (() (EL_RULENAME (RULENAME DQUOTE))))))))))))))
+                (CONCATENATION ((REP (() (EL_RULENAME (RULENAME string))))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME media-subtype)))))))))
+     "; Defined in [MIME-IMT]\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME media-message) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME DQUOTE)))) (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME DQUOTE))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME DQUOTE)))) (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME DQUOTE)))))))))
+     "; Defined in [MIME-IMT]\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME media-subtype) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME string)))))))))
+     "; Defined in [MIME-IMT]\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME media-text) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME DQUOTE)))) (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME DQUOTE))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME media-subtype)))))))))
+     "; Defined in [MIME-IMT]\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME message-data) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME nz-number))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION
+                 ((REP
+                   (()
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() EL_CHAR_VAL))
+                          (REP (() (EL_RULENAME (RULENAME SP))))
+                          (REP (() (EL_RULENAME (RULENAME msg-att)))))))))))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME msg-att) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME msg-att-dynamic))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME msg-att-static))))))))))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP
+                   (()
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME msg-att-dynamic))))))
+                        (CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME msg-att-static))))))))))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME msg-att-dynamic) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME flag-fetch))))
+                  (REP
+                   ((REPEAT)
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME SP))))
+                          (REP (() (EL_RULENAME (RULENAME flag-fetch))))))))))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "; MAY change for a message\n")))
+  (RE_RULE
+   (RULE
+    ((RULENAME msg-att-static) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME envelope))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME date-time))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME nstring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME number))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION ((CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME body))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME section))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME number))))
+                  (REP (() EL_CHAR_VAL))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME nstring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME uniqueid)))))))))
+     "; MUST NOT change for a message\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME nil) DAS_EQUAL
+     (ELEMENTS (ALTERNATION ((CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME nstring) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME string))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME nil)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME number) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT)))))))))
+     "; (0 <= n < 4,294,967,296)\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME nz-number) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME digit-nz))))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT)))))))))
+     "; (0 < n < 4,294,967,296)\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME password) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME astring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME quoted) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME DQUOTE))))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME QUOTED-CHAR))))
+          (REP (() (EL_RULENAME (RULENAME DQUOTE)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME QUOTED-CHAR) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_PROSE_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME quoted-specials)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME quoted-specials) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME DQUOTE))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME rename) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "; Use of INBOX as a destination gives a NO error\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME response) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME continue-req))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME response-data))))))))))))
+          (REP (() (EL_RULENAME (RULENAME response-done)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME response-data) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME resp-cond-state))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME resp-cond-bye))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME mailbox-data))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME message-data))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME capability-data))))))))))))
+          (REP (() (EL_RULENAME (RULENAME CRLF)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME response-done) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME response-tagged))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME response-fatal)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME response-fatal) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME resp-cond-bye))))
+          (REP (() (EL_RULENAME (RULENAME CRLF)))))))))
+     "; Server closes connection immediately\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME response-tagged) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME tag))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME resp-cond-state))))
+          (REP (() (EL_RULENAME (RULENAME CRLF)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME resp-cond-auth) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME resp-text)))))))))
+     "; Authentication condition\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME resp-cond-bye) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME resp-text)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME resp-cond-state) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME resp-text)))))))))
+     "; Status condition\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME resp-specials) DAS_EQUAL
+     (ELEMENTS (ALTERNATION ((CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME resp-text) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME resp-text-code))))
+                  (REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME SP))))))))))))
+          (REP (() (EL_RULENAME (RULENAME text)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME resp-text-code) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME astring))))
+                  (REP
+                   ((REPEAT)
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME SP))))
+                          (REP (() (EL_RULENAME (RULENAME astring))))))))))))
+                  (REP (() EL_CHAR_VAL))))))))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME capability-data))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME flag-perm))))
+                  (REP
+                   ((REPEAT)
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME SP))))
+                          (REP (() (EL_RULENAME (RULENAME flag-perm))))))))))))))))))))
+          (REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME nz-number))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME nz-number))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME nz-number))))))
+        (CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME atom))))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP ((REPEAT) EL_PROSE_VAL)))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME search) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME astring))))))))))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME search-key)))))))))))))))))
+     "; CHARSET argument to MUST be registered with IANA\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME search-key) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME astring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME date))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME astring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME astring))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME astring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME flag-keyword))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME date))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME date))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME astring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME astring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME astring))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME flag-keyword))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME header-fld-name))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME astring))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME number))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME search-key))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME search-key))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME search-key))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME date))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME date))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME date))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME number))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME sequence-set))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME sequence-set))))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME search-key))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME search-key))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME section) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME section-spec))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME section-msgtext) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION
+         ((REP (() EL_CHAR_VAL))
+          (REP
+           (()
+            (EL_OPTION
+             (OPTION
+              (ALTERNATION ((CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME header-list))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "; top-level or MESSAGE/RFC822 part\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME section-part) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME nz-number))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME nz-number)))))))))))))))))
+     "; body part nesting\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME section-spec) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME section-msgtext))))))
+        (CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME section-part))))
+                  (REP
+                   (()
+                    (EL_OPTION
+                     (OPTION
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() EL_CHAR_VAL))
+                          (REP (() (EL_RULENAME (RULENAME section-text)))))))))))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME section-text) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME section-msgtext))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "; text other than actual body part (headers, etc.)\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME select) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME seq-number) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nz-number))))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "; includes \"*\" if the selected mailbox is empty.\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME seq-range) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME seq-number))))
+          (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME seq-number)))))))))
+     "; the mailbox, even if that value is less than 3291.\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME sequence-set) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME seq-number))))))
+                (CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME seq-range))))))))))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() EL_CHAR_VAL))
+                  (REP (() (EL_RULENAME (RULENAME sequence-set)))))))))))))))))
+     "; overlap coalesced to be 4,5,6,7,8,9,10.\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME status) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox))))
+          (REP (() (EL_RULENAME (RULENAME SP)))) (REP (() EL_CHAR_VAL))
+          (REP (() (EL_RULENAME (RULENAME status-att))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME status-att))))))))))))
+          (REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME status-att) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL))))
+        (CONCATENATION ((REP (() EL_CHAR_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME status-att-list) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() (EL_RULENAME (RULENAME status-att))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME number))))
+          (REP
+           ((REPEAT)
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME status-att))))
+                  (REP (() (EL_RULENAME (RULENAME SP))))
+                  (REP (() (EL_RULENAME (RULENAME number)))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME store) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME sequence-set))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME store-att-flags)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME store-att-flags) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP
+                   (()
+                    (EL_OPTION
+                     (OPTION
+                      (ALTERNATION
+                       ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                        (CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+                  (REP (() EL_CHAR_VAL))
+                  (REP
+                   (()
+                    (EL_OPTION
+                     (OPTION
+                      (ALTERNATION
+                       ((CONCATENATION ((REP (() EL_CHAR_VAL))))))))))))))))))
+          (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION
+                 ((REP (() (EL_RULENAME (RULENAME flag-list))))))
+                (CONCATENATION
+                 ((REP
+                   (()
+                    (EL_GROUP
+                     (GROUP
+                      (ALTERNATION
+                       ((CONCATENATION
+                         ((REP (() (EL_RULENAME (RULENAME flag))))
+                          (REP
+                           ((REPEAT)
+                            (EL_GROUP
+                             (GROUP
+                              (ALTERNATION
+                               ((CONCATENATION
+                                 ((REP (() (EL_RULENAME (RULENAME SP))))
+                                  (REP (() (EL_RULENAME (RULENAME flag)))))))))))))))))))))))))))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME string) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME quoted))))))
+        (CONCATENATION ((REP (() (EL_RULENAME (RULENAME literal)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME subscribe) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME tag) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION ((CONCATENATION ((REP ((REPEAT) EL_PROSE_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME text) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP ((REPEAT) (EL_RULENAME (RULENAME TEXT-CHAR)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME TEXT-CHAR) DAS_EQUAL
+     (ELEMENTS (ALTERNATION ((CONCATENATION ((REP (() EL_PROSE_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME time) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT))))
+          (REP (() EL_CHAR_VAL))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT))))
+          (REP (() EL_CHAR_VAL))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT)))))))))
+     "; Hours minutes seconds\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME uid) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME copy))))))
+                (CONCATENATION ((REP (() (EL_RULENAME (RULENAME fetch))))))
+                (CONCATENATION ((REP (() (EL_RULENAME (RULENAME search))))))
+                (CONCATENATION ((REP (() (EL_RULENAME (RULENAME store)))))))))))))))))
+     "; sequence numbers\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME uniqueid) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME nz-number)))))))))
+     "; Strictly ascending\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME unsubscribe) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME SP))))
+          (REP (() (EL_RULENAME (RULENAME mailbox)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME userid) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION ((REP (() (EL_RULENAME (RULENAME astring)))))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME x-command) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP (() EL_CHAR_VAL)) (REP (() (EL_RULENAME (RULENAME atom))))
+          (REP (() EL_PROSE_VAL)))))))
+     "\n")))
+  (RE_CWSP_CNL "\n")
+  (RE_RULE
+   (RULE
+    ((RULENAME zone) DAS_EQUAL
+     (ELEMENTS
+      (ALTERNATION
+       ((CONCATENATION
+         ((REP
+           (()
+            (EL_GROUP
+             (GROUP
+              (ALTERNATION
+               ((CONCATENATION ((REP (() EL_CHAR_VAL))))
+                (CONCATENATION ((REP (() EL_CHAR_VAL))))))))))
+          (REP ((REPEAT) (EL_RULENAME (RULENAME DIGIT)))))))))
+     "; The Universal Time zone is \"+0000\".\n")))))

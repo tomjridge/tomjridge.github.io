@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="next" href="Fs_dict_wrappers.Fmap_default.html">
+<link rel="Up" href="Fs_dict_wrappers.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_dict_wrappers.FmapFunctor</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Fs_dict_wrappers.html" title="Fs_dict_wrappers">Up</a>
+&nbsp;<a class="post" href="Fs_dict_wrappers.Fmap_default.html" title="Fs_dict_wrappers.Fmap_default">Next</a>
+</div>
+<h1>Functor <a href="type_Fs_dict_wrappers.FmapFunctor.html">Fs_dict_wrappers.FmapFunctor</a></h1>
+
+<pre><span class="keyword">module</span> FmapFunctor: <div class="sig_block"><code class="code">functor (</code><code class="code">D</code><code class="code"> : </code><code class="code">sig</code><div class="sig_block">
+<pre><span id="VALmap_dict"><span class="keyword">val</span> map_dict</span> : <code class="type">unit -> 'a Lem_map.mapKeyType_class</code></pre>
+<pre><span id="VALset_dict"><span class="keyword">val</span> set_dict</span> : <code class="type">unit -> 'a Lem_basic_classes.setType_class</code></pre></div><code class="code">end</code><code class="code">) -&gt; </code><code class="code">sig</code> <a href="Fs_dict_wrappers.FmapFunctor.html">..</a> <code class="code">end</code></div></pre><table border="0" cellpadding="3" width="100%">
+<tr>
+<td align="left" valign="top" width="1%%"><b>Parameters: </b></td>
+<td>
+<table class="paramstable">
+<tr>
+<td align="center" valign="top" width="15%">
+<code>D</code></td>
+<td align="center" valign="top">:</td>
+<td><code class="type">sig 
+  val map_dict : unit -> 'a Lem_map.mapKeyType_class 
+  val set_dict : unit -> 'a Lem_basic_classes.setType_class
+end</code>
+</table>
+</td>
+</tr>
+</table>
+<hr width="100%">
+
+<pre><span id="VALfmap_remove"><span class="keyword">val</span> fmap_remove</span> : <code class="type">('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a> -> 'a -> ('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a></code></pre>
+<pre><span id="VALfmap_update"><span class="keyword">val</span> fmap_update</span> : <code class="type">('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a> -> 'a * 'b -> ('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a></code></pre>
+<pre><span id="VALfmap_update_option"><span class="keyword">val</span> fmap_update_option</span> : <code class="type">('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a> -><br>       'a * 'b option -> ('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a></code></pre>
+<pre><span id="VALfmap_from_list"><span class="keyword">val</span> fmap_from_list</span> : <code class="type">('a * 'b) list -> ('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a></code></pre>
+<pre><span id="VALfmap_lookup"><span class="keyword">val</span> fmap_lookup</span> : <code class="type">('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a> -> 'a -> 'b option</code></pre>
+<pre><span id="VALfmap_empty"><span class="keyword">val</span> fmap_empty</span> : <code class="type">unit -> ('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a></code></pre>
+<pre><span id="VALfmap_dom"><span class="keyword">val</span> fmap_dom</span> : <code class="type">('a, 'b) <a href="Fs_prelude.Fmap.html#TYPEfmap">Fs_prelude.Fmap.fmap</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre></body></html>

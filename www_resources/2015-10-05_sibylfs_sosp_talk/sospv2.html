@@ -1,0 +1,548 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 1st November 2003), see www.w3.org" />
+<title>sibylfs.io</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="copyright" content=
+"" />
+<meta name="duration" content="30" />
+<link rel="stylesheet" href="./Slidy2/styles/slidy.css" type="text/css" />
+<script src="./Slidy2/scripts/slidy.js" charset="utf-8" type="text/javascript">
+</script>
+<link rel="stylesheet" href="./my.css" type="text/css" />
+</head>
+<body>
+
+<!-- -->
+
+
+<div class="slide">
+  <div class='vspace'></div>
+  <center>
+
+    <span style="font-family:Impact; font-size:4em; color:#000080 ">
+      sibylfs.io</span><br/>
+
+      <div style="height:1em"></div>
+      
+      Tom Ridge, SOSP'15, 2015-10-05
+      
+      <div style="height:7em"></div>
+      
+      <span class="halfsize">
+        with David Sheets, Thomas Tuerk, Andrea Giugliano, Anil Madhavapeddy, Peter Sewell<br/>
+      University of Leicester, University of Cambridge</span>
+  </center>
+</div>
+
+
+
+
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'>A true story...</myh1>
+</div>
+
+
+<!--
+
+OK, a true story
+
+  * A couple of years ago, I wanted to try out some new ideas I had for
+implementing file system. 
+
+  * Up to that point, I'd been a user of file systems and I felt I
+  sort-of knew how they were supposed to behave. I knew a little bit
+  about permissions, but if you asked me about what permissions mean
+  on directories I would probably have got it wrong.
+
+  * Anyway, I sat down
+  and fairly soon I had something that sort-of worked. There was a
+  tree of directories, and files that you could read and write data
+  to. 
+
+  * Then I started to fill in the details. I started with
+  rename. What happens if the src of the rename doesn't exist? I wrote
+  a little program to check, and found it raised the error ENOENT -
+  "Error, no entity" - which makes sense. What happens when you rename
+  a file onto a directory? EISDIR - "Error is directory" which again
+  made sense.  
+
+  * I was aware that I was just testing a particular  filesystem (ext on Linux).
+
+  * Explosion of test cases, Writing tests for each particular
+  scenario becomes boring pretty quickly.
+
+  * What I needed was a specification that
+  told me what was supposed to happen. I looked on the web at places
+  like Stackoverflow, and saw that there were quite a few questions
+  about file system behaviour, and this was helpful, but the
+  information was dispersed, and piecemeal - there wasn't any
+  organization, information was outdated and sometimes it would take
+  hours of seaching to discover that some particular behaviour was a
+  known issue with a particular file system.
+
+I was aware of some documentation such as
+man pages, and the gnu libc documentation, and at some point I became
+aware of the POSIX spec. This was a huge collection of html pages
+describing how various libc functions were supposed to behave. For
+example, the page for open is here...
+
+-->
+
+
+
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'><a href='./resources/open.html'>The POSIX specification for libc's open</a></myh1>
+</div>
+
+
+
+<!--
+
+Hopeful. This seemed to be just what I was looking for: a specification of how
+file systems were supposed to behave. 
+
+They've put a lot of effort into it.
+
+OK, it was very large (and humans can't deal with this amount of
+information), but perhaps I could just read the pages I was interested
+in. Unfortunately this was a non-starter - things like path resolution
+are spread throughout POSIX.
+
+I also began to worry that the POSIX specification, whilst mostly
+comprehensible, was unclear in places, and it took lots of
+cross-checking, and emails to the mailing list, to figure out what was
+supposed to be going on. For example, O_CREAT | O_DIRECTORY (other
+clauses elsewhere interfere)
+
+My brain is not good at detail, and as
+time went on, the accumulation of detail was overwhelming.
+
+I also realized that existing systems, such as Linux, are only mostly
+compliant with POSIX. Mac claims to be POSIX, but is it really? Linux
+doesn't even claim to be POSIX compliant. So if I wanted to really
+understand what was going on, I'd have to remember details of Linux,
+Mac and FreeBSD. In fact, it was even worse than this because
+individual file systems might behave differently too.
+
+
+-->
+
+
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'>POSIX, man pages, libc docs, bug reports, StackOverflow, the web, OS implementation code, file system implementation code... so many details!</myh1>
+</div>
+
+
+<div class='slide' style='text-align:center'>
+  <div style='height:10%'></div>
+  <img src='resources/it-makes-my-head-explode.jpg' width='75%'></img>
+</div>
+
+
+
+
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>The problem</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>It's hard to be sure what file systems are <b>supposed</b> to do</li>
+    <li>It's hard to be sure what real-world file systems <b>actually</b> do</li>
+    <!-- <li>Existing sources of information (on POSIX and real-world file -->
+    <!-- systems) are widely dispersed and hard to find, incomplete, -->
+    <!-- imprecise, ambiguous, and occasionally just plain -->
+    <!-- wrong</li> -->
+    
+  </ul>
+</div>
+
+
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>The problem</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>It's hard to be sure what file systems are <b>supposed</b> to do</li>
+    <li>It's hard to be sure what real-world file systems <b>actually</b> do</li>
+    <!-- <li>Existing sources of information (on POSIX and real-world file -->
+    <!-- systems) are widely dispersed and hard to find, incomplete, -->
+    <!-- imprecise, ambiguous, and occasionally just plain -->
+    <!-- wrong</li> -->
+    <li>And manually trying to pin down and analyse all the differences between all the libc/OS/file-system combinations is infeasible</li>
+  </ul>
+</div>
+
+
+
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'>How can we provide better specifications?</myh1>
+</div>
+
+
+
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'>How can we validate real-world systems against these specifications?</myh1>
+</div>
+
+
+
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'>These are fundamental and important questions...</myh1>
+</div>
+
+
+
+<!--
+
+preface: lots of source of info
+
+what file systems actually do: can do some searching on the web, find obscure bug reports
+
+none of the sources is synced with each other; bug reports can be hard to find;
+
+real-world: can write test cases, but they can only tell you so much
+
+-->
+
+
+<div class="slide">
+  <div class='vspace'></div>
+  <center>
+
+    <span style="font-family:Impact; font-size:4em; color:#000080 ">
+      SibylFS</span><br/>
+
+  </center>
+</div>
+
+<!--
+
+FIXME text?
+
+so I set out to try and write a specification of file systems that
+satisfied all the items on the wishlist; I thought it would take about
+6 months; it actually took about 3 years
+
+formal languages are languages machines can understand; it is hard to
+write a specification that is precise etc without using a formal
+language; if you want to use the specification to directly test
+real-world implementations, you have to use a formal language
+
+
+-->
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>What is SibylFS?</myh1>
+  <div class='myh1-space'></div>
+  SibylFS is simultaneously
+  <ul>
+    <li>A file system specification</li>
+    <li>A test oracle that can be used to check real-world traces of file system behaviour</li>
+  </ul>
+</div>
+
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>The SibylFS specification</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>Precise, unambiguous &#10004; </li>
+    <li>Maintainable, comprehensive, detailed &#10004; </li>
+    <li>Variants for POSIX, Linux, Mac, FreeBSD  &#10004; </li>
+    <li>A &quot;formal&quot; specification: a machine can understand it &#10004; </li>
+  </ul>
+</div>
+
+
+
+
+      <div class="slide">
+        <myh1>The SibylFS test oracle</myh1>
+        <div class='myh1-space'></div>
+        <center><img src='./pics/systemstructure2.png' width='50%'></img></center>
+        
+  <div>
+    <br/>
+    A trace is a sequence of calls and returns at the libc interface:
+<pre><code># processing file 'link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4-int.trace' ...
+        @type trace
+        #####################################
+        # Test link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4
+        #####################################
+     5: mkdir &quot;empty_dir1&quot; 0o777
+        RV_none
+     6: mkdir &quot;empty_dir2&quot; 0o777
+        RV_none
+     7: mkdir &quot;nonempty_dir1&quot; 0o777
+        RV_none
+     8: mkdir &quot;nonempty_dir1/d2&quot; 0o777
+        RV_none
+     9: open &quot;nonempty_dir1/d2/f3.txt&quot; [O_CREAT;O_WRONLY] 0o666
+        RV_num(3)
+    10: write! (FD 3) &quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc&quot; 83
+        RV_num(83)
+
+...
+
+    28: link &quot;nonempty_dir1/d2/sl_dotdot_d2&quot; &quot;nonempty_dir1/nonexist_4&quot;
+        RV_none
+
+...</code></pre>
+
+  </div>
+
+      </div>
+
+
+      <div class="slide">
+        <myh1>The SibylFS test oracle</myh1>
+        <div class='myh1-space'></div>
+        <center><img src='./pics/systemstructure2.png' width='50%'></img></center>
+        
+  <div>
+    <br/>
+    A checked trace is similar to a trace, but bad steps are identified
+
+<pre><code># processing file &#39;exec_link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4-int.trace&#39; ...
+        # processing file &#39;link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4-int.trace&#39; ...
+        @type trace
+        #####################################
+        # Test link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4
+        #####################################
+     6: mkdir &quot;empty_dir1&quot; 0o777
+     7: Tau
+     8: RV_none
+     9: mkdir &quot;empty_dir2&quot; 0o777
+    10: Tau
+...
+    73: link &quot;nonempty_dir1/d2/sl_dotdot_d2&quot; &quot;nonempty_dir1/nonexist_4&quot;
+    74: Tau
+    75: EPERM
+# 
+# Fatal error:     75: EPERM
+#    no result states
+# 
+# Error: 
+#    The spec permitted:
+# RV_none
+# 
+# Error:     75: EPERM
+#    unexpected results: EPERM
+#    allowed are only: RV_none
+#    continuing execution with RV_none
+
+# trace not accepted</code></pre>
+
+  </div>
+
+      </div>
+
+
+
+    
+      <div class="slide">
+        <div style='height:20%'></div>
+        <myh1>2 points in favour of SibylFS</myh1><br/>
+      </div>
+
+    
+      <div class="slide">
+        <div style='height:20%'></div>
+        <myh1>2 points in favour of SibylFS</myh1><br/>
+      <div class='myh1-space'></div>
+      <ul>
+        <!-- <li>Not just POSIX:  -->
+        <!-- knows about Linux, Mac and FreeBSD file system behaviour &#10004;</li> -->
+        <!-- <li>No fixed set of tests &#10004; </li>-->
+        <li>Unlike traditional test suites, no need to write boring test code &#10004;</li>
+        <li>Checking traces is fast &#10004;</li>
+      </ul>
+      </div>
+
+
+
+
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'>These advantages allow combinatorial testing across a wide range of file systems</myh1>
+</div>
+
+
+<div class="slide">
+  <myh1>Combinatorial testing</myh1>
+  <div class='myh1-space'></div>
+  <center><img src='./pics/systemstructure.png' width='50%'></img></center>
+  <div>
+    <br/>
+    A script is just a sequence of calls at the libc interface. These can be easily generated.
+
+    <pre><code> @type script
+ #####################################
+ # Test link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4
+ #####################################
+ mkdir &quot;empty_dir1&quot; 0o777
+ mkdir &quot;empty_dir2&quot; 0o777
+ mkdir &quot;nonempty_dir1&quot; 0o777
+ mkdir &quot;nonempty_dir1/d2&quot; 0o777
+ open &quot;nonempty_dir1/d2/f3.txt&quot; [O_CREAT;O_WRONLY] 0o666
+ write! (FD 3) &quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc&quot; 83
+ close (FD 3)
+ ... // further setup commands
+ link &quot;nonempty_dir1/d2/sl_dotdot_d2&quot; &quot;nonempty_dir1/nonexist_4&quot;
+ ...</code></pre>
+
+  </div>
+</div>
+
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>Combinatorial testing at scale</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>We tested &gt;40 libc/OS/filesystem combinations</li>
+    <li>With &gt;20k scripts for each</li>
+    <li>With multiple testing iterations</li>
+  </ul>
+</div>
+
+
+<!-- 
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'><a href='resources/link_checked.html'>HTML output</a></myh1>
+</div>
+ -->
+
+
+
+<div class="slide">
+  <myh1>Test results</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <!-- <li>The POSIX spec had errors (now corrected) e.g. cut-and-paste errors</li> -->
+
+    <li>Implementation error codes are quite often non-POSIX (and the SibylFS spec tells you exactly what these deviations are)</li>
+
+    <li>Path resolution, particularly when a trailing slash is involved, is variable, non-POSIX</li>
+
+    <li>Treatment of paths referencing symlinks, particularly when the path ends in a trailing slash, is highly variable</li>
+
+    <li>Various overlay filesystems, and FUSE filesystems, mess up things like permissions</li>
+
+    <li>posixovl/VFAT (posix emulation on top of VFAT) gets link count wrong when rename overwrites a file that is linked elsewhere; possible to get to a state where the filesystem contains no files, but there is no free space (space leak)</li>
+
+    <li>OpenZFS on Linux 3.13.0-34 (Ubuntu Trusty): files opened with O_APPEND would not seek to the end of the file before write or pwrite (probably causing applications that use this functionality to fail)</li>
+
+    <li>OpenZFS on OS/X: possible to execute a sequence of calls which leads to the calling process hanging using 100% CPU, unresponsive to signals; volume cannot be unmounted, machine cannot be shut down; force unmounting may cause storage device to become unusable until next system restart</li>
+
+    <li>Permissions: the Linux implementation of permissions should give the same behaviour from one kernel version to the next; however, we found test scripts involving file and directory access that failed on Linux kernel 3.13 and succeeded on 3.14 which we believe is due to a buggy 3.13 implementation of permissions in edge cases</li>
+  </ul>
+</div>
+
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>The real results</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>SibylFS is very accurate: trace acceptance (e.g. for Linux/ext4) is almost 100%</li>
+    <li>Things can only get better over time: virtuous circle between specification and real-world testing</li>
+  </ul>
+</div>
+
+
+
+<div class="slide" style='text-align:center;'>
+  <div class='vspace'></div>
+  <myh1 class='center'>You rarely get something for nothing...</myh1>
+</div>
+
+
+<div class="slide">
+  <myh1>Show me the pain!</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>The process of constructing the spec: edit spec, test, analyse/debug, repeat... for every platform of interest.</li>
+    <li>At this point I have probably hand-analysed more than 1k traces.</li>
+    <li>It took an incredibly long time, and was pretty boring, but the results of the analyses are captured in the spec.</li>
+    <li>This work only has to be done once, and everyone can benefit.</li>
+    <li>Another pain point: constructing the spec to match the traces: for maintainability, we do not want the spec to degenerate into a mass of special cases.</li>
+    <li>Another pain point: constructing the spec so that it can be used for testing, efficiently.</li>
+  </ul>
+</div>
+
+
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>What could you use this for? </myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>As a specification, to complement POSIX, or to understand particular Linux, Mac or FreeBSD behaviours</li>
+    <li>To identify all differences between file systems and OSes, and how particular file systems differ from POSIX</li>
+  </ul>
+
+Directly related to SOSP:
+
+  <ul>
+    <li>Testing new file systems e.g. FSCQ</li>
+    <li>SibylFS as a high quality model e.g. &quot;Scalable commutativity rule&quot; (SOSP'13), and many others</li>
+  </ul>
+</div>
+
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>Summary</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>SibylFS is a formal specification of file system behaviour</li>
+    <li>SibylFS is a test oracle that can be used to check file system behaviour</li>
+    <li>SibylFS is usable in practice for combinatorial testing and analysis of file systems</li>
+  </ul>
+</div>
+
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>Stepping back a bit</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>The process we used here (develop a formal spec, and use it for testing) is a general process that could be used e.g. to provide specifications of other core components of computer systems.</li>
+    <li>TCP/IP, relaxed memory models, TLS etc.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <div style='height:20%'></div>
+  <myh1>A final slide: what does this mysterious specification look like?</myh1>
+  <div class='myh1-space'></div>
+  <ul>
+    <li>My poster has an excerpt from the specification.</li>
+    <li>I think it is really readable.</li>
+    <li>I'd love to explain it to you at the poster session, then you can decide what you think!</li>
+  </ul>
+</div>
+
+
+
+</body>
+</html>
+

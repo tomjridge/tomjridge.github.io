@@ -1,0 +1,957 @@
+
+<!-- saved from url=(0065)http://www.cs.le.ac.uk/people/tr61/1p/index4.html?myjson_id=1bf56 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- styles ---------------------------------------- -->
+    <link rel="stylesheet" href="./2016-10-12_uppingham_files/pure-min.css">
+    <style>
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #222;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+
+h1 {
+    font-size: 200%;
+}
+
+.title {
+    font-size: 250%;
+    padding: 16px 0px;
+}
+
+.buttons-container {
+  position:fixed;
+  right:0;
+  bottom:0;
+}
+
+
+
+a {
+  color: blue;
+}
+
+.width-60 {
+    max-width: 60em;
+}
+
+/* if hr followed by ul, add extra space - this is for notes */
+hr + ul {
+  margin-top:200px;
+  ignorebackground-color: yellow; /* but we want the follow elt */
+}
+
+    </style>
+
+
+    <!-- https://cdnjs.com/libraries/URI.js/ -->
+    <script type="text/javascript" src="./2016-10-12_uppingham_files/URI.min.js"></script>
+
+
+    <!-- file saving ---------------------------------------- -->
+    <script type="text/javascript" src="./2016-10-12_uppingham_files/FileSaver.min.js"></script>
+
+    
+    <!-- key shortcut ---------------------------------------- -->
+    <script type="text/javascript" src="./2016-10-12_uppingham_files/mousetrap.min.js"></script>
+
+
+    <!-- reordering ---------------------------------------- -->
+
+    <!-- must be last? this occasionally breaks for unknown reasons :(  -->
+    <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
+    <script src="./2016-10-12_uppingham_files/Sortable.min.js"></script>
+
+
+    <!-- marked ---------------------------------------- -->
+    <script type="text/javascript" src="./2016-10-12_uppingham_files/marked.js"></script>
+
+
+
+
+    <!-- misc ---------------------------------------- -->
+    <script src="./2016-10-12_uppingham_files/additional.js"></script>
+
+
+    <!-- scalajs code ---------------------------------------- -->
+    <script type="text/javascript" src="./2016-10-12_uppingham_files/mrk_client-fastopt.js"></script>
+
+
+  </head>
+  <body onload="twiki.Ip().main()">
+
+    <!-- the data ---------------------------------------- -->
+    <div id="data-root" style="display:none"><div data-post-id="meta" data-post-title="Meta" data-post-tags="" data-post-time="1475677069493">Author: Tom Ridge
+
+Current version is: 2016-10-05
+
+Libraries etc: 
+* marked.js - Javascript markdown renderer
+* Sortable.js - for ordering posts
+* URI.js - for URL processing
+* FileSaver.js
+
+Built using Scala and ScalaJS
+
+Menu should always be in view; need feedback for cloud save; no need for cloud restore?
+
+embed vids
+</div>
+<div data-post-id="me" data-post-title="Research" data-post-tags="" data-post-time="1476225370684">My research is in this area, but focused more on computers than mathematics: I try to construct computer systems that are correct, and prove them correct using machines to help me.
+
+Please, **ask me anything you like, about any subject you like**. I will do my best to answer!
+
+
+Maybe:
+
+* Ask me what I'm working on now
+* Ask me about how I wrote the slides
+* Ask me whether we live in the matrix
+* Ask me how we can be sure that the computer that checks the proofs is itself free from bugs</div>
+<div data-post-id="hales4" data-post-title="Sphere packing (4)" data-post-tags="" data-post-time="1476224416019">* In January 2003, Hales announced the start of a collaborative project to produce a completely formal proof of the Kepler conjecture, using computers to check the proof. 
+* In January 2015 Hales and 21 collaborators published "A formal proof of the Kepler conjecture".
+
+So, with huge effort, and a large team, it is possible to attain certainty (as far as possible) that things are correct.</div>
+<div data-post-id="hales3" data-post-title="Sphere packing (3)" data-post-tags="" data-post-time="1476224363587">Despite the unusual nature of the proof, the editors of the Annals of Mathematics agreed to publish it, provided it was accepted by a panel of twelve referees. In 2003, after four years of work, the head of the referee's panel, Gábor Fejes Tóth, reported that the panel were "99% certain" of the correctness of the proof, but they could not certify the correctness of all of the computer calculations. &lt;span style="position:absolute; right:0"&gt;||&lt;/span&gt;
+
+---
+
+* The paper was rejected.</div>
+<div data-post-id="hales2" data-post-title="Sphere packing (2)" data-post-tags="" data-post-time="1476224209849">* It is possible to reduce the problem to analysing a finite number of possible sphere packings
+* Although finite, the number of packings that must be analysed is huge
+* To find lower bounds for all cases involved solving around 100,000 linear programming problems.
+*  In August 1998 Thomas Hales announced that the proof was complete. At that stage it consisted of 250 pages of notes and 3 gigabytes of computer programs, data and results.
+
+So computers have really helped to calculate and check things. But they haven't contributed creatively.
+&lt;span style="position:absolute; right:0"&gt;||&lt;/span&gt;
+---
+
+* But the story continues!</div>
+<div data-post-id="hales" data-post-title="Sphere packing: the Kepler conjecture" data-post-tags="" data-post-time="1476224025999">A problem: what is the best (densest) way to pack spheres?
+
+https://en.wikipedia.org/wiki/Kepler_conjecture#Origins</div>
+<div data-post-id="verif" data-post-title="Computer-assisted reasoning" data-post-tags="" data-post-time="1476200896239">
+* Computers are not so good at maths, but they are very good at managing proofs, checking details etc.
+* There is a field of computer science called "verification and correctness" https://www.epsrc.ac.uk/research/ourportfolio/themes/ict/
+* This field uses computers to construct and verify (check) proofs that systems are correct.
+
+The next slides contain an example of computer-assisted reasoning.
+
+---
+
+* How does Intel ensure that its processors don't have bugs? They prove it, using maths.
+
+* The proofs are enormous. How do they get the proofs correct? They use a computer to check the proofs.
+
+* How do they know the proof-checking computer is correct? Various possible answers... ask me if you are interested</div>
+<div data-post-id="fdiv" data-post-title="Intel and the Pentium FDIV bug" data-post-tags="" data-post-time="1476194510477">* In 1994, a bug was detected in Intel's Pentium processor. 
+* Intel was forced to offer to replace all Pentium processors that had been sold at that point (at huge cost).
+
+
+https://en.wikipedia.org/wiki/Pentium_FDIV_bug#Example_symptoms
+
+---
+
+* This story is very like the stories we heard earlier, but with one major difference: since then, Intel has never recalled a processor, even though modern processors are much more complicated. How is it that Intel can make chips without bugs, whilst everyone else struggles to write software without bugs?
+
+</div>
+<div data-post-id="compproof" data-post-title="Computers and proof" data-post-tags="" data-post-time="1476193044859">Things computers are good at: managing large proofs, checking the proofs are correct, and filling in gaps in the reasoning (using proof search).</div>
+<div data-post-id="limits5" data-post-title="Limits of A.I." data-post-tags="" data-post-time="1476192796687">
+
+However, despite all the advances in computational power and A.I., at this point in time, *computers have not contributed creatively to any area of mathematics*.</div>
+<div data-post-id="form" data-post-title="Formality" data-post-tags="" data-post-time="1476193789748">"Formal" essentially means: can be handled by a machine (i.e. computer)
+
+Because logic, proof and mathematics can all be expressed formally, computers should be really good in these areas. Indeed, computers can:
+
+* Manage huge proofs, ensuring they are correctly constructed
+* Search for proofs, and construct new proofs
+
+And given that A.I. has supposedly advanced hugely in recent years, we might expect that A.I. has started to make contributions to mathematics.</div>
+<div data-post-id="natnum" data-post-title="Mathematics: natural numbers" data-post-tags="" data-post-time="1476191638903">Natural numbers: 0,1,2,3,4 ... and the principle of induction:
+
+**Induction** Given a property P(n)... 
+1. if P(0) is true, and 
+2. whenever P(n) is true, then P(n+1) is true
+3. then in fact P holds for **all** numbers
+
+The rules for reasoning about natural numbers can be formalized as e.g. https://en.wikipedia.org/wiki/Peano_axioms  (axioms 1,6,7,8,9)
+
+---
+
+* These axioms suffice for representing a huge amount of mathematical proofs. For example, Fermat's Last Theorem is believed to be expressible with these rules.
+
+* https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem
+
+</div>
+<div data-post-id="proof" data-post-title="Proof" data-post-tags="" data-post-time="1476191513166">Rules are like:
+
+&lt;table&gt;
+&lt;tr style="border-bottom: 1pt solid white"&gt;
+  &lt;td&gt;&amp;Gamma;  &amp;#x22a2; A &lt;span style="display:inline-block; width:4em"&gt;&lt;/span&gt;  &amp;Gamma;  &amp;#x22a2;  B &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="center" style="width:100%"&gt;&amp;Gamma;  &amp;#x22a2; A &amp;and; B&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+
+Proofs are sequences (or trees) of things like rules. Here is a proof:
+
+1. A  &amp;#x22a2; A  
+2. B  &amp;#x22a2; B  
+3. A, B  &amp;#x22a2; A &amp;and; B  &lt;span style="display:inline-block; width:4em"&gt;&lt;/span&gt; // from 1 and 2, with weakening
+4. C &amp;#x22a2; C
+5. A, B, C &amp;#x22a2; A &amp;and; B &amp;and; C &lt;span style="display:inline-block; width:4em"&gt;&lt;/span&gt; // from 3 and 4
+
+Proofs are **formal**: a machine can handle the manipulation of these symbols and rules.</div>
+<div data-post-id="logic" data-post-title="Logic" data-post-tags="" data-post-time="1476189459899">Logic is amazing! The most interesting things I ever learned were in logic. Logic looks a bit like this:
+
+&amp;Gamma;  &amp;#x22a2; A &amp;and; B &lt;span style="display:inline-block; width:4em"&gt;&lt;/span&gt; // from assumptions Gamma, the statement "A and B" is provable
+
+With rules like:
+
+&lt;table&gt;
+&lt;tr style="border-bottom: 1pt solid white"&gt;
+  &lt;td&gt;&amp;Gamma;  &amp;#x22a2; A &lt;span style="display:inline-block; width:4em"&gt;&lt;/span&gt;  &amp;Gamma;  &amp;#x22a2;  B &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td align="center" style="width:100%"&gt;&amp;Gamma;  &amp;#x22a2; A &amp;and; B&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+Logic is **formal**: a machine can handle the manipulation of these symbols and rules.
+
+
+---
+
+* ```&amp;Gamma;  &amp;#x22a2; A &amp;and; B```
+
+* From assumptions G, I try to prove A and B
+
+* Not enough time to talk about logic much, but this is an attempt to give you a brief intro
+
+* A bit like calculators, but for the rules of thought</div>
+<div data-post-id="limits4" data-post-title="Limits of computation (4)" data-post-tags="" data-post-time="1476178631822">One of the very interesting results of computer science is:
+
+**Theorem** It is impossible to write a program G(p,n) which, when given an arbitrary program p, and an input number n, can figure out whether the program p terminates on input n.
+
+Termination is just one very simple property; effectively this theorem says that for any (non-trivial) property you like, constructing G is impossible.
+
+</div>
+<div data-post-id="limits3" data-post-title="Limits of computation (3)" data-post-tags="" data-post-time="1476178151924">* Think of a (smallish) number "n" (which is the "input")
+* If it is even, divide by 2. If it is odd, multiply by 3 and add 1.
+* If n is 1, stop. Otherwise repeat previous step (possibly forever).
+
+```
+n = 5                       // this is just an example
+while(not(n = 1)) {
+  if(even(n)) then { n=n/2 } else { n=n*3+1 }
+}
+```
+
+For input `n=5`, this terminates. What about `n=3`? What about arbitrary n? Does the code terminate for all inputs? Or is it possible that n "keeps getting larger" over time? Or perhaps n "gets stuck in a loop" somehow? &lt;span style="position:absolute; right:0"&gt;||&lt;/span&gt;
+
+
+https://en.wikipedia.org/wiki/Collatz_conjecture
+
+---
+
+* Example: 
+
+8 4 2 1
+
+5 16
+
+3 10 5 ...
+
+Mathematicians have tested this for very many numbers. Eventually you always get back to 1. No-one knows why</div>
+<div data-post-id="limits2" data-post-title="Limits of computation (2)" data-post-tags="" data-post-time="1476178091212">More code:
+
+```
+10: print("tom is great")
+20: goto 10
+```
+
+Does this terminate?</div>
+<div data-post-id="limits" data-post-title="Limits of computation" data-post-tags="" data-post-time="1476178028827">Here is some code:
+
+```
+for(i = 1 to 10) {
+  print("hello");
+}
+```
+
+Does this terminate (ie, does it ever finish printing "hello")?</div>
+<div data-post-id="break1" data-post-title="From A.I. to the &quot;limits of computation&quot;" data-post-tags="" data-post-time="1476267309284">
+
+Now I want to give a brief glimpse of the limits of computation, and some idea of what I am up to on the "frontier" of Computer Science.
+
+
+</div>
+<div data-post-id="ai6" data-post-title="A.I. (6)" data-post-tags="" data-post-time="1476110487892">I was going to be a researcher in A.I. before I realized that it was unlikely we would make much progress towards general artificial intelligence.
+
+Now, I think it is more likely that in **your lifetime** we will begin to make **some progress** towards **general** artificial intelligence.</div>
+<div data-post-id="ai5" data-post-title="A.I. (5)" data-post-tags="" data-post-time="1476110081979">Suppose we could build an A.I.; should we be worried?
+
+* Is it likely that a super-intelligent A.I. would want to harm us or kill us? No. Murder typically requires motivation, which machines don't have.
+
+* You can ask the same question about super-intelligent aliens. &lt;span style="position:absolute; right:0"&gt;||&lt;/span&gt;
+
+* Is it likely that super-intelligent A.I. will render humans redundant, so we could all just goof off all the time? 
+---
+
+* But really, if you were a super-intelligent alien, would you spend enormous time travelling across the galaxy to eliminate a species of monkey that can barely understand how compound interest works? Would you travel to Australia to destroy an tiny ant-hill full of ants somewhere in the outback? No. Because it is totally irrelevant to your aims.
+
+* Well, we have some pretty super intelligent humans, and last thing I checked I was still being required to go to work every day (weekends excepted).
+
+</div>
+<div data-post-id="ai4" data-post-title="A.I. (4)" data-post-tags="" data-post-time="1476109909603">The truth about A.I., IMHO:
+
+* Researchers have no idea how the brain does what it does
+* In terms of building a general artificial intelligence, we are nowhere: we don't even have any idea what this would actually mean
+</div>
+<div data-post-id="ai3" data-post-title="A.I. (3)" data-post-tags="" data-post-time="1476109389120">* So in selected areas, A.I. performs well, and can remove the need for humans. 
+
+* It is extremely likely that this trend will continue.
+
+[The jobs robots will steal first](http://www.bbc.co.uk/news/technology-33327659)
+
+[Experts predict robots will take over 30% of our jobs by 2025](http://uk.businessinsider.com/experts-predict-that-one-third-of-jobs-will-be-replaced-by-robots-2015-5?r=US&amp;IR=T)
+
+However, it is important to understand what this means: 
+
+* Quite a few of the jobs that we currently do will disappear, or be done by machines. 
+* And new jobs will take their place.
+* A more interesting question: what will the new jobs be like? 
+
+---
+
+* remove need for humans: not completely true: books are translated by humans; 
+
+* After all, we have seen incredible technology advances in the last 100 years, and arguably we are working longer hours than ever before (and the employment rate in the UK is about the lowest it has ever been).
+
+* People (usually women) used to spend most of their time cooking and washing clothes.
+
+* There is some evidence from advanced economies (UK, USA) that there is a "hollowing out of the middle" (removal of middle-class jobs), which combines with wage pressure at the bottom resulting from globalization. At the top things are still fine-ish. But one possible scenario is that the hollowing out causes a decline in economic activity (long-term stagnation) which ultimately affects companies because they can't sell their products anymore.
+
+* High street: pound shops, coffee shops, chicken shops etc.
+</div>
+<div data-post-id="ai2" data-post-title="A.I. (2)" data-post-tags="" data-post-time="1476108717641">It is clear that vast computational power can achieve impressive things:
+
+* Game playing (chess etc.)
+* Speech recognition 
+* Text translation between languages 
+* Simulating artistic styles https://deepart.io
+
+But it is important to realize that these have been "solved" using very restrictive methods that do not generalize.</div>
+<div data-post-id="ai" data-post-title="Artificial intelligence" data-post-tags="" data-post-time="1476108513879">[slate article](http://www.slate.com/articles/technology/future_tense/2016/04/the_threats_that_artificial_intelligence_researchers_actually_worry_about.html):
+
+*In 2012 Vincent Müller and Nick Bostrom of the University of Oxford asked 550 A.I. experts how soon we should expect “high-level machine intelligence,” defined as one that can carry out most human professions at least as well as a typical human. The median estimate for a 10-percent likelihood was 2022, 2040 for a 50-percent likelihood, and 2075 for a 90-percent likelihood.*
+
+But see http://lesswrong.com/lw/e36/ai_timeline_predictions_are_we_getting_better/
+
+* *There is little difference between experts and non-experts.*
+* *There is little difference between current predictions, and those known to have been wrong previously.*
+* *It is not unlikely that recent predictions are suffering from the same biases and errors as their predecessors.*
+
+
+---
+
+* Look at the question: Most human professions at least as well as a typical human...
+
+* nuclear fusion: 30 years; Naysayers love to claim that nuclear fusion is always decades away — and always will be — but the reality is we’ve moved ever closer to the 
+
+* Why might AI researchers predict that there will soon be an AI breakthrough?
+
+* Of course, it presumably will happen at some point, but 
+</div>
+<div data-post-id="futurereality" data-post-title="Recent state of the art" data-post-tags="" data-post-time="1476176647831">
+Current reality more like:
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/VTlV0Y5yAww" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;!-- https://www.youtube.com/watch?v=VTlV0Y5yAww --&gt;
+
+OK, so let's talk about A.I. for a bit...</div>
+<div data-post-id="news4" data-post-title="Future news" data-post-tags="" data-post-time="1476107040099">Fear the singularity:
+
+https://en.wikipedia.org/wiki/Technological_singularity
+
+A.I. will destroy us:
+
+https://www.youtube.com/watch?v=mXjCXGJDP8Q  (about 45s in; also 3:05 onwards)
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/mXjCXGJDP8Q" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
+* as computers increase in power, it becomes possible for people to build a machine that is more intelligent than humanity; this superhuman intelligence possesses greater problem-solving and inventive skills than current humans are capable of. This superintelligent machine then designs an even more capable machine, or re-writes its own software to become even more intelligent; this (ever more capable) machine then goes on to design a machine of yet greater capability, and so on. These iterations of recursive self-improvement accelerate, allowing enormous qualitative change before any upper limits imposed by the laws of physics or theoretical computation set in
+
+* Ray Kurzweil predicts the singularity to occur around 2045[7] whereas Vinge predicts some time before 2030.</div>
+<div data-post-id="newsballsup" data-post-title="This is the news (4; human failure)" data-post-tags="" data-post-time="1476176829040">Knight Capital Group:
+
+https://en.wikipedia.org/wiki/Knight_Capital_Group#2012_stock_trading_disruption
+
+Investors in "The DAO" lose 1/3 of their funds ($50M, from $150M total; cryptocurrency):  &lt;span style="position:absolute; right:0"&gt;||&lt;/span&gt;
+
+
+&lt;https://www.wired.com/2016/06/50-million-hack-just-showed-dao-human/&gt;
+
+---
+
+* On August 1, 2012, Knight Capital deployed untested software to a production environment which contained an obsolete function. 
+
+* When released into production, Knight's trading activities caused a major disruption in the prices of 148 companies listed at the New York Stock Exchange, thus, for example, shares of Wizzard Software Corporation went from $3.50 to $14.76. For the 212 incoming parent orders that were processed by the defective Power Peg code, Knight Capital sent millions of child orders, resulting in 4 million executions in 154 stocks for more than 397 million shares in approximately 45 minutes.[13] Knight Capital took a pre-tax loss of $440 million. This caused Knight Capital's stock price to collapse, sending shares lower by over 70% from before the announcement. The nature of the Knight Capital's unusual trading activity was described as a "technology breakdown".</div>
+<div data-post-id="news3" data-post-title="This is the news (3; project failure)" data-post-tags="" data-post-time="1476105975671">Universal credit (initial cost estimate £2billion; current estimate £16billion):
+
+&lt;https://en.wikipedia.org/wiki/Universal_Credit#Costs&gt; (and later section "IT problems")
+
+NHS IT systems, project abandoned (current cost £10billion, but will rise): 
+
+&lt;https://www.theguardian.com/society/2013/sep/18/nhs-records-system-10bn&gt;
+
+---
+
+* the message is: we don't know how to build these systems
+
+* `16*10^9 / 200 * 10^3` = roughly `10^5` per person actually being paid benefits via the system (with many also partially paid using the old system as well).
+
+* Jobseekers allowance is &lt; 5billion a year
+
+* Universal Credit has been dogged by IT problems. A DWP whistleblower told Channel 4's Dispatches in 2014 that the computer system was "completely unworkable", "badly designed" and "out of date".[48] A survey of Universal Credit staff found that 90% considered the IT system inadequate.[49]</div>
+<div data-post-id="news2" data-post-title="This is the news (2; security)" data-post-tags="" data-post-time="1476104035615">Yahoo loses 500M passwords: 
+
+&lt;https://www.theguardian.com/technology/2016/sep/23/yahoo-questinos-hack-researchers&gt;
+
+Russian hackers influence US election: 
+
+&lt;https://www.rt.com/op-edge/362032-clinton-dnc-leak-russia/&gt;
+
+British universities targeted by ransomware: &lt;span style="position:absolute; right:0"&gt;||&lt;/span&gt;
+
+&lt;http://www.itpro.co.uk/security/27137/british-universities-targeted-by-ransomware&gt;
+
+Apple Watch banned from UK cabinet meetings over Russian hacking fears:
+
+http://www.theverge.com/2016/10/10/13224968/apple-watch-banned-uk-australia-hacking
+
+--- 
+
+* explain what ransomware is!
+
+* the message is: security is extremely hard</div>
+<div data-post-id="news" data-post-title="This is the news" data-post-tags="" data-post-time="1476103895446">We live in interesting times...
+
+A shameless crowd pleaser
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/faAg3YXpmBI" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+If you haven't watched this series already - just do it!</div>
+<div data-post-id="cheerful" data-post-title="Reasons to be cheerful" data-post-tags="" data-post-time="1475964362599">There are lots of reasons to be cheerful!
+
+* Fast computers! But see &lt;https://bertrandmeyer.com/wp-content/upLoads/intel-500x343.jpg&gt; 
+* The internet!
+* Smartphones!
+* Self-driving cars!
+* A.I. which is better than humans (chess, go etc.)!
+
+---
+
+* (Fast computers) Processors aren't getting faster (since 2005)
+* (The internet) Internet security
+* (Smartphones) Smartphone security
+* (Self-driving cars) Car computer systems hacked repeatedly (car security)
+* (AI) AI robots want to kill you (or take your job, or your wife, or something)
+* (Every large company) Google etc. are not paying their taxes
+* [I can keep going on this theme forever]
+
+So clearly there are problems with security, which I may get to in a bit. But first, I want to discuss...</div>
+<div data-post-id="outline" data-post-title="Outline" data-post-tags="" data-post-time="1475656320878">Outline of talk:
+
+* Reasons to be cheerful
+* This is the news
+* A.I.
+* Limits of computation
+* Computer-assisted reasoning
+* Question time
+
+---
+
+* What is the problem?
+* A bit of my story
+* The story of maths, from Euclid
+* Logic and proof
+* Where are we today?
+* The amazing things that are just round the corner</div>
+<div data-post-id="index" data-post-title="Artificial intelligence and the frontiers of Computer Science" data-post-tags="" data-post-time="1476103211804">&lt;style&gt;
+body {
+  _background-image: url("http://mbmwebsites.com/sitebuilder/images/gradient27182454-988x441.png");
+  color: ivory;
+  padding:1em;
+
+
+
+background: #000428; /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #000428 , #004e92); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #000428 , #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+h1 {
+  color: ivory;
+}
+a {
+  color: MediumSlateBlue;
+}
+
+textarea,input {
+  background:transparent;
+  _color: black;
+}
+
+hr + ul {
+  margin-top:20em;
+  ignorebackground-color: yellow; /* but we want the follow elt */
+}
+&lt;/style&gt;
+
+&lt;center&gt;
+&lt;table&gt;
+&lt;tr style="text-align:right"&gt;
+&lt;td&gt;
+Tom Ridge, University of Leicester&lt;br/&gt;&lt;br/&gt;
+Talk at Uppingham School&lt;br/&gt;&lt;br/&gt;
+2016-10-12
+&lt;/td&gt;
+&lt;td style="width:3em"&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;img style="width:7em" src="http://www.tom-ridge.com/resources/torso.jpg"&gt;&lt;/img&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/center&gt;
+
+*Note: press "1", "p" and "n" to navigate the slides*</div>
+</div>
+
+    <div id="header"> </div>
+
+    <div id="body-div"><table><tr valign="top"><td><div class="buttons-container"><div id="buttons" style="display:inline"><div>
+<style scoped="">                
+ul.menu {
+    list-style-type:none; margin:0; padding:0;width:10em;
+}
+
+ul.menu li {
+    font-size:90%;
+    width:10em;
+    list-style-type:none; 
+    margin:0; 
+    padding:0;
+    width:10em;
+}
+
+.menu a {
+    width:100%;
+}
+</style>
+<ul class="menu"><li><a class="pure-button pure-button-active">Add first</a></li><li><a class="pure-button pure-button-active">Add last</a></li><li><a class="pure-button pure-button-active">Export JSON</a></li><li><a class="pure-button pure-button-active">Import JSON</a></li><li><a class="pure-button pure-button-active">Cloud save</a></li><li><a class="pure-button pure-button-active">Cloud restore</a></li><li><a class="pure-button pure-button-active">Reinitialize</a></li><li><a class="pure-button pure-button-active">Reorder</a></li><li><a class="pure-button pure-button-active">Save to file</a></li><li><a class="pure-button pure-button-active">Show all</a></li></ul></div></div></div></td><td><div id="sidebar"></div></td><td><div id="posts"><div style="display:none"><div><div><h1>Meta</h1><p>Author: Tom Ridge</p>
+<p>Current version is: 2016-10-05</p>
+<p>Libraries etc: </p>
+<ul>
+<li>marked.js - Javascript markdown renderer</li>
+<li>Sortable.js - for ordering posts</li>
+<li>URI.js - for URL processing</li>
+<li>FileSaver.js</li>
+</ul>
+<p>Built using Scala and ScalaJS</p>
+<p>Menu should always be in view; need feedback for cloud save; no need for cloud restore?</p>
+<p>embed vids</p>
+</div></div></div><div style="display:none"><div><div><h1>Research</h1><p>My research is in this area, but focused more on computers than mathematics: I try to construct computer systems that are correct, and prove them correct using machines to help me.</p>
+<p>Please, <strong>ask me anything you like, about any subject you like</strong>. I will do my best to answer!</p>
+<p>Maybe:</p>
+<ul>
+<li>Ask me what I'm working on now</li>
+<li>Ask me about how I wrote the slides</li>
+<li>Ask me whether we live in the matrix</li>
+<li>Ask me how we can be sure that the computer that checks the proofs is itself free from bugs</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>Sphere packing (4)</h1><ul>
+<li>In January 2003, Hales announced the start of a collaborative project to produce a completely formal proof of the Kepler conjecture, using computers to check the proof. </li>
+<li>In January 2015 Hales and 21 collaborators published "A formal proof of the Kepler conjecture".</li>
+</ul>
+<p>So, with huge effort, and a large team, it is possible to attain certainty (as far as possible) that things are correct.</p>
+</div></div></div><div style="display:none"><div><div><h1>Sphere packing (3)</h1><p>Despite the unusual nature of the proof, the editors of the Annals of Mathematics agreed to publish it, provided it was accepted by a panel of twelve referees. In 2003, after four years of work, the head of the referee's panel, Gábor Fejes Tóth, reported that the panel were "99% certain" of the correctness of the proof, but they could not certify the correctness of all of the computer calculations. <span style="position:absolute; right:0">||</span></p>
+<hr>
+<ul>
+<li>The paper was rejected.</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>Sphere packing (2)</h1><ul>
+<li>It is possible to reduce the problem to analysing a finite number of possible sphere packings</li>
+<li>Although finite, the number of packings that must be analysed is huge</li>
+<li>To find lower bounds for all cases involved solving around 100,000 linear programming problems.</li>
+<li>In August 1998 Thomas Hales announced that the proof was complete. At that stage it consisted of 250 pages of notes and 3 gigabytes of computer programs, data and results.</li>
+</ul>
+<p>So computers have really helped to calculate and check things. But they haven't contributed creatively.</p>
+<h2 id="-span-style-position-absolute-right-0-span-"><span style="position:absolute; right:0">||</span></h2>
+<ul>
+<li>But the story continues!</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>Sphere packing: the Kepler conjecture</h1><p>A problem: what is the best (densest) way to pack spheres?</p>
+<p><a href="https://en.wikipedia.org/wiki/Kepler_conjecture#Origins">https://en.wikipedia.org/wiki/Kepler_conjecture#Origins</a></p>
+</div></div></div><div style="display:none"><div><div><h1>Computer-assisted reasoning</h1><ul>
+<li>Computers are not so good at maths, but they are very good at managing proofs, checking details etc.</li>
+<li>There is a field of computer science called "verification and correctness" <a href="https://www.epsrc.ac.uk/research/ourportfolio/themes/ict/">https://www.epsrc.ac.uk/research/ourportfolio/themes/ict/</a></li>
+<li>This field uses computers to construct and verify (check) proofs that systems are correct.</li>
+</ul>
+<p>The next slides contain an example of computer-assisted reasoning.</p>
+<hr>
+<ul>
+<li><p>How does Intel ensure that its processors don't have bugs? They prove it, using maths.</p>
+</li>
+<li><p>The proofs are enormous. How do they get the proofs correct? They use a computer to check the proofs.</p>
+</li>
+<li><p>How do they know the proof-checking computer is correct? Various possible answers... ask me if you are interested</p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>Intel and the Pentium FDIV bug</h1><ul>
+<li>In 1994, a bug was detected in Intel's Pentium processor. </li>
+<li>Intel was forced to offer to replace all Pentium processors that had been sold at that point (at huge cost).</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Pentium_FDIV_bug#Example_symptoms">https://en.wikipedia.org/wiki/Pentium_FDIV_bug#Example_symptoms</a></p>
+<hr>
+<ul>
+<li>This story is very like the stories we heard earlier, but with one major difference: since then, Intel has never recalled a processor, even though modern processors are much more complicated. How is it that Intel can make chips without bugs, whilst everyone else struggles to write software without bugs?</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>Computers and proof</h1><p>Things computers are good at: managing large proofs, checking the proofs are correct, and filling in gaps in the reasoning (using proof search).</p>
+</div></div></div><div style="display:none"><div><div><h1>Limits of A.I.</h1><p>However, despite all the advances in computational power and A.I., at this point in time, <em>computers have not contributed creatively to any area of mathematics</em>.</p>
+</div></div></div><div style="display:none"><div><div><h1>Formality</h1><p>"Formal" essentially means: can be handled by a machine (i.e. computer)</p>
+<p>Because logic, proof and mathematics can all be expressed formally, computers should be really good in these areas. Indeed, computers can:</p>
+<ul>
+<li>Manage huge proofs, ensuring they are correctly constructed</li>
+<li>Search for proofs, and construct new proofs</li>
+</ul>
+<p>And given that A.I. has supposedly advanced hugely in recent years, we might expect that A.I. has started to make contributions to mathematics.</p>
+</div></div></div><div style="display:none"><div><div><h1>Mathematics: natural numbers</h1><p>Natural numbers: 0,1,2,3,4 ... and the principle of induction:</p>
+<p><strong>Induction</strong> Given a property P(n)... </p>
+<ol>
+<li>if P(0) is true, and </li>
+<li>whenever P(n) is true, then P(n+1) is true</li>
+<li>then in fact P holds for <strong>all</strong> numbers</li>
+</ol>
+<p>The rules for reasoning about natural numbers can be formalized as e.g. <a href="https://en.wikipedia.org/wiki/Peano_axioms">https://en.wikipedia.org/wiki/Peano_axioms</a>  (axioms 1,6,7,8,9)</p>
+<hr>
+<ul>
+<li><p>These axioms suffice for representing a huge amount of mathematical proofs. For example, Fermat's Last Theorem is believed to be expressible with these rules.</p>
+</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem">https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem</a></p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>Proof</h1><p>Rules are like:</p>
+<table>
+<tbody><tr style="border-bottom: 1pt solid white">
+  <td>Γ  ⊢ A <span style="display:inline-block; width:4em"></span>  Γ  ⊢  B </td>
+</tr>
+<tr><td align="center" style="width:100%">Γ  ⊢ A ∧ B</td></tr>
+</tbody></table>
+
+
+<p>Proofs are sequences (or trees) of things like rules. Here is a proof:</p>
+<ol>
+<li>A  ⊢ A  </li>
+<li>B  ⊢ B  </li>
+<li>A, B  ⊢ A ∧ B  <span style="display:inline-block; width:4em"></span> // from 1 and 2, with weakening</li>
+<li>C ⊢ C</li>
+<li>A, B, C ⊢ A ∧ B ∧ C <span style="display:inline-block; width:4em"></span> // from 3 and 4</li>
+</ol>
+<p>Proofs are <strong>formal</strong>: a machine can handle the manipulation of these symbols and rules.</p>
+</div></div></div><div style="display:none"><div><div><h1>Logic</h1><p>Logic is amazing! The most interesting things I ever learned were in logic. Logic looks a bit like this:</p>
+<p>Γ  ⊢ A ∧ B <span style="display:inline-block; width:4em"></span> // from assumptions Gamma, the statement "A and B" is provable</p>
+<p>With rules like:</p>
+<table>
+<tbody><tr style="border-bottom: 1pt solid white">
+  <td>Γ  ⊢ A <span style="display:inline-block; width:4em"></span>  Γ  ⊢  B </td>
+</tr>
+<tr><td align="center" style="width:100%">Γ  ⊢ A ∧ B</td></tr>
+</tbody></table>
+
+<p>Logic is <strong>formal</strong>: a machine can handle the manipulation of these symbols and rules.</p>
+<hr>
+<ul>
+<li><p><code>&amp;Gamma;  &amp;#x22a2; A &amp;and; B</code></p>
+</li>
+<li><p>From assumptions G, I try to prove A and B</p>
+</li>
+<li><p>Not enough time to talk about logic much, but this is an attempt to give you a brief intro</p>
+</li>
+<li><p>A bit like calculators, but for the rules of thought</p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>Limits of computation (4)</h1><p>One of the very interesting results of computer science is:</p>
+<p><strong>Theorem</strong> It is impossible to write a program G(p,n) which, when given an arbitrary program p, and an input number n, can figure out whether the program p terminates on input n.</p>
+<p>Termination is just one very simple property; effectively this theorem says that for any (non-trivial) property you like, constructing G is impossible.</p>
+</div></div></div><div style="display:none"><div><div><h1>Limits of computation (3)</h1><ul>
+<li>Think of a (smallish) number "n" (which is the "input")</li>
+<li>If it is even, divide by 2. If it is odd, multiply by 3 and add 1.</li>
+<li>If n is 1, stop. Otherwise repeat previous step (possibly forever).</li>
+</ul>
+<pre><code>n = 5                       // this is just an example
+while(not(n = 1)) {
+  if(even(n)) then { n=n/2 } else { n=n*3+1 }
+}
+</code></pre><p>For input <code>n=5</code>, this terminates. What about <code>n=3</code>? What about arbitrary n? Does the code terminate for all inputs? Or is it possible that n "keeps getting larger" over time? Or perhaps n "gets stuck in a loop" somehow? <span style="position:absolute; right:0">||</span></p>
+<p><a href="https://en.wikipedia.org/wiki/Collatz_conjecture">https://en.wikipedia.org/wiki/Collatz_conjecture</a></p>
+<hr>
+<ul>
+<li>Example: </li>
+</ul>
+<p>8 4 2 1</p>
+<p>5 16</p>
+<p>3 10 5 ...</p>
+<p>Mathematicians have tested this for very many numbers. Eventually you always get back to 1. No-one knows why</p>
+</div></div></div><div style="display:none"><div><div><h1>Limits of computation (2)</h1><p>More code:</p>
+<pre><code>10: print("tom is great")
+20: goto 10
+</code></pre><p>Does this terminate?</p>
+</div></div></div><div style="display:none"><div><div><h1>Limits of computation</h1><p>Here is some code:</p>
+<pre><code>for(i = 1 to 10) {
+  print("hello");
+}
+</code></pre><p>Does this terminate (ie, does it ever finish printing "hello")?</p>
+</div></div></div><div style="display:none"><div><div><h1>From A.I. to the "limits of computation"</h1><p>Now I want to give a brief glimpse of the limits of computation, and some idea of what I am up to on the "frontier" of Computer Science.</p>
+</div></div></div><div style="display:none"><div><div><h1>A.I. (6)</h1><p>I was going to be a researcher in A.I. before I realized that it was unlikely we would make much progress towards general artificial intelligence.</p>
+<p>Now, I think it is more likely that in <strong>your lifetime</strong> we will begin to make <strong>some progress</strong> towards <strong>general</strong> artificial intelligence.</p>
+</div></div></div><div style="display:none"><div><div><h1>A.I. (5)</h1><p>Suppose we could build an A.I.; should we be worried?</p>
+<ul>
+<li><p>Is it likely that a super-intelligent A.I. would want to harm us or kill us? No. Murder typically requires motivation, which machines don't have.</p>
+</li>
+<li><p>You can ask the same question about super-intelligent aliens. <span style="position:absolute; right:0">||</span></p>
+</li>
+<li><p>Is it likely that super-intelligent A.I. will render humans redundant, so we could all just goof off all the time? </p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>But really, if you were a super-intelligent alien, would you spend enormous time travelling across the galaxy to eliminate a species of monkey that can barely understand how compound interest works? Would you travel to Australia to destroy an tiny ant-hill full of ants somewhere in the outback? No. Because it is totally irrelevant to your aims.</p>
+</li>
+<li><p>Well, we have some pretty super intelligent humans, and last thing I checked I was still being required to go to work every day (weekends excepted).</p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>A.I. (4)</h1><p>The truth about A.I., IMHO:</p>
+<ul>
+<li>Researchers have no idea how the brain does what it does</li>
+<li>In terms of building a general artificial intelligence, we are nowhere: we don't even have any idea what this would actually mean</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>A.I. (3)</h1><ul>
+<li><p>So in selected areas, A.I. performs well, and can remove the need for humans. </p>
+</li>
+<li><p>It is extremely likely that this trend will continue.</p>
+</li>
+</ul>
+<p><a href="http://www.bbc.co.uk/news/technology-33327659">The jobs robots will steal first</a></p>
+<p><a href="http://uk.businessinsider.com/experts-predict-that-one-third-of-jobs-will-be-replaced-by-robots-2015-5?r=US&amp;IR=T">Experts predict robots will take over 30% of our jobs by 2025</a></p>
+<p>However, it is important to understand what this means: </p>
+<ul>
+<li>Quite a few of the jobs that we currently do will disappear, or be done by machines. </li>
+<li>And new jobs will take their place.</li>
+<li>A more interesting question: what will the new jobs be like? </li>
+</ul>
+<hr>
+<ul>
+<li><p>remove need for humans: not completely true: books are translated by humans; </p>
+</li>
+<li><p>After all, we have seen incredible technology advances in the last 100 years, and arguably we are working longer hours than ever before (and the employment rate in the UK is about the lowest it has ever been).</p>
+</li>
+<li><p>People (usually women) used to spend most of their time cooking and washing clothes.</p>
+</li>
+<li><p>There is some evidence from advanced economies (UK, USA) that there is a "hollowing out of the middle" (removal of middle-class jobs), which combines with wage pressure at the bottom resulting from globalization. At the top things are still fine-ish. But one possible scenario is that the hollowing out causes a decline in economic activity (long-term stagnation) which ultimately affects companies because they can't sell their products anymore.</p>
+</li>
+<li><p>High street: pound shops, coffee shops, chicken shops etc.</p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>A.I. (2)</h1><p>It is clear that vast computational power can achieve impressive things:</p>
+<ul>
+<li>Game playing (chess etc.)</li>
+<li>Speech recognition </li>
+<li>Text translation between languages </li>
+<li>Simulating artistic styles <a href="https://deepart.io/">https://deepart.io</a></li>
+</ul>
+<p>But it is important to realize that these have been "solved" using very restrictive methods that do not generalize.</p>
+</div></div></div><div style="display:none"><div><div><h1>Artificial intelligence</h1><p><a href="http://www.slate.com/articles/technology/future_tense/2016/04/the_threats_that_artificial_intelligence_researchers_actually_worry_about.html">slate article</a>:</p>
+<p><em>In 2012 Vincent Müller and Nick Bostrom of the University of Oxford asked 550 A.I. experts how soon we should expect “high-level machine intelligence,” defined as one that can carry out most human professions at least as well as a typical human. The median estimate for a 10-percent likelihood was 2022, 2040 for a 50-percent likelihood, and 2075 for a 90-percent likelihood.</em></p>
+<p>But see <a href="http://lesswrong.com/lw/e36/ai_timeline_predictions_are_we_getting_better/">http://lesswrong.com/lw/e36/ai_timeline_predictions_are_we_getting_better/</a></p>
+<ul>
+<li><em>There is little difference between experts and non-experts.</em></li>
+<li><em>There is little difference between current predictions, and those known to have been wrong previously.</em></li>
+<li><em>It is not unlikely that recent predictions are suffering from the same biases and errors as their predecessors.</em></li>
+</ul>
+<hr>
+<ul>
+<li><p>Look at the question: Most human professions at least as well as a typical human...</p>
+</li>
+<li><p>nuclear fusion: 30 years; Naysayers love to claim that nuclear fusion is always decades away — and always will be — but the reality is we’ve moved ever closer to the </p>
+</li>
+<li><p>Why might AI researchers predict that there will soon be an AI breakthrough?</p>
+</li>
+<li><p>Of course, it presumably will happen at some point, but </p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>Recent state of the art</h1><p>Current reality more like:</p>
+<p><iframe width="560" height="315" src="./2016-10-12_uppingham_files/VTlV0Y5yAww.html" frameborder="0" allowfullscreen=""></iframe>
+<!-- https://www.youtube.com/watch?v=VTlV0Y5yAww --></p>
+<p>OK, so let's talk about A.I. for a bit...</p>
+</div></div></div><div style="display:none"><div><div><h1>Future news</h1><p>Fear the singularity:</p>
+<p><a href="https://en.wikipedia.org/wiki/Technological_singularity">https://en.wikipedia.org/wiki/Technological_singularity</a></p>
+<p>A.I. will destroy us:</p>
+<p><a href="https://www.youtube.com/watch?v=mXjCXGJDP8Q">https://www.youtube.com/watch?v=mXjCXGJDP8Q</a>  (about 45s in; also 3:05 onwards)</p>
+<iframe width="560" height="315" src="./2016-10-12_uppingham_files/mXjCXGJDP8Q.html" frameborder="0" allowfullscreen=""></iframe>
+
+<hr>
+<ul>
+<li><p>as computers increase in power, it becomes possible for people to build a machine that is more intelligent than humanity; this superhuman intelligence possesses greater problem-solving and inventive skills than current humans are capable of. This superintelligent machine then designs an even more capable machine, or re-writes its own software to become even more intelligent; this (ever more capable) machine then goes on to design a machine of yet greater capability, and so on. These iterations of recursive self-improvement accelerate, allowing enormous qualitative change before any upper limits imposed by the laws of physics or theoretical computation set in</p>
+</li>
+<li><p>Ray Kurzweil predicts the singularity to occur around 2045[7] whereas Vinge predicts some time before 2030.</p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>This is the news (4; human failure)</h1><p>Knight Capital Group:</p>
+<p><a href="https://en.wikipedia.org/wiki/Knight_Capital_Group#2012_stock_trading_disruption">https://en.wikipedia.org/wiki/Knight_Capital_Group#2012_stock_trading_disruption</a></p>
+<p>Investors in "The DAO" lose 1/3 of their funds ($50M, from $150M total; cryptocurrency):  <span style="position:absolute; right:0">||</span></p>
+<p><a href="https://www.wired.com/2016/06/50-million-hack-just-showed-dao-human/">https://www.wired.com/2016/06/50-million-hack-just-showed-dao-human/</a></p>
+<hr>
+<ul>
+<li><p>On August 1, 2012, Knight Capital deployed untested software to a production environment which contained an obsolete function. </p>
+</li>
+<li><p>When released into production, Knight's trading activities caused a major disruption in the prices of 148 companies listed at the New York Stock Exchange, thus, for example, shares of Wizzard Software Corporation went from $3.50 to $14.76. For the 212 incoming parent orders that were processed by the defective Power Peg code, Knight Capital sent millions of child orders, resulting in 4 million executions in 154 stocks for more than 397 million shares in approximately 45 minutes.[13] Knight Capital took a pre-tax loss of $440 million. This caused Knight Capital's stock price to collapse, sending shares lower by over 70% from before the announcement. The nature of the Knight Capital's unusual trading activity was described as a "technology breakdown".</p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>This is the news (3; project failure)</h1><p>Universal credit (initial cost estimate £2billion; current estimate £16billion):</p>
+<p><a href="https://en.wikipedia.org/wiki/Universal_Credit#Costs">https://en.wikipedia.org/wiki/Universal_Credit#Costs</a> (and later section "IT problems")</p>
+<p>NHS IT systems, project abandoned (current cost £10billion, but will rise): </p>
+<p><a href="https://www.theguardian.com/society/2013/sep/18/nhs-records-system-10bn">https://www.theguardian.com/society/2013/sep/18/nhs-records-system-10bn</a></p>
+<hr>
+<ul>
+<li><p>the message is: we don't know how to build these systems</p>
+</li>
+<li><p><code>16*10^9 / 200 * 10^3</code> = roughly <code>10^5</code> per person actually being paid benefits via the system (with many also partially paid using the old system as well).</p>
+</li>
+<li><p>Jobseekers allowance is &lt; 5billion a year</p>
+</li>
+<li><p>Universal Credit has been dogged by IT problems. A DWP whistleblower told Channel 4's Dispatches in 2014 that the computer system was "completely unworkable", "badly designed" and "out of date".[48] A survey of Universal Credit staff found that 90% considered the IT system inadequate.[49]</p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>This is the news (2; security)</h1><p>Yahoo loses 500M passwords: </p>
+<p><a href="https://www.theguardian.com/technology/2016/sep/23/yahoo-questinos-hack-researchers">https://www.theguardian.com/technology/2016/sep/23/yahoo-questinos-hack-researchers</a></p>
+<p>Russian hackers influence US election: </p>
+<p><a href="https://www.rt.com/op-edge/362032-clinton-dnc-leak-russia/">https://www.rt.com/op-edge/362032-clinton-dnc-leak-russia/</a></p>
+<p>British universities targeted by ransomware: <span style="position:absolute; right:0">||</span></p>
+<p><a href="http://www.itpro.co.uk/security/27137/british-universities-targeted-by-ransomware">http://www.itpro.co.uk/security/27137/british-universities-targeted-by-ransomware</a></p>
+<p>Apple Watch banned from UK cabinet meetings over Russian hacking fears:</p>
+<p><a href="http://www.theverge.com/2016/10/10/13224968/apple-watch-banned-uk-australia-hacking">http://www.theverge.com/2016/10/10/13224968/apple-watch-banned-uk-australia-hacking</a></p>
+<hr>
+<ul>
+<li><p>explain what ransomware is!</p>
+</li>
+<li><p>the message is: security is extremely hard</p>
+</li>
+</ul>
+</div></div></div><div style="display:none"><div><div><h1>This is the news</h1><p>We live in interesting times...</p>
+<p>A shameless crowd pleaser</p>
+<iframe width="560" height="315" src="./2016-10-12_uppingham_files/faAg3YXpmBI.html" frameborder="0" allowfullscreen=""></iframe>
+
+<p>If you haven't watched this series already - just do it!</p>
+</div></div></div><div style="display:none"><div><div><h1>Reasons to be cheerful</h1><p>There are lots of reasons to be cheerful!</p>
+<ul>
+<li>Fast computers! But see <a href="https://bertrandmeyer.com/wp-content/upLoads/intel-500x343.jpg">https://bertrandmeyer.com/wp-content/upLoads/intel-500x343.jpg</a> </li>
+<li>The internet!</li>
+<li>Smartphones!</li>
+<li>Self-driving cars!</li>
+<li>A.I. which is better than humans (chess, go etc.)!</li>
+</ul>
+<hr>
+<ul>
+<li>(Fast computers) Processors aren't getting faster (since 2005)</li>
+<li>(The internet) Internet security</li>
+<li>(Smartphones) Smartphone security</li>
+<li>(Self-driving cars) Car computer systems hacked repeatedly (car security)</li>
+<li>(AI) AI robots want to kill you (or take your job, or your wife, or something)</li>
+<li>(Every large company) Google etc. are not paying their taxes</li>
+<li>[I can keep going on this theme forever]</li>
+</ul>
+<p>So clearly there are problems with security, which I may get to in a bit. But first, I want to discuss...</p>
+</div></div></div><div style="display:none"><div><div><h1>Outline</h1><p>Outline of talk:</p>
+<ul>
+<li>Reasons to be cheerful</li>
+<li>This is the news</li>
+<li>A.I.</li>
+<li>Limits of computation</li>
+<li>Computer-assisted reasoning</li>
+<li>Question time</li>
+</ul>
+<hr>
+<ul>
+<li>What is the problem?</li>
+<li>A bit of my story</li>
+<li>The story of maths, from Euclid</li>
+<li>Logic and proof</li>
+<li>Where are we today?</li>
+<li>The amazing things that are just round the corner</li>
+</ul>
+</div></div></div><div style="display:block"><div><div><h1>Artificial intelligence and the frontiers of Computer Science</h1><style>
+body {
+  _background-image: url("http://mbmwebsites.com/sitebuilder/images/gradient27182454-988x441.png");
+  color: ivory;
+  padding:1em;
+
+
+
+background: #000428; /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #000428 , #004e92); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #000428 , #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+h1 {
+  color: ivory;
+}
+a {
+  color: MediumSlateBlue;
+}
+
+textarea,input {
+  background:transparent;
+  _color: black;
+}
+
+hr + ul {
+  margin-top:20em;
+  ignorebackground-color: yellow; /* but we want the follow elt */
+}
+</style>
+
+<center>
+<table>
+<tbody><tr style="text-align:right">
+<td>
+Tom Ridge, University of Leicester<br><br>
+Talk at Uppingham School<br><br>
+2016-10-12
+</td>
+<td style="width:3em"></td>
+<td>
+<img style="width:7em" src="./2016-10-12_uppingham_files/torso.jpg">
+</td>
+</tr>
+</tbody></table>
+</center>
+
+<p><em>Note: press "1", "p" and "n" to navigate the slides</em></p>
+</div></div></div></div></td></tr></table></div>
+    
+
+  
+
+</body></html>

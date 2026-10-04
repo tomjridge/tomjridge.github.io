@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Tom Ridge" />
+  <title>SibylFS: formal specification and oracle-based testing for POSIX and real-world filesystems</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="my.css" />
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">SibylFS: formal specification and oracle-based testing<br/> for POSIX and real-world filesystems<br/></h1>
+  <p class="author">
+Tom Ridge
+  </p>
+  <p class="date">2015-04-21<br/><span class="halfsize">(with Thomas Tuerk, David Sheets, Andrea Giugliano, Anil Madhavapeddy, Peter Sewell; talk at Cambridge REMS meeting; 20 mins talk+10 mins qus)</span></p>
+</div>
+<div class="slide section level2">
+
+<style type="text/css">p {margin-left: 0em; } h1 {color:#000080}</style>
+<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+<!-- <link href='http://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'> -->
+<p><link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'> <!-- <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'> --> <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'></p>
+</div>
+<div id="overview" class="titleslide slide section level1"><h1>Overview</h1></div><div id="what-have-we-done" class="slide section level2">
+<h1>What have we done?</h1>
+<ul>
+<li><p>A formal specification of filesystem behaviour (POSIX, Linux and Mac)</p></li>
+<li><p>A test oracle (based directly on the spec) that can determine whether an observed trace of a real-world system conforms to the spec <!--    * why test? we want to validate the spec; we want to check real-world systems --></p></li>
+<li><p>An extensive test suite of &gt;20k scripts, and the results of running those tests on about 40 different combinations of libc+OS+filesystem</p></li>
+</ul>
+<!--  * Think: formal spec+test infrastructure -->
+</div><div id="how-does-everything-fit-together" class="slide section level2">
+<h1>How does everything fit together?</h1>
+<ul>
+<li>Next few slides show the system structure, with excerpts from the main files involved</li>
+</ul>
+</div><div id="system-structure" class="slide section level2">
+<h1>System structure</h1>
+<center>
+<img src="pics/systemstructure.png" />
+</center>
+<ul>
+<li><p><em>Test scripts</em> mostly generated automatically, with additional hand-written scripts</p></li>
+<li><p>Test scripts are fed to a <em>test executor</em> which executes the scripts on a real-world libc+OS+filesystem stack</p></li>
+<li><p>Results are recorded as <em>traces</em></p></li>
+<li><p>Traces are checked by SibylFS (the spec) to determine whether they represent allowable behaviour or not; the output is in the form of a <em>checked trace</em></p></li>
+</ul>
+</div><div id="example-test-script" class="slide section level2">
+<h1>Example test script</h1>
+<p>A test script is essentially a list of libc calls to execute on a real-world system</p>
+<pre><code> @type script
+ #####################################
+ # Test link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4
+ #####################################
+ mkdir &quot;empty_dir1&quot; 0o777
+ mkdir &quot;empty_dir2&quot; 0o777
+ mkdir &quot;nonempty_dir1&quot; 0o777
+ mkdir &quot;nonempty_dir1/d2&quot; 0o777
+ open &quot;nonempty_dir1/d2/f3.txt&quot; [O_CREAT;O_WRONLY] 0o666
+ write! (FD 3) &quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc&quot; 83
+ close (FD 3)
+ ... // further setup commands
+ link &quot;nonempty_dir1/d2/sl_dotdot_d2&quot; &quot;nonempty_dir1/nonexist_4&quot;
+ ...</code></pre>
+</div><div id="example-trace-behaviour-of-real-world-system" class="slide section level2">
+<h1>Example trace (behaviour of real-world system)</h1>
+<p>A trace records the libc calls from the test script, and the responses received from the real-world system</p>
+<pre><code># processing file &#39;link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4-int.trace&#39; ...
+        @type trace
+        #####################################
+        # Test link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4
+        #####################################
+     5: mkdir &quot;empty_dir1&quot; 0o777
+        Tau
+        RV_none
+     6: mkdir &quot;empty_dir2&quot; 0o777
+        Tau
+        RV_none
+     7: mkdir &quot;nonempty_dir1&quot; 0o777
+        Tau
+        RV_none
+     8: mkdir &quot;nonempty_dir1/d2&quot; 0o777
+        Tau
+        RV_none
+     9: open &quot;nonempty_dir1/d2/f3.txt&quot; [O_CREAT;O_WRONLY] 0o666
+        Tau
+        RV_num(3)
+    10: write! (FD 3) &quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc&quot; 83
+        Tau
+        RV_num(83)
+
+...
+
+    28: link &quot;nonempty_dir1/d2/sl_dotdot_d2&quot; &quot;nonempty_dir1/nonexist_4&quot;
+        Tau
+        RV_none
+
+...</code></pre>
+</div><div id="example-checked-trace" class="slide section level2">
+<h1>Example checked trace</h1>
+<ul>
+<li>See e.g. <a hrefbroken="fs_resources/2015-04-21_cambridge/link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4-int.trace.html">here (local)</a> or <a href="http://fs.dsheets.name/2015-03-15_linux_ext+hfsplus+tmpfs/html/suite/link/test/link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4-int.trace/index.html">here (online)</a> BROKEN LINK </li>
+</ul>
+</div>
+<div id="the-specification" class="titleslide slide section level1"><h1>The specification</h1></div><div id="the-specification-1" class="slide section level2">
+<h1>The specification</h1>
+<ul>
+<li><p>A specification of the behaviour of libc+OS+filesystem, i.e., the behaviour a user process (application) sees when linked to libc</p></li>
+<li><p>Written in Lem; available in HOL4, Isabelle/HOL and OCaml; about 6k lines of Lem/HOL for the specification (approx 2.5 person-years of work for spec; 0.5-1 year for test infrastructure)</p></li>
+<li><p>Form: labelled transition system (see next slide)</p></li>
+<li>3 main variants for POSIX, Linux and Mac
+<ul>
+<li>for POSIX, a spec of allowable behaviours</li>
+<li>for Linux and Mac, a spec of existing real-world behaviours (with some looseness)</li>
+<li>the parts of the spec that are Linux/Mac weird behaviours are clearly identifiable</li>
+</ul></li>
+</ul>
+<!--  * Structured using "traits" 
+    * a core spec, on top of which you can choose either (or both) of: perms, time
+    * nobody likes complicated specs: traits mean you can get the simplest spec for your use case-->
+<p><span class="halfsize">HTML version of main file <a href="t_fs_spec.lem_cppo.html">here</a></span></p>
+</div><div id="form-of-the-specification-lts" class="slide section level2">
+<h1>Form of the specification: LTS</h1>
+<ul>
+<li><p>A labelled transition system (LTS): for states <span class="math">\(s,s&#39;\)</span> and label <span class="math">\(lbl\)</span>, the spec tells you when <span class="math">\(s \overset{lbl}\rightarrow s&#39;\)</span></p></li>
+<li>What are the labels? (Labels correspond to the events we are interested in)
+<ul>
+<li>Interactions between a user process and the libc+OS+filesystem stack at the libc interface (<code>rename p1 p2</code> etc)</li>
+<li>Process creation and destruction</li>
+<li>Tau events (e.g. internal OS processing)</li>
+</ul></li>
+</ul>
+<center>
+<img src="pics/where_to_cut.png" />
+</center>
+<pre class="sourceCode ocaml"><code class="sourceCode ocaml">  <span class="kw">type</span> os_label =  
+    | <span class="dt">OS_CALL</span> <span class="kw">of</span> (ty_pid * ty_os_command)
+    | <span class="dt">OS_RETURN</span> <span class="kw">of</span> (ty_pid * error_or_value ret_value)
+    | <span class="dt">OS_CREATE</span> <span class="kw">of</span> (ty_pid * uid * gid)
+    | <span class="dt">OS_DESTROY</span> <span class="kw">of</span> ty_pid
+    | <span class="dt">OS_TAU</span></code></pre>
+<ul>
+<li><p>We specify the behaviour of the stack under any sequence of labels; multiple processes can execute concurrently, calls can overlap in time</p></li>
+<li><p>What are the libc calls we handle? No memory-mapped files, no *-at forms of libc calls, no &quot;filesystem out of space&quot; errors, but mostly everything else related to files:</p></li>
+</ul>
+<pre class="sourceCode ocaml"><code class="sourceCode ocaml">  <span class="kw">type</span> ty_os_command = 
+    | <span class="dt">OS_CLOSE</span> <span class="kw">of</span> ty_fd                                         <span class="co">(* per-process file descriptors *)</span>
+    | <span class="dt">OS_LINK</span> <span class="kw">of</span> (cstring * cstring)                            <span class="co">(* hard links *)</span>
+    | <span class="dt">OS_MKDIR</span> <span class="kw">of</span> (cstring * file_perm)                         <span class="co">(* cstring can include null *)</span>
+    | <span class="dt">OS_OPEN</span> <span class="kw">of</span> (cstring * int_open_flags * maybe file_perm)   <span class="co">(* open flags as fixed-width int, platform specific encoding *)</span>
+    | <span class="dt">OS_PREAD</span> <span class="kw">of</span> (ty_fd * size_t * off_t) 
+    | <span class="dt">OS_READ</span> <span class="kw">of</span> (ty_fd * size_t) 
+    | <span class="dt">OS_READDIR</span> <span class="kw">of</span> ty_dh
+    | <span class="dt">OS_OPENDIR</span> <span class="kw">of</span> cstring
+    | <span class="dt">OS_REWINDDIR</span> <span class="kw">of</span> ty_dh
+    | <span class="dt">OS_CLOSEDIR</span> <span class="kw">of</span> ty_dh
+    | <span class="dt">OS_READLINK</span> <span class="kw">of</span> cstring                                    <span class="co">(* symlinks *)</span>
+    | <span class="dt">OS_RENAME</span> <span class="kw">of</span> (cstring * cstring)
+    | <span class="dt">OS_RMDIR</span> <span class="kw">of</span> cstring
+    | <span class="dt">OS_STAT</span> <span class="kw">of</span> cstring
+    | <span class="dt">OS_LSTAT</span> <span class="kw">of</span> cstring
+    | <span class="dt">OS_SYMLINK</span> <span class="kw">of</span> (cstring * cstring) 
+    | <span class="dt">OS_TRUNCATE</span> <span class="kw">of</span> (cstring * off_t)
+    | <span class="dt">OS_UNLINK</span> <span class="kw">of</span> cstring
+    | <span class="dt">OS_PWRITE</span> <span class="kw">of</span> (ty_fd * ty_bytes * size_t * off_t)
+    | <span class="dt">OS_WRITE</span> <span class="kw">of</span> (ty_fd * ty_bytes * size_t) 
+    | <span class="dt">OS_UMASK</span> <span class="kw">of</span> file_perm                                     <span class="co">(* permissions *)</span> 
+    | <span class="dt">OS_CHMOD</span> <span class="kw">of</span> (cstring * file_perm)
+    | <span class="dt">OS_CHOWN</span> <span class="kw">of</span> (cstring * uid * gid)                         <span class="co">(* users, groups *)</span>
+    | <span class="dt">OS_CHDIR</span> <span class="kw">of</span> cstring                                       <span class="co">(* model of per-process state *)</span>
+    | <span class="dt">OS_LSEEK</span> <span class="kw">of</span> (ty_fd * off_t * int_seek_command)
+    | ...</code></pre>
+</div><div id="the-main-challenges-when-writing-the-spec" class="slide section level2">
+<h1>The main challenges when writing the spec</h1>
+<ul>
+<li><p>Interpreting POSIX</p></li>
+<li><p>Writing the spec so that it can be used to efficiently check real-world traces of behaviour (the problem is nondeterminism and state space explosion)</p></li>
+<li><p>Dealing with the complexity of observed real-world behaviour</p></li>
+</ul>
+</div><div id="the-complexity-of-real-world-behaviour" class="slide section level2">
+<h1>The complexity of real-world behaviour</h1>
+<ul>
+<li><p>A scenario: 18 months into the project, the POSIX and Linux variants of the spec were mostly complete; we wanted to extend the spec to cover Mac</p></li>
+<li><p>We ran the existing test scripts on Mac and checked them using the initial version of the Mac spec, derived from POSIX</p></li>
+<li><p><code>&gt;</code>20k test scripts; of the resulting traces, thousands failed to check (&gt;5000 for <code>open</code> alone)</p></li>
+<li><p>These failing traces have to be examined and the spec updated so that the spec behaviour matches the real-world behaviour</p></li>
+</ul>
+<!--  * Similar to: given the language accepted by a finite nondet automaton, what is the structure of the automaton? -->
+<ul>
+<li>We need to:
+<ul>
+<li>figure out why the traces are failing</li>
+<li>figure out what changes are needed to the spec; the changes should preserve the structure, readability and concision of the spec</li>
+</ul></li>
+<li><p>To update the spec for <code>open</code> on the Mac took about 1.5 months</p></li>
+<li><p>This is all very painful and takes a long time, but it only has to be done once, then everyone can benefit</p></li>
+<li><p>What helped: modularity; we tried to make the spec as modular as possible, with each component having a clearly defined role, with clearly defined interfaces etc.</p></li>
+</ul>
+<!-- ## Modularity in the spec
+
+  * Large-scale structure via modules:
+
+<center>
+<image style='width:40%' src='pics/drawing.png'></image>
+</center>
+
+  * Typical advantage of isolating e.g. path resolution: the inputs and outputs to path resolution are specified clearly and precisely
+
+~~~{.ocaml}
+type res_name 'dir_ref 'file_ref  = 
+    RN_dir of ('dir_ref * ty_realpath_rec 'dir_ref ) 
+  | RN_file of ('dir_ref * name * 'file_ref * ty_realpath_rec 'dir_ref)
+  | RN_none of ('dir_ref * name * ty_realpath_rec 'dir_ref)
+  | RN_error of (error * rn_error_extra 'dir_ref 'file_ref) 
+
+val process_path : forall 'dir_ref 'file_ref 'impl.
+  environment 'dir_ref 'file_ref 'impl -> 
+  'impl -> 
+  'dir_ref -> ty_os_command -> cstring ->
+  res_name 'dir_ref 'file_ref
+~~~
+
+
+
+
+-->
+</div>
+<div id="testing" class="titleslide slide section level1"><h1>Testing</h1></div><div id="testing-1" class="slide section level2">
+<h1>Testing</h1>
+<ul>
+<li><p>The spec is reasonably large as a specification (c. 6000 lines); how can we gain confidence that it is correct?</p></li>
+<li><p>From the beginning we wanted to extensively validate the spec, by using it to check traces of real-world behaviour</p></li>
+<li><p>This form of testing also uncovers bugs in real-world systems</p></li>
+</ul>
+</div><div id="test-oracle-enables-combinatorial-testing" class="slide section level2">
+<h1>Test oracle enables combinatorial testing</h1>
+<!--  * The spec can be used directly as a test oracle: given a trace of
+    real-world behaviour it can determine whether that behaviour is
+    allowable or not  -->
+<ul>
+<li><p>Existing filesystem test suites hardcode the expected answers for a given libc call; practically, they tend to have a relatively small number of tests</p></li>
+<li><p>Our approach is different: a test script is just a sequence of libc calls (we don't need to say what should happen after each call - the spec already contains this knowledge)</p></li>
+<li><p>This enables randomized and combinatorial testing</p></li>
+<li><p>We try to exhaustively combinatorially test the libc interface using tests that are generated automatically</p></li>
+</ul>
+</div><div id="use-of-lts-for-testing-real-world-systems" class="slide section level2">
+<h1>Use of LTS for testing real-world systems</h1>
+<ul>
+<li><p>The spec defines those sequences of transitions <span class="math">\(s_0 \overset{lbl_1}\rightarrow s_1 \overset{lbl_2}\rightarrow s_2 \ldots\)</span> that are allowable</p></li>
+<li>A trace is a sequence of labels <span class="math">\(lbl_1,lbl_2,\ldots\)</span>
+<ul>
+<li>the trace from earlier is <a hrefbroken="fs_resources/2015-04-21_cambridge/link___link_nonempty_dir1__d2__sl_dotdot_d2___nonempty_dir1__nonexist_4-int.trace.html">here</a> BROKEN!; for this trace, labels are printed in a &quot;concrete&quot; form (e.g. <code>OS_CALL</code> and <code>OS_RETURN</code> constructors are omitted, pids are omitted if there is only one pid involved)</li>
+</ul></li>
+<li>To check the trace, we need to determine whether whether there exists a sequence <span class="math">\(s_0 \overset{lbl_1}\rightarrow s_1 \overset{lbl_2}\rightarrow s_2 \ldots\)</span>
+<ul>
+<li><span class="math">\(s_0\)</span> is given, and corresponds to an empty filesystem; the spec needs to determine whether any such <span class="math">\(s_1,\ldots\)</span> exist</li>
+</ul></li>
+<li>Note that the states are effectively abstract: you give me a sequence of <strong><em>labels</em></strong>, and I tell you whether they represent allowable behaviour or not
+<ul>
+<li>we treat the libc+OS+filesystem stack as a black box: we can't observe the state, only the interactions at the libc interface</li>
+</ul></li>
+</ul>
+</div><div id="difficulty-of-lts-trace-checking" class="slide section level2">
+<h1>Difficulty of LTS trace checking</h1>
+<ul>
+<li><p>NetSem gave a specification of UDP and TCP/IP as an LTS which was then used as a test oracle; our approach is broadly based on the NetSem approach</p></li>
+<li><p>NetSem took 2500 CPU-hours to check 1000 traces; this is at the limit of practicality; the cost of checking made it very difficult to update and revise the spec</p></li>
+<li><p>Checking a trace against an LTS is a very general problem which I think deserves a bit more attention</p></li>
+<li>Things that make it difficult:
+<ul>
+<li>the trace may include only partial information about states (NetSem), or even no information at all (SibylFS)</li>
+<li>some events (e.g. Tau events) may not be observable; NetSem had to resort to backtracking search in an attempt to insert such events at various places in the trace</li>
+<li>nondeterminism results in state space explosion if not handled carefully</li>
+</ul></li>
+<li><p>The SibylFS spec was designed from the start for efficient trace checking: checking &gt;20k tests on a 4-core i7 takes about 79s (it takes 152s to execute the tests on an in-memory tmpfs filesystem)</p></li>
+<li><p>Our testing involves a very large number of test scripts; checking is extremely fast; indeed SibylFS is fast enough that it could be used to check behaviour &quot;online&quot;</p></li>
+</ul>
+</div><div id="test-results-stats" class="slide section level2">
+<h1>Test results, stats</h1>
+<ul>
+<li>Trace acceptance
+<ul>
+<li>Linux: 21061 accepted by spec; 9 rejected (21070 total)</li>
+<li>Mac: 21036 accepted by spec, 34 rejected (21070 total)</li>
+<li>essentially no barrier to getting 100% trace acceptance</li>
+</ul></li>
+<li>Coverage: &gt;98% (of the spec)
+<ul>
+<li>by way of comparison, a paper (Groce et al., 2007, &quot;Randomized differential testing...&quot;) from NASA scientists that applied randomized testing to a model of a filesystem achieved 89% coverage</li>
+</ul></li>
+</ul>
+</div><div id="test-results-strange-behaviours" class="slide section level2">
+<h1>Test results, strange behaviours</h1>
+<ul>
+<li><p>Error codes are quite often non-POSIX</p></li>
+<li><p>Path resolution, particularly when a trailing slash is involved, is variable, non-POSIX</p></li>
+<li><p>Treatment of paths referencing symlinks, particularly when the path ends in a trailing slash, is highly variable</p></li>
+<li><p>Various overlay filesystems, and FUSE filesystems, mess up things like permissions</p></li>
+<li><p>More serious: posixovl/VFAT (posix emulation on top of VFAT) gets link count wrong when rename overwrites a file that is linked elsewhere; possible to get to a state where the filesystem contains no files, but there is no free space (space leak)</p></li>
+<li><p>OpenZFS on Linux 3.13.0-34 (Ubuntu Trusty): files opened with <code>O_APPEND</code> would not seek to the end of the file before <code>write</code> or <code>pwrite</code> (probably causing applications that use this functionality to fail)</p></li>
+<li><p>OpenZFS on OS/X: possible to execute a sequence of calls which leads to the calling process hanging using 100% CPU, unresponsive to signals; volume cannot be unmounted, machine cannot be shut down; force unmounting may cause storage device to become unusable until next system restart</p></li>
+<li><p>Permissions: the Linux implementation of permissions should give the same behaviour from one kernel version to the next; however, we found test scripts involving file and directory access that failed on Linux kernel 3.13 and succeeded on 3.14 which we believe is due to a buggy 3.13 implementation of permissions in edge cases</p></li>
+</ul>
+</div><div id="testing-summary" class="slide section level2">
+<h1>Testing summary</h1>
+<ul>
+<li><p>Huge number of tests, mostly automatically generated; tested on a large number of stacks</p></li>
+<li><p>SibylFS is very efficient at checking tests</p></li>
+<li><p>Excellent trace acceptance and coverage figures</p></li>
+<li><p>In edge cases there are numerous differences between POSIX, Linux and Mac; most are not very interesting, but the spec gives a complete description of them; the testing even uncovered some relatively serious bugs (which we didn't expect)</p></li>
+<li><p>The real result of testing is that we have confidence in the spec</p></li>
+</ul>
+</div>
+<div id="conclusion" class="titleslide slide section level1"><h1>Conclusion</h1></div><div id="possible-uses-of-the-spec" class="slide section level2">
+<h1>Possible uses of the spec</h1>
+<ul>
+<li><p>Documentation (formal counterpart to POSIX)</p></li>
+<li><p>Testing existing/new filesystems (particularly non-traditional filesystems)</p></li>
+<li><p>Reference specification for verified filesystem implementations</p></li>
+<li><p>Reference model (e.g. for systems research - a lot of papers construct their own little models of parts of the filesystem)</p></li>
+<li><p>Basis for formal proof (Thomas Tuerk did some initial work on this in Isabelle/HOL) e.g. of properties of filesystems, or as a basis for soundness proofs of program logics etc.</p></li>
+<li><p>To provide a POSIX compatiblity layer e.g. on Windows, or non-traditional settings such as Mirage</p></li>
+<li><p>For analysis of applications: e.g. do any applications use libc calls in edge cases where the behaviour of Linux and Mac differs?</p></li>
+<li><p>For analysis of filesystems: e.g. do Linux and Mac behave the same when restricted to some subset of libc?</p></li>
+<li><p>To identify gaps in existing test suites</p></li>
+<li><p>etc</p></li>
+</ul>
+</div><div id="future-work" class="slide section level2">
+<h1>Future work</h1>
+<ul>
+<li><p><em>We need a new spec of timestamps to enable efficient checking.</em> <!-- Timestamps are specified
+    naively, but the huge nondeterminism means that testing takes a
+    long time; we need a using constraints to enable large-scale
+    testing; I know what to do here, but it will take a few months to
+    carry out --></p></li>
+<li><p><em>A spec of filesystem behaviour over system crashes is desirable</em>; a problem here is that it is not clear what this behaviour is; it seems at least possible that most filesystems can be trashed by crashing the recovery routine at key points (see Yang et al. &quot;Using model checking to find serious file system errors&quot;)</p></li>
+<li><p>A prerequisite for the crash spec is probably <em>a dependency model</em>: a model of which filesystem modifications can be carried out independently of others (optimizing filesystems presumably perform some of these optimizations, and the effects of these optimizations are likely visible after a crash); this would also help understand the space of optimizations that a filesystem might employ</p></li>
+<li><p><em>A verified implementation</em>; the problem here is that to do something that competes with the performance of current filesystems is a challenging multi-year project</p></li>
+</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_spec.Resolve</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_root_dir&nbsp;:&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.fs_ops&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;real_path_dir_ref&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.fs_ops&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;(<span class="keywordsign">'</span>dir_ref,&nbsp;<span class="keywordsign">'</span>file_ref)&nbsp;ty_resolve_relative_result&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">RR_dir</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="keywordsign">'</span>dir_ref<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RR_file</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="keywordsign">'</span>dir_ref&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name&nbsp;*&nbsp;<span class="keywordsign">'</span>file_ref)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RR_none</span>&nbsp;<span class="keyword">of</span>&nbsp;(<span class="keywordsign">'</span>dir_ref&nbsp;*&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RR_error</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.error&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>dir_ref,&nbsp;<span class="keywordsign">'</span>file_ref)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.ty_resolve_relative_result<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;option)<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ty_resolve_relative_result2res_name&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.fs_ops&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_name_list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.ty_resolve_relative_result&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.res_name<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;split_path_string&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_name_list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;follow_last_symlink&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_command&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_OS_READLINK&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_command&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;(<span class="keywordsign">'</span>dir_ref,&nbsp;<span class="keywordsign">'</span>file_ref,&nbsp;<span class="keywordsign">'</span>impl)&nbsp;rr_params&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rr_env&nbsp;:&nbsp;(<span class="keywordsign">'</span>dir_ref,&nbsp;<span class="keywordsign">'</span>file_ref,&nbsp;<span class="keywordsign">'</span>impl)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rr_s0&nbsp;:&nbsp;<span class="keywordsign">'</span>impl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rr_cmd&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_command;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;<span class="keywordsign">'</span>dir_ref&nbsp;rr_input&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rr_symlinks_so_far&nbsp;:&nbsp;int;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rr_so_far&nbsp;:&nbsp;<span class="keywordsign">'</span>dir_ref;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rr_ns&nbsp;:&nbsp;string&nbsp;list;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;(<span class="keywordsign">'</span>dir_ref,&nbsp;<span class="keywordsign">'</span>file_ref)&nbsp;rr_output&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">RR_inter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="keywordsign">'</span>dir_ref&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.rr_input<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RR_final</span>&nbsp;<span class="keyword">of</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>dir_ref,&nbsp;<span class="keywordsign">'</span>file_ref)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.ty_resolve_relative_result<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;rr_dot_dot&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.rr_params&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>d)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.rr_output<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;rr_symlink&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.rr_params&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.rr_output<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;alt_rr&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.rr_params&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.ty_resolve_relative_result<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;resolve_relative&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_command&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.name&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Resolve</span>.ty_resolve_relative_result<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;path_starts_with_exactly_two_slashes&nbsp;:&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.cstring&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;process_path&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_command&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.cstring&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.res_name<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;process_path_from_root&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b,&nbsp;<span class="keywordsign">'</span>c)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.environment&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>c&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.ty_os_command&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.cstring&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Fs_spec</span>.<span class="constructor">Fs_types</span>.res_name<br>
+<span class="keyword">end</span></code></body></html>

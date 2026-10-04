@@ -1,0 +1,31 @@
+body
+{
+  font-family: Helvetica, sans-serif; /* 'Amatic SC', cursive;*/ /* 'Open Sans', sans-serif;*/
+}
+
+
+code {
+    font-family: 'Inconsolata';
+    font-size: 100%;
+    font-weight:bold;
+}
+
+pre {
+    border-left-width:thin;
+    background-color:white;
+}
+
+h1 {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 180%;
+}
+
+h1.title {
+  font-family: Helvetica, sans-serif; /* 'Amatic SC', cursive;*/ /* 'Open Sans', sans-serif;*/    
+  font-weight:normal;
+}
+
+
+span.halfsize {
+    font-size: 75%;
+}

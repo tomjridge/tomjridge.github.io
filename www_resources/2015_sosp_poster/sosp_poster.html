@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+    <title>sibylfs.io</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    
+    <style type="text/css">
+      code{white-space: pre;}
+
+      p{-webkit-margin-before: 0em;}
+
+      li{margin:4pt}
+
+      .phead{font-weight:bold; -webkit-margin-after:0.4cm; width:100%; padding:0.4em; box-sizing: border-box; 
+        border-radius: 0.4em;
+        border: 2px solid;
+        }
+
+      ul{
+      -webkit-margin-before: 0.5em;
+      -webkit-margin-after: 0.5em;
+      padding:0.5em;
+      }
+
+      .mypanel{width:100%; padding:0.4em; box-sizing: border-box;
+        border-radius: 0.4em;
+        border: 2px solid;
+      }
+      
+      .vertical-space{height:2em; }
+
+      .figure{text-align:center; font-weight:bold;  text-indent:0; border:thin silver solid; }
+
+      .myemph{font-weight:bold; font-size:1.2em; }
+
+      body{color:black; } <!-- override bootstrap -->
+      
+      
+    </style>
+
+
+
+        </head>
+  <body>
+<div  style="width:794px; height:1122px; xbackground-color:black; font-size:10pt; font-family:Arial;">
+<div style="xbackground-color:white; xxx=xIvory; padding:0.5cm;   xbackground-image: url(./excerpt.png); xbackground-repeat: repeat-x; ">  <!-- page -->
+
+  <div style="width:100%; height:17em"> <!-- header -->
+    <!-- a -->
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            <span style='position:absolute; font-size:1.8em; '>http://</span>
+
+            <td>
+              <div style="font-family:Impact; font-size:8em;">sibylFS.io </div>
+            </td>
+            <td width='30em'></td>
+            <td style='width:0.2em; background-color:black;'></td>
+            <td width='30em'></td>
+            <td>
+              <div style="font-size:1.8em; font-family:'Oswald'; xtransform: rotate(-20deg);">
+                formal specification and oracle-based testing for POSIX-like file systems 
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="height:1em">
+      </div>
+      <div style="font-size:1.1em">
+        Tom Ridge, David Sheets, Thomas Tuerk, Andrea Giugliano, Anil Madhavapeddy and Peter Sewell <br/> University of Leicester: TR, AG(student); University of Cambridge: DS(student), AM, PS; FireEye: TT<br/>
+      </div>
+    </div>
+  </div> <!-- header -->
+
+  
+  <table> 
+    <tbody>
+      <tr>
+
+
+        <td valign=top width='49%'> <!-- col1 -->
+          
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Problem</h3>
+            </div>
+            <div class="panel-body">
+<!--              Informal specifications (POSIX, LSB, glibc, man pages...), source code (libc+variants, kernel+variants, file system+variants), test suites...<br/> 
+              <br/> -->
+              There is currently no good way to <span class='myemph'>systematically
+              describe, investigate</span> or <span class='myemph'>test</span> file
+              system behaviour, or <span class='myemph'>compare behaviours</span> across
+              platforms and file systems.
+            </div>
+          </div>
+
+          
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Impact: developer uncertainty</h3>
+            </div>
+            <div class="panel-body">
+
+              &#x27a4; <b>Common question</b> How to interpret
+              POSIX? <br/>
+
+              
+              &#x27a4; <b>Application developers</b> How does a
+              particular libc+OS+file system behave?
+              <!-- How does
+              behaviour vary across platforms? -->
+              What platform-specific behaviours should I worry about when porting apps?<br/>
+              
+              &#x27a4; <b>OS, libc and file system developers</b>
+
+              <!-- How is the file system supposed to behave? -->
+              
+              What do other OSes do here?
+
+              <!--
+              If I make a
+              bugfix, will I introduce bugs in other (untested)
+              scenarios? Have I thought about all the possibilities?
+              -->
+              <!--
+              If I port this file system to another operating system,
+              what are the quirks of the target OS that I need to take
+              into account? -->
+              
+              Is my bugfix correct for all possible scenarios?
+              
+              Does my testing cover all cases? 
+              <br/>
+              
+            </div>
+          </div>
+
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Solution: SibylFS</h3>
+            </div>
+            <div class="panel-body">
+              
+              &#10004; Model of <span class='myemph'>POSIX</span> and real-world file systems <br/>
+              &#10004; Real-world variants for <span class='myemph'>Linux, Mac, FreeBSD</span> <br/>
+              &#10004; Mathematically rigorous, precise, unambiguous, readable(ish), maintainable, comprehensive, detailed<br/>
+
+
+                    &#10004; Models non-determinism, envelope of behaviours<br/>
+<!--              &#10004; Formal (higher-order logic), mechanized (Lem, OCaml, Isabelle/HOL)<br/> -->
+              &#10004; Usable as a <span class='myemph'>test oracle</span><br/>
+
+
+                 <div style='height:0.5em'></div>
+  
+
+            </div>
+          </div>
+
+
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Model excerpt</h3>
+            </div>
+            <div class="panel-body">
+              
+              <div class='figure'>
+                <figure>
+                  <img width='100%' src='excerpt.png'></img>
+                </figure>
+              </div>
+  
+
+            </div>
+          </div>
+
+          
+
+        </div>
+      </div>          
+
+
+          
+    </td> <!-- col 1 -->
+
+    <td><span style='display:inline-block; width:2%;'></span></td>
+
+    <td valign=top width='49%' height=100%> <!-- col2 -->
+
+          
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">SibylFS as test oracle</h3>
+            </div>
+            <div class="panel-body">
+
+              <img width='100%' src='systemstructure.svg' style='padding:1em'></img>
+              <div style='height:0.5em'></div> 
+
+              &#10004; Handles all traces, <b>enables combinatorial testing</b><br/>
+                  &#10004; Extensive test-suite (based on formal properties and derived equivalence classes)<br/>
+                  &#10004; Comprehensible output (accept/reject with details)<br/>
+                  <pre>
+# Error:   6: EPERM
+#   unexpected results: EPERM
+#   allowed are only: EEXIST, ENOTEMPTY
+#   continuing with EEXIST, ENOTEMPTY</pre>
+              &#10004; HTML-based tools (multi-platform analysis at scale)<br/>
+              &#10004; Fast: &gt;21k tests run and checked in &lt;5mins<br/>
+              
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Test results</h3>
+            </div>
+            <div class="panel-body">
+              &#10004; &gt;40 different combinations of libc/OS/file system, representing &gt;800k test executions<br/>
+              
+              &#10004; Accurate model: trace acceptance &gt;99%<br/>
+              
+              &#10004; Good coverage: &gt;98% (of model)<br/>
+              
+              &#10004; Platform variations analysed, documented<br/>
+              
+              &#10004; Bugs found: in POSIX spec and file system/OS implementations (a few serious)<br/>
+              
+<!--              <b>Analysis:</b> a lot of variation (error codes, path resolution, trailing slashes); no show-stoppers on common platforms<br/> -->
+              
+            </div>
+          </div>
+
+
+          
+          <div class="panel panel-primary" style='margin-bottom:5px'>
+            <div class="panel-heading">
+              <h3 class="panel-title">Pain points</h3>
+            </div>
+            <div class="panel-body">
+              &#x27a4; Interpreting POSIX and other documentation<br/>
+
+
+              &#x27a4; <b>Analysing tens of thousands of traces manually</b><br/>
+
+
+              &#x27a4; Constructing model to match real-world behaviours<br/>
+
+              
+              &#x27a4; Testing with equivalence classes: manually identifying <!-- &quot;null sets&quot; --> non-satisfiable combinations of properties<br/>
+
+              
+
+              
+            </div>
+          </div>
+
+
+
+          <!-- <div class="panel panel-primary"> -->
+          <!--   <\!-- <div class="panel-heading"> -\-> -->
+          <!--   <\!--   <h3 class="panel-title">Acknowledgements</h3> -\-> -->
+          <!--   <\!-- </div> -\-> -->
+          <!--   <div class="panel-body"> -->
+          <!--     Thanks to: EPSRC, Microsoft Research, University of Leicester, University of Cambridge -->
+          <!--   </div> -->
+          <!-- </div> -->
+
+
+          <center>SibylFS is available as open source from <span style='font-family:Sans-Serif; font-weight:bold;'>GitHub</span></center>
+          <!--. Acknowledgements: EPSRC and Microsoft Research-->
+          
+
+        </td> <!-- col 2 -->
+        
+
+        
+      </tr>
+   </tbody>
+ </table>
+ <!-- <center> -->
+ <!--   <img height='20em' src='OSI-approved-license.png'></img> -->
+ <!--   <img height='20em' src='GitHub-Logo.png'></img> -->
+ <!--   <img height='20em' src='nixos-hires.png'></img> -->
+ <!-- </center> -->
+<div>
+</div>
+
+
+</div> <!-- page -->
+
+
+
+</div>
+<!-- <div  style="width:10px; height:1122px; background-color:black;"> -->
+<!-- </div> -->
+  </body>
+</html>

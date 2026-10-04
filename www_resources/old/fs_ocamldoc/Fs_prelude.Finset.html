@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="next" href="Fs_prelude.Fmap.html">
+<link rel="Up" href="Fs_prelude.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Dynarray" rel="Chapter" href="Dynarray.html">
+<link title="Lem_support" rel="Chapter" href="Lem_support.html">
+<link title="Fs_init" rel="Chapter" href="Fs_init.html">
+<link title="Fs_prelude" rel="Chapter" href="Fs_prelude.html">
+<link title="List_array" rel="Chapter" href="List_array.html">
+<link title="Fs_spec" rel="Chapter" href="Fs_spec.html">
+<link title="Dir_heap" rel="Chapter" href="Dir_heap.html">
+<link title="Fs_printer" rel="Chapter" href="Fs_printer.html">
+<link title="Fs_interface" rel="Chapter" href="Fs_interface.html">
+<link title="File_utils" rel="Chapter" href="File_utils.html">
+<link title="Fs_dict_wrappers" rel="Chapter" href="Fs_dict_wrappers.html">
+<link title="Fs_spec_extras" rel="Chapter" href="Fs_spec_extras.html">
+<link title="Fs_spec_with_dh" rel="Chapter" href="Fs_spec_with_dh.html"><title>Fs_prelude.Finset</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Fs_prelude.html" title="Fs_prelude">Up</a>
+&nbsp;<a class="post" href="Fs_prelude.Fmap.html" title="Fs_prelude.Fmap">Next</a>
+</div>
+<h1>Module <a href="type_Fs_prelude.Finset.html">Fs_prelude.Finset</a></h1>
+
+<pre><span class="keyword">module</span> Finset: <code class="code">sig</code> <a href="Fs_prelude.Finset.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><span id="VALset_from_finset"><span class="keyword">val</span> set_from_finset</span> : <code class="type">'a Lem_basic_classes.setType_class -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a Pset.set</code></pre>
+<pre><span id="VALfinset_from_set"><span class="keyword">val</span> finset_from_set</span> : <code class="type">'a -> 'b Pset.set -> 'b <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_equal"><span class="keyword">val</span> finset_equal</span> : <code class="type">'a Lem_basic_classes.setType_class -><br>       'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> bool</code></pre>
+<pre><span id="VALinstance_Basic_classes_Eq_Fs_prelude_Finset_finset_dict"><span class="keyword">val</span> instance_Basic_classes_Eq_Fs_prelude_Finset_finset_dict</span> : <code class="type">'a Lem_basic_classes.setType_class -><br>       'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> Lem_basic_classes.eq_class</code></pre>
+<pre><span id="VALfinset_empty"><span class="keyword">val</span> finset_empty</span> : <code class="type">unit -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_is_empty"><span class="keyword">val</span> finset_is_empty</span> : <code class="type">'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> bool</code></pre>
+<pre><span id="VALfinset_insert"><span class="keyword">val</span> finset_insert</span> : <code class="type">'a -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_singleton"><span class="keyword">val</span> finset_singleton</span> : <code class="type">'a -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_union"><span class="keyword">val</span> finset_union</span> : <code class="type">'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_bigunion"><span class="keyword">val</span> finset_bigunion</span> : <code class="type">'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_image"><span class="keyword">val</span> finset_image</span> : <code class="type">('a -> 'b) -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'b <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_bigunion_image"><span class="keyword">val</span> finset_bigunion_image</span> : <code class="type">('a -> 'b <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a>) -><br>       'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'b <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_filter"><span class="keyword">val</span> finset_filter</span> : <code class="type">('a -> bool) -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_partition"><span class="keyword">val</span> finset_partition</span> : <code class="type">('a -> bool) -><br>       'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> * 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre>
+<pre><span id="VALfinset_choose"><span class="keyword">val</span> finset_choose</span> : <code class="type">'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a</code></pre>
+<pre><span id="VALfinset_any"><span class="keyword">val</span> finset_any</span> : <code class="type">('a -> bool) -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> bool</code></pre>
+<pre><span id="VALfinset_all"><span class="keyword">val</span> finset_all</span> : <code class="type">('a -> bool) -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> bool</code></pre>
+<pre><span id="VALdistinct_list_from_finset_by"><span class="keyword">val</span> distinct_list_from_finset_by</span> : <code class="type">('a -> 'a -> bool) -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a list</code></pre>
+<pre><span id="VALdistinct_list_from_finset"><span class="keyword">val</span> distinct_list_from_finset</span> : <code class="type">'a Lem_basic_classes.eq_class -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a list</code></pre>
+<pre><span id="VALfinset_size_by"><span class="keyword">val</span> finset_size_by</span> : <code class="type">('a -> 'a -> bool) -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> int</code></pre>
+<pre><span id="VALfinset_size"><span class="keyword">val</span> finset_size</span> : <code class="type">'a Lem_basic_classes.eq_class -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> int</code></pre>
+<pre><span id="VALfinset_memBy"><span class="keyword">val</span> finset_memBy</span> : <code class="type">('a -> 'b -> bool) -> 'a -> 'b <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> bool</code></pre>
+<pre><span id="VALfinset_mem"><span class="keyword">val</span> finset_mem</span> : <code class="type">'a -> 'b -> 'b <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> bool</code></pre>
+<pre><span id="VALfinset_cleanup"><span class="keyword">val</span> finset_cleanup</span> : <code class="type">('a -> 'a -> bool) -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a> -> 'a <a href="Lem_support.html#TYPEfinset">Lem_support.finset</a></code></pre></body></html>
