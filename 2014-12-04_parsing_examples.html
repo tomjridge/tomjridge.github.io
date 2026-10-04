@@ -73,43 +73,57 @@
     <div class="py-8 px-4 mx-auto max-w-[40em] lg:max-w-screen-xl lg:py-16 lg:px-6 max-w-prose">
 
         <article class="prose">
-            <h1>Filesystems</h1>
-<p>With others, I worked on formally specifying, implementing and verifying filesystems.</p>
+            <h1>Parsing examples</h1>
+<p><em>4 December 2014</em></p>
+<p>My work on P1, E3, P3 and P4 was motivated in part by a desire to have
+simple tools that I could use in other areas of research. These tools
+are mostly source-to-source translators. For example, in the past I
+have had various ad-hoc tools to translate OCaml to LaTeX, or OCaml to
+HOL, HOL to Lem, Lem to OCaml etc.</p>
+<p>The idea is to start making these tools maintainable and not one-off
+efforts to be used for a particular task then thrown away.</p>
+<p>Previous versions of P1 etc have not been engineered well enough to
+make the resulting tools maintainable or usable. I am hoping to change
+that by investing more engineering effort into P1 etc.</p>
+<p>So I have started a new repository on github
+<a href="https://github.com/tomjridge/example_grammars/">https://github.com/tomjridge/example_grammars/</a> which contains
+grammars and grammar-based tools that I use.</p>
+<p>To reduce grammar maintenance, I have added additional functionality to P1 etc:</p>
 <ul>
 <li>
-<p><strong><a href="https://github.com/tomjridge/mini-btree">mini-btree</a>, 2021</strong><br />
-    A new minimal B-tree implementation.</p>
+<p>Actions now use positional variables (<code>x1,x2,...</code>) rather than
+    requiring a <code>fun (x,(y,...)) -&gt;</code> nested tuple pattern. This makes
+    maintenance easier and also allows p1 and p4 to use the same
+    grammar files (p1 has a right-associative sequential combinator,
+    while p4 has a left-associative seq. comb.). For example, the file
+    <a href="https://github.com/tomjridge/example_grammars/blob/master/_todo/eee.p1">https://github.com/tomjridge/example_grammars/blob/master/_todo/eee.p1</a>
+    uses <code>fun ...</code> actions, whereas the file
+    <a href="https://github.com/tomjridge/example_grammars/blob/master/_todo/eee2.p1x">https://github.com/tomjridge/example_grammars/blob/master/_todo/eee2.p1x</a>
+    uses positional variables.</p>
 </li>
 <li>
-<p><strong><a href="https://github.com/tomjridge/imp_fs">ImpFS</a>, 2017 - 2021</strong><br />
-    A new filesystem based on B-trees and persistent logs.</p>
+<p>Explicitly-named symbols in actions are supported. In the
+    following excerpt, the variables in the second alternative are
+    <code>w1,t,w2</code> rather than <code>x1,x2,...</code>.</p>
+<pre><code>OCAMLTYPEXPR -&gt; "'" ?ident?            {{ Tex.tyvar ([x1;x2]|&gt;ss_concat|&gt;c) }}
+  | "(" w1=?w? t=TYPEXPR w2=?w? ")"       {{ "("^(Tex.w w1)^t^(Tex.w w2)^")" }}
+</code></pre>
 </li>
 <li>
-<p><strong><a href="https://github.com/tomjridge/tjr_kv">Tjr-kv</a>, 2018 - 2020</strong><br />
-    A key-value store for OCaml.</p>
-</li>
-<li>
-<p><strong><a href="https://github.com/tomjridge/tjr_btree">Tjr-btree</a>, 2017 - 2020</strong><br />
-    A B-tree-like on-disk datastructure.</p>
-</li>
-<li>
-<p><strong><a href="https://github.com/tomjridge/mini-fs">mini-fs</a>, 2017 - 2019</strong><br />
-    Frontend filesystem components, including FUSE bindings, networking etc.</p>
-</li>
-<li>
-<p><strong><a href="./sibylfs.html">SibylFS</a>, 2012 - 2015</strong><br />
-    A formal model of POSIX-like and real-world filesystems, usable as a test oracle.</p>
+<p>Multiple actions are now supported. For example, to map to tex you
+    might have an action <code>{tex{...}}</code>, whilst to map to markdown, you
+    might have an action <code>{md{...}}</code>. There is an example using
+    multiple actions here:
+    <a href="https://github.com/tomjridge/example_grammars/blob/master/_todo/eee3.p1x.acts">https://github.com/tomjridge/example_grammars/blob/master/_todo/eee3.p1x.acts</a></p>
 </li>
 </ul>
-<p>Some additional resources:</p>
-<ul>
-<li>
-<p><strong><a href="https://www.youtube.com/playlist?list=PLxKUsnr0vDOT-k1O1ePCg8pxqMwlQ6V7c">Conference talks on YouTube</a></strong></p>
-</li>
-<li>
-<p><strong><a href="http://tom-ridge.blogspot.com">Blog articles</a></strong></p>
-</li>
-</ul>
+<p>As a (somewhat largish) example, a grammar for a Lem/OCaml language is
+<a href="https://github.com/tomjridge/example_grammars/blob/master/_todo/ocaml.cppo">https://github.com/tomjridge/example_grammars/blob/master/_todo/ocaml.cppo</a>
+Note that this can be used with p1 (for correctness/simplicity) and p4
+(for speed). This is possible because p1 and p4 have essentially the
+same interface. At the moment there is only a single set of actions
+(to map to LaTeX). I am currently using this to produce typeset Lem
+code for inclusion in a paper.</p>
         </article>
 
     </div>

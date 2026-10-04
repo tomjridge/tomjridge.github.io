@@ -4,19 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tom Ridge</title>
-    <link href="./output.css" rel="stylesheet"> <!-- FIXME need to get this path correct -->
+    <link href="./output.css" rel="stylesheet">
+    <!-- Flowbite JS toggles the navbar on narrow screens. Keep its version equal to flowbite@ in the Makefile's npx-setup. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/3.1.2/flowbite.min.js"></script>
 </head>
-
-<!-- flowbite is for navbar toggling (and anything else?) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-<!--<script src="../node_modules/flowbite/dist/flowbite.min.js"></script> -->
-
-<!-- 2025-06-07 these are likely not needed anymore -->
-<!--<script src="https://code.jquery.com/jquery-3.6.0.js"></script>-->
-<!--<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>-->
 <body>
-<!-- end head -->
-<!-- header nav menu -->
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-[40em] lg:max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
@@ -35,7 +27,6 @@
             </svg>
         </button>
 
-        <!-- navbar -->
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
@@ -78,9 +69,8 @@
     </div>
 </nav>
 
-
 <section class="bg-blue-100 dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-[40em] lg:max-w-screen-xl lg:py-16 lg:px-6  max-w-prose">
+    <div class="py-8 px-4 mx-auto max-w-[40em] lg:max-w-screen-xl lg:py-16 lg:px-6 max-w-prose">
 
         <article class="prose">
             <h1>Parsing</h1>
@@ -92,34 +82,33 @@ and produced quite a few OCaml implementations to try out various
 ideas.</p>
 <ul>
 <li>
-<p><strong><a href="https://github.com/tomjridge/tjr_simple_earley">Earley parser</a>, 2016 - now</strong><br />
-    My current favourite Earley parser implementation (in OCaml). A
+<p><strong><a href="https://github.com/tomjridge/tjr_simple_earley">Earley parser</a>, 2016 - 2019</strong><br />
+    My favourite Earley parser implementation (in OCaml). A
 Python version is also available from github.</p>
 </li>
 <li>
-<p><strong><a href="https://github.com/tomjridge/p1">P1</a>, 2015 (now inactive)</strong><br />
+<p><strong><a href="https://github.com/tomjridge/p1">P1</a>, 2014 - 2015 (now inactive)</strong><br />
   A combinator parsing library for <strong>all</strong> context-free grammars (CFGs). The implementation is based on the verified parsing work. </p>
 </li>
 <li>
-<p><strong><a href="https://github.com/tomjridge/p0">P0</a>, 2015- now</strong><br />
+<p><strong><a href="https://github.com/tomjridge/p0">P0</a>, 2017 - 2021</strong><br />
   A very simple combinator library, a sort-of minimal basis for combinator parsing.</p>
 </li>
 <li>
-<p><strong><a href="https://github.com/tomjridge/example_grammars/">Example grammars</a>, 2015 - now</strong><br />
-    Used for testing parsers. See also the <a href="/?old=2014-12-04_parsing_examples.html">blog post</a></p>
+<p><strong><a href="https://github.com/tomjridge/example_grammars/">Example grammars</a>, 2014 - 2019</strong><br />
+    Used for testing parsers. See also the <a href="./2014-12-04_parsing_examples.html">blog post</a></p>
 </li>
 <li>
 <p><strong>Verified parsing, 2011</strong><br />
     This work produced a verified, sound and complete approach to
     combinator parsing. This introduced the idea of "good parse
     trees". The problem with this approach is that it is too inefficient
-    with left-recursive grammars. See also the <a href="/?old=2011-12-01_verified_parsing.html">blog post</a>.</p>
+    with left-recursive grammars. See also the <a href="./2011-12-01_verified_parsing.html">blog post</a>.</p>
 </li>
 </ul>
         </article>
 
     </div>
 </section>
-<!-- foot -->
 </body>
 </html>

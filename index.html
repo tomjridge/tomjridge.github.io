@@ -4,19 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tom Ridge</title>
-    <link href="./output.css" rel="stylesheet"> <!-- FIXME need to get this path correct -->
+    <link href="./output.css" rel="stylesheet">
+    <!-- Flowbite JS toggles the navbar on narrow screens. Keep its version equal to flowbite@ in the Makefile's npx-setup. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/3.1.2/flowbite.min.js"></script>
 </head>
-
-<!-- flowbite is for navbar toggling (and anything else?) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-<!--<script src="../node_modules/flowbite/dist/flowbite.min.js"></script> -->
-
-<!-- 2025-06-07 these are likely not needed anymore -->
-<!--<script src="https://code.jquery.com/jquery-3.6.0.js"></script>-->
-<!--<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>-->
 <body>
-<!-- end head -->
-<!-- header nav menu -->
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-[40em] lg:max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
@@ -35,7 +27,6 @@
             </svg>
         </button>
 
-        <!-- navbar -->
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
@@ -78,9 +69,8 @@
     </div>
 </nav>
 
-
 <section class="bg-blue-100 dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-[40em] lg:max-w-screen-xl lg:py-16 lg:px-6  max-w-prose">
+    <div class="py-8 px-4 mx-auto max-w-[40em] lg:max-w-screen-xl lg:py-16 lg:px-6 max-w-prose">
 
         <article class="prose">
             <div class="flex flex-row justify-center items-center">
@@ -89,19 +79,17 @@
     </div>
     <div>
         <address>
-            Dr Tom Ridge<br/>
-            Leicester, UK<br/>
+            Dr Tom Ridge, Leicester and London, UK
         </address>
     </div>
 </div>
 
 <h2>Introduction</h2>
-<p>Welcome to the home page of Tom Ridge. I am currently working for altodata on
+<p>Welcome to my homepage. I am currently working for Altodata on
 various projects for the rail industry, using AWS technologies mostly (Lambda,
-CloudFormation, RDS (PostgreSQL), SNS, SQS etc.) and Python.</p>
-<p>I was a Senior Lecturer at the University of Leicester up to July 2021. From
-August 2021 till March 2023 I worked for OCamlLabs/Tarides on various projects
-(some involving Tezos and blockchain technologies).</p>
+CDK, RDS (PostgreSQL), SNS, SQS etc.), golang and Python.</p>
+<p>Before that I worked for OCamlLabs/Tarides, the University of Leicester and the
+University of Cambridge; see the <a href="./about.html#timeline">timeline on the About page</a>.</p>
 <p>Some social media links:</p>
 <ul>
 <li><a href="https://github.com/tomjridge">GitHub</a></li>
@@ -112,6 +100,5 @@ August 2021 till March 2023 I worked for OCamlLabs/Tarides on various projects
 
     </div>
 </section>
-<!-- foot -->
 </body>
 </html>
